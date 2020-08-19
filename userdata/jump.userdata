@@ -24,6 +24,12 @@ packages:
 write_files:
   - content: |
       #!/bin/sh
+      # save the variable netplan wo the last line of the current netplan file, recreate the netplan file with dns infor and apply it
+      netplan=`cat ${netplanFile} | head -n -1`
+      echo "$netplan" | sudo tee ${netplanFile}
+      # recreate the netplan file
+      echo $'            nameservers:\n                addresses: [${dnsMain}]\n    version: 2' | sudo tee -a ${netplanFile}
+      sudo netplan apply
       pip install ansible
       pip install avisdk==${avisdkVersion}
       sudo -u ubuntu ansible-galaxy install -f avinetworks.avisdk

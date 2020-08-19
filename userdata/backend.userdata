@@ -31,7 +31,7 @@ write_files:
       netplan=`cat ${netplanFile} | head -n -1`
       echo "$netplan" | sudo tee ${netplanFile}
       # recreate the netplan file
-      echo $'            nameservers:\n                addresses: [${dnsMain}, ${dnsSec}]\n    version: 2' | sudo tee -a ${netplanFile}
+      echo $'            nameservers:\n                addresses: [${dnsMain}]\n    version: 2' | sudo tee -a ${netplanFile}
       sudo netplan apply
       sudo apt update
       sudo apt install -y apache2

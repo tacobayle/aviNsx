@@ -107,6 +107,8 @@ data "template_file" "jumpbox_userdata" {
     password      = var.jump["password"]
     pubkey        = file(var.jump["public_key_path"])
     avisdkVersion = var.jump["avisdkVersion"]
+    netplanFile  = var.backend["netplanFile"]
+    dnsMain      = var.backend["dnsMain"]
   }
 }
 #

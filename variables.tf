@@ -62,11 +62,13 @@ variable "jump" {
     public_key_path = "~/n1-ubuntu-20.04-template.key.pub"
     private_key_path = "~/n1-ubuntu-20.04-template.key"
     wait_for_guest_net_timeout = 2
-    template_name = "n1-ubuntu-20.04-template"
+    template_name = "ubuntu-bionic-18.04-cloudimg-template"
     avisdkVersion = "18.2.9"
     mgmt_ip = "10.0.0.210"
     mgmt_mask = "255.255.255.0"
     default_gw = "10.0.0.1"
+    netplanFile = "/etc/netplan/50-cloud-init.yaml"
+    dnsMain = "172.18.0.15"
   }
 }
 #

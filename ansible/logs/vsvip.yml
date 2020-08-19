@@ -1,0 +1,42 @@
+---
+count: 1
+results:
+- east_west_placement: false
+  _last_modified: '1597043851431005'
+  url: https://10.206.115.214/api/vsvip/vsvip-062daa53-1001-4eb0-a8a3-15c3cb41749f
+  dns_info:
+  - num_records_in_response: 1
+    type: DNS_RECORD_A
+    fqdn: apphttps.vmw.avidemo.fr
+    algorithm: DNS_RECORD_RESPONSE_CONSISTENT_HASH
+    ttl: 100
+  tenant_ref: https://10.206.115.214/api/tenant/admin
+  name: vsvip-apphttps-pbCloudVmw
+  cloud_ref: https://10.206.115.214/api/cloud/cloud-e6f62416-c97b-4c97-aac2-b6fb32ff5b4e
+  vip:
+  - auto_allocate_ip: true
+    vip_id: '1'
+    avi_allocated_fip: false
+    discovered_networks:
+    - subnet:
+      - mask: 24
+        ip_addr:
+          type: V4
+          addr: 100.64.133.0
+      network_ref: https://10.206.115.214/api/network/dvportgroup-193-cloud-e6f62416-c97b-4c97-aac2-b6fb32ff5b4e
+    enabled: true
+    ipam_network_subnet:
+      subnet:
+        mask: 24
+        ip_addr:
+          type: V4
+          addr: 100.64.133.0
+      network_ref: https://10.206.115.214/api/network/dvportgroup-193-cloud-e6f62416-c97b-4c97-aac2-b6fb32ff5b4e
+    auto_allocate_floating_ip: false
+    avi_allocated_vip: false
+    auto_allocate_ip_type: V4_ONLY
+    ip_address:
+      type: V4
+      addr: 100.64.133.50
+  vrf_context_ref: https://10.206.115.214/api/vrfcontext/vrfcontext-b19ea323-b864-4465-b811-489511969690
+  uuid: vsvip-062daa53-1001-4eb0-a8a3-15c3cb41749f

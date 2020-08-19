@@ -1,0 +1,209 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars_files:
+    - "vars/fromTerraform.yml"
+    - "vars/creds.json"
+
+  vars:
+    listVsName: []
+    listPoolName: []
+    listVsVip: []
+
+  roles:
+    - role: "avinetworks.avisdk"
+
+  tasks:
+
+    - name: Debug
+      debug:
+        msg: "{{ avi_credentials }}"
+      tags:
+        - debug
+
+    - name: get VS
+      avi_api_session:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        http_method: get
+        timeout: 300
+        path: virtualservice
+      register: vsOutput
+      tags:
+        - debug
+
+    - name: Append Vs name to the list
+      set_fact:
+        listVsName: "{{ listVsName }} + [ '{{ item.name }}' ]"
+      loop: "{{ vsOutput.obj.results }}"
+      loop_control:
+       label: "{{ item.name }}"
+      tags:
+        - debug
+
+    - name: Debug
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ listVsName }}"
+      tags:
+        - debug
+
+    - name: Delete Virtualservice
+      avi_virtualservice:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        name: "{{ item }}"
+        state: absent
+        cloud_ref: "/api/cloud/?name={{ avi_cloud.name }}"
+        tenant_ref: "/api/tenant?name={{ item.tenant_ref | default('admin') }}"
+        tenant: "{{ item.tenant_ref | default('admin') }}"
+      loop: "{{ listVsName }}"
+      loop_control:
+        label: "{{ item }}"
+
+
+    - name: get vsvip
+      avi_api_session:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        http_method: get
+        timeout: 300
+        path: vsvip
+      register: vsVip
+      tags:
+        - debug
+
+    - name: Append Vsvip name to the list
+      set_fact:
+        listVsVip: "{{ listVsVip }} + [ '{{ item.name }}' ]"
+      loop: "{{ vsVip.obj.results }}"
+      loop_control:
+       label: "{{ item.name }}"
+      tags:
+        - debug
+
+    - name: Debug
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ listVsVip }}"
+      tags:
+        - debug
+
+    - name: Delete VsVip
+      avi_vsvip:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        name: "{{ item }}"
+        state: absent
+        cloud_ref: "/api/cloud/?name={{ avi_cloud.name }}"
+        tenant_ref: "/api/tenant?name={{ item.tenant_ref | default('admin') }}"
+        tenant: "{{ item.tenant_ref | default('admin') }}"
+      loop: "{{ listVsVip }}"
+      loop_control:
+        label: "{{ item }}"
+
+    - name: get pools
+      avi_api_session:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        http_method: get
+        timeout: 300
+        path: pool
+      register: poolOutput
+
+    - name: Append Pool name to the list
+      set_fact:
+        listPoolName: "{{ listPoolName }} + [ '{{ item.name }}' ]"
+      loop: "{{ poolOutput.obj.results }}"
+      loop_control:
+       label: "{{ item.name }}"
+
+    - name: Delete pool
+      avi_pool:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        name: "{{ item }}"
+        cloud_ref: "/api/cloud/?name={{ avi_cloud.name }}"
+        tenant: "{{ item.tenant_ref | default('admin') }}"
+        tenant_ref: "/api/tenant?name={{ item.tenant_ref | default('admin') }}"
+        state: absent
+      loop: "{{ listPoolName }}"
+      loop_control:
+        label: "{{ item }}"
+      #when: item.servers
+
+
+
+    # - name: Delete pool (VM based)
+    #   avi_pool:
+    #     avi_credentials: "{{ avi_credentials }}"
+    #     api_version: "{{ avi_credentials.api_version }}"
+    #     name: "{{ item.name }}"
+    #     cloud_ref: "/api/cloud/?name={{ avi_cloud.name }}"
+    #     tenant: "{{ item.tenant_ref | default('admin') }}"
+    #     tenant_ref: "/api/tenant?name={{ item.tenant_ref | default('admin') }}"
+    #     state: absent
+    #   loop: "{{ avi_pool }}"
+    #   loop_control:
+    #     label: "{{ item.name }}"
+    #   when: item.servers
+
+    - name: Get SE list
+      avi_api_session:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        http_method: get
+        path: serviceengine
+        # cloud_ref: "/api/cloud/?name={{ avi_cloud.name | default('Default-Cloud') }}"
+        # tenant: "{{ item.tenant_ref | default('admin') }}"
+        # tenant_ref: "/api/tenant?name={{ item.tenant_ref | default('admin') }}"
+      register: seResults
+
+    - name: Debug
+      debug:
+        msg: "{{ item.name }}"
+      loop: "{{ seResults.obj.results }}"
+      tags:
+        - debug
+
+    - name: Delete All SEs
+      avi_serviceengine:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        name: "{{ item.name }}"
+        state: absent
+      loop: "{{ seResults.obj.results }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: Pausing for 90 seconds
+      pause:
+        seconds: 90
+
+    - name: Delete se group (except Default Group)
+      avi_serviceenginegroup:
+        cloud_ref: "/api/cloud/?name={{ avi_cloud.name }}"
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        name: "{{ item.name }}"
+        state: absent
+      loop: "{{ serviceEngineGroup }}"
+      loop_control:
+        label: "Modifying SE group called {{ item.name }}"
+      when: item.name != "Default-Group"
+
+    - name: Pausing for 20 seconds
+      pause:
+        seconds: 20
+
+    # - name: Delete Avi Cloud
+    #   avi_cloud:
+    #     avi_credentials: "{{ avi_credentials }}"
+    #     api_version: "{{ avi_credentials.api_version }}"
+    #     name: "{{ avi_cloud.name }}"
+    #     state: absent
+    #     vtype: "{{ avi_cloud.vtype }}"
+    #   when: avi_cloud is defined
+    #   tags: cloud

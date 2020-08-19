@@ -1,0 +1,67 @@
+---
+value:
+  cdroms: []
+  memory:
+    size_MiB: 24576
+    hot_add_enabled: false
+  disks:
+  - value:
+      scsi:
+        bus: 0
+        unit: 0
+      backing:
+        vmdk_file: "[wdc-06-vc12c01-vsan] c0b2275f-6a12-f4a4-7e7d-b8599f253428/nicController.vmdk"
+        type: VMDK_FILE
+      label: Hard disk 1
+      type: SCSI
+      capacity: 137438953472
+    key: '2000'
+  parallel_ports: []
+  sata_adapters: []
+  cpu:
+    hot_remove_enabled: false
+    count: 8
+    hot_add_enabled: false
+    cores_per_socket: 1
+  scsi_adapters:
+  - value:
+      scsi:
+        bus: 0
+        unit: 7
+      label: SCSI controller 0
+      type: LSILOGIC
+      sharing: NONE
+    key: '1000'
+  power_state: POWERED_OFF
+  floppies: []
+  name: nicController
+  nics:
+  - value:
+      start_connected: true
+      pci_slot_number: 160
+      backing:
+        network_name: Avi Internal
+        type: STANDARD_PORTGROUP
+        network: network-377
+      mac_address: 00:50:56:aa:75:53
+      mac_type: ASSIGNED
+      allow_guest_control: true
+      wake_on_lan_enabled: true
+      label: Network adapter 1
+      state: NOT_CONNECTED
+      type: VMXNET3
+      upt_compatibility_enabled: true
+    key: '4000'
+  boot:
+    delay: 0
+    retry_delay: 10000
+    enter_setup_mode: false
+    type: BIOS
+    retry: false
+  serial_ports: []
+  guest_OS: UBUNTU_64
+  boot_devices: []
+  hardware:
+    upgrade_policy: NEVER
+    upgrade_status: NONE
+    version: VMX_08

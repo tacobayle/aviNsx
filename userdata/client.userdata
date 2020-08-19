@@ -1,0 +1,47 @@
+#cloud-config
+users:
+  - default
+  - name: aviadmin
+    lock_passwd: true
+    shell: /bin/bash
+    sudo:  ALL=(ALL) NOPASSWD:ALL
+    chpasswd: {expire: False}
+    ssh_authorized_keys:
+      - ${pubkey}
+
+chpasswd:
+  list: |
+    ubuntu: $password
+    aviadmin: $password
+  expire: False
+
+packages:
+  - language-pack-en
+
+write_files:
+  - content: |
+      #!/bin/bash
+      # retrieve the last network interface
+      iface=`ip -o link show | awk -F': ' '{print $2}' | tail -1`
+      # enable it, assign a static ip address, configure a default gw
+      sudo ip link set $iface up
+      sudo ip address add ${ip_mgmt} dev $iface
+      sudo ip route add default via ${defaultGwMgt}
+      # save the variable netplan wo the last line of the current netplan file, recreate the netplan file with dns infor and apply it
+      netplan=`cat ${netplanFile} | head -n -1`
+      echo "$netplan" | sudo tee ${netplanFile}
+      # recreate the netplan file
+      echo $'            nameservers:\n                addresses: [${dnsMain}, ${dnsSec}]\n    version: 2' | sudo tee -a ${netplanFile}
+      sudo netplan apply
+      sudo apt update
+      sudo apt-get install -y apache2-utils
+      echo "cloud init done" | tee /tmp/cloudInitDone.log
+    path: /opt/bootstrap.sh
+    permissions: 0755
+
+  - content: |
+      ubuntu ALL=(ALL) NOPASSWD:ALL
+    path: /etc/sudoers.d/ubuntu
+
+runcmd:
+  - /opt/bootstrap.sh

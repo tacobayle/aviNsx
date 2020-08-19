@@ -1,0 +1,186 @@
+---
+count: 1
+results:
+- network_profile_ref: https://10.206.115.214/api/networkprofile/networkprofile-a49c3dfd-f8d4-4753-a999-b1496abec433
+  vip_runtime:
+  - se_list:
+    - attach_ip_success: true
+      memory: 3951
+      vip_intf_mac: 00:50:56:aa:1b:03
+      is_portchannel: false
+      attach_ip_status: Programming Network reachability to the Virtual Service IP
+        in the Cloud
+      delete_in_progress: false
+      admin_down_requested: false
+      vnic:
+      - mac: 00:50:56:aa:1b:03
+        type: VNIC_TYPE_FE
+      - mac: 00:50:56:aa:1b:03
+        type: VNIC_TYPE_BE
+      incarnation: 2020-0810 07:21:53.101149
+      sec_idx: 0
+      scaleout_in_progress: false
+      vip_intf_list:
+      - vip_intf_ip:
+          type: V4
+          addr: 100.64.133.51
+        vip_intf_mac: 00:50:56:aa:1b:03
+        is_portchannel: false
+        vlan_id: 0
+      is_standby: false
+      vip_subnet_mask: 32
+      vcpus: 2
+      se_ref: https://10.206.115.214/api/serviceengine/se-005056aa79d1
+      is_primary: true
+      vip6_subnet_mask: 128
+      vlan_id: 0
+    - attach_ip_success: true
+      memory: 3951
+      vip_intf_mac: 00:50:56:aa:12:01
+      is_portchannel: false
+      attach_ip_status: Programming Network reachability to the Virtual Service IP
+        in the Cloud
+      delete_in_progress: false
+      admin_down_requested: false
+      vnic:
+      - mac: 00:50:56:aa:12:01
+        type: VNIC_TYPE_FE
+      - mac: 00:50:56:aa:12:01
+        type: VNIC_TYPE_BE
+      incarnation: 2020-0810 07:21:56.138943
+      sec_idx: 1
+      scaleout_in_progress: false
+      vip_intf_list:
+      - vip_intf_ip:
+          type: V4
+          addr: 100.64.133.52
+        vip_intf_mac: 00:50:56:aa:12:01
+        is_portchannel: false
+        vlan_id: 0
+      is_standby: false
+      vip_subnet_mask: 32
+      vcpus: 2
+      se_ref: https://10.206.115.214/api/serviceengine/se-005056aa4da7
+      is_primary: false
+      vip6_subnet_mask: 128
+      vlan_id: 0
+    first_se_assigned_time:
+      secs: '1597044113'
+      usecs: '100902'
+    vip_id: '1'
+    num_additional_se: 0
+    requested_resource:
+      num_se: 2
+      num_standby_se: 0
+  weight: 1
+  tenant_ref: https://10.206.115.214/api/tenant/admin
+  flow_dist: LOAD_AWARE
+  remove_listening_port_on_vs_down: false
+  delay_fairness: false
+  vip:
+  - auto_allocate_ip: true
+    vip_id: '1'
+    avi_allocated_fip: false
+    discovered_networks:
+    - subnet:
+      - mask: 24
+        ip_addr:
+          type: V4
+          addr: 100.64.133.0
+      network_ref: https://10.206.115.214/api/network/dvportgroup-193-cloud-e6f62416-c97b-4c97-aac2-b6fb32ff5b4e
+    enabled: true
+    ipam_network_subnet:
+      subnet:
+        mask: 24
+        ip_addr:
+          type: V4
+          addr: 100.64.133.0
+      network_ref: https://10.206.115.214/api/network/dvportgroup-193-cloud-e6f62416-c97b-4c97-aac2-b6fb32ff5b4e
+    auto_allocate_floating_ip: false
+    avi_allocated_vip: false
+    auto_allocate_ip_type: V4_ONLY
+    ip_address:
+      type: V4
+      addr: 100.64.133.50
+  url: https://10.206.115.214/api/virtualservice/virtualservice-725a09f6-2817-4b95-923f-8c8cc1c6df5b
+  marked_for_delete: false
+  dns_info:
+  - num_records_in_response: 1
+    type: DNS_RECORD_A
+    fqdn: apphttps.vmw.avidemo.fr
+    algorithm: DNS_RECORD_RESPONSE_CONSISTENT_HASH
+    ttl: 100
+  vrf_context_ref: https://10.206.115.214/api/vrfcontext/vrfcontext-b19ea323-b864-4465-b811-489511969690
+  sideband_profile:
+    sideband_max_request_body_size: 1024
+  vsvip_ref: https://10.206.115.214/api/vsvip/vsvip-062daa53-1001-4eb0-a8a3-15c3cb41749f
+  analytics_profile_ref: https://10.206.115.214/api/analyticsprofile/analyticsprofile-976c2040-69a0-4eb0-82be-b4b5a712307b
+  cloud_type: CLOUD_VCENTER
+  _last_modified: '1597043851565642'
+  cloud_ref: https://10.206.115.214/api/cloud/cloud-e6f62416-c97b-4c97-aac2-b6fb32ff5b4e
+  se_group_ref: https://10.206.115.214/api/serviceenginegroup/serviceenginegroup-9751ef38-bb64-4809-9eaa-79c695782f15
+  ssl_profile_ref: https://10.206.115.214/api/sslprofile/sslprofile-b60a2cc2-0370-43f8-bab3-f33db34221a6
+  scaleout_ecmp: false
+  max_cps_per_client: 0
+  redis_db: 5
+  version: '5'
+  traffic_enabled: true
+  ssl_sess_cache_avg_size: 1024
+  ssl_key_and_certificate_refs:
+  - https://10.206.115.214/api/sslkeyandcertificate/sslkeyandcertificate-b5fc83b3-d107-4e8d-ba62-595759091bc7
+  use_bridge_ip_as_vip: false
+  allow_invalid_client_cert: false
+  bulk_sync_kvcache: false
+  http_policies:
+  - index: 11
+    http_policy_set_ref: https://10.206.115.214/api/httppolicyset/httppolicyset-de1d367b-59d3-42d0-b34f-464cef943b77
+  application_profile_ref: https://10.206.115.214/api/applicationprofile/applicationprofile-4d5e1139-33e9-4159-a58e-3a0c25b05600
+  active_standby_se_tag: ACTIVE_STANDBY_SE_1
+  use_vip_as_snat: false
+  services:
+  - enable_ssl: false
+    port_range_end: 80
+    port: 80
+  - enable_ssl: true
+    port_range_end: 443
+    port: 443
+  self_se_election: true
+  pool_ref: https://10.206.115.214/api/pool/pool-2b7d52d0-ac6b-49d7-8bce-5cc7c0fe7c8b
+  ign_pool_net_reach: false
+  uuid: virtualservice-725a09f6-2817-4b95-923f-8c8cc1c6df5b
+  east_west_placement: false
+  limit_doser: false
+  name: apphttps
+  close_client_conn_on_config_update: false
+  type: VS_TYPE_NORMAL
+  enable_autogw: true
+  enabled: true
+  content_rewrite:
+    rewritable_content_ref: https://10.206.115.214/api/stringgroup/stringgroup-ba9bba79-38b7-4847-80bf-860eeca0b359
+    response_rewrite_enabled: false
+    request_rewrite_enabled: false
+  network_security_policy_ref: https://10.206.115.214/api/networksecuritypolicy/networksecuritypolicy-20b6eb59-9d02-43b9-9ca6-885f6d1abdef
+  tls_ticket_key:
+  - hmac_key: ACX75G6feAyL0KZ/sL/XlQ==
+    name: ec9923c7-02cd-4636-a03e-21d1fe9f9e5b
+    aes_key: Og+eLDFnnXvQXLfG6OdetQ==
+  - hmac_key: TTFMqA/B+PlmMevw/ook8Q==
+    name: 9d9f14e3-e4a4-464c-bf33-202985e61de9
+    aes_key: PDdIF5ekJ6RUkJRNejSHVg==
+  - hmac_key: bd254nIp4dEXoX11JecvRw==
+    name: a706f22d-6817-4139-a157-043650827af2
+    aes_key: 5NiupbXIgc9fPqpJUTA8Xg==
+  analytics_policy:
+    udf_log_throttle: 10
+    full_client_logs:
+      duration: 30
+      throttle: 10
+      enabled: true
+    metrics_realtime_update:
+      duration: 30
+      enabled: true
+    significant_log_throttle: 10
+    client_insights: NO_INSIGHTS
+    all_headers: false
+  redis_port: 5021
+  flow_label_type: NO_LABEL

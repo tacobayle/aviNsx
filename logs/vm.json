@@ -1,0 +1,2601 @@
+{
+  "value": [
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-1002",
+      "name": "win-2019-Horizon-Agent",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-1003",
+      "name": "win-2019-Connection-server",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1004",
+      "name": "euc-unified-access-gateway-3.9.1.0-15851887_OVF10",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1019",
+      "name": "Rick Gee",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1021",
+      "name": "rick_ctrl01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1022",
+      "name": "rick_ctrl02",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1023",
+      "name": "rick_ctrl03",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1024",
+      "name": "SE_Rick-se-gnpme",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1025",
+      "name": "SE_Rick-se-ywuqa",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1028",
+      "name": "rick_17-2-15_lab",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 18432,
+      "vm": "vm-1030",
+      "name": "rick_ctrl2.17",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 18432,
+      "vm": "vm-1031",
+      "name": "rick_ctl1.17",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 18432,
+      "vm": "vm-1032",
+      "name": "rick_ctrl3.17",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1039",
+      "name": "Demo-Controller-Matt-Chris",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1041",
+      "name": "swap-demo-se-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1061",
+      "name": "Server 1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1069",
+      "name": "Server2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1078",
+      "name": "web_server",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1087",
+      "name": "sbe-controller-18.2.8-GA",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1100",
+      "name": "controller-noaccess-static",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1104",
+      "name": "se1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1105",
+      "name": "se2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1106",
+      "name": "Avi-se-xoxzr",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1107",
+      "name": "Avi-se-kjtmo",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1110",
+      "name": "Jason-Windows",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-1111",
+      "name": "testwindows",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 49152,
+      "vm": "vm-1117",
+      "name": "JL-demo-130",
+      "power_state": "POWERED_ON",
+      "cpu_count": 16
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1118",
+      "name": "MitchChen-poolmember1",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1122",
+      "name": "controller-static-write-access",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1125",
+      "name": "HA-se-dlvfh",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1126",
+      "name": "HA-se-xkckr",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1132",
+      "name": "rwhitt-se-noaccess",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1133",
+      "name": "rwhitt-noaccess2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1142",
+      "name": "web_server2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1145",
+      "name": "cdiaz-se-bbjde",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1146",
+      "name": "cdiaz-se-beknd",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1155",
+      "name": "Avi-se-ttzgf",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1156",
+      "name": "Avi-se-gisaf",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1158",
+      "name": "client_server",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1159",
+      "name": "controller-18.2.8",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1160",
+      "name": "Swapnil-Controller-18.2.8",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1164",
+      "name": "Avi-se-xshxx",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1165",
+      "name": "Avi-se-wnjie",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1166",
+      "name": "Avi-se-xoyrd",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1173",
+      "name": "Avi-se-gkikq",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1174",
+      "name": "Avi-se-zsgac",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1176",
+      "name": "Avi-se-folbm",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1177",
+      "name": "Avi-se-xpmrz",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1180",
+      "name": "SO-Ctrl-18.2.8 (CSP Testing)",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1188",
+      "name": "Avi-se-bgjyx",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1189",
+      "name": "Avi-se-bxmoq",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1200",
+      "name": "Avi-se-uvpct",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 6144,
+      "vm": "vm-1201",
+      "name": "Windows 2016 Backup DC",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1202",
+      "name": "controller",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1208",
+      "name": "Cloudian1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1209",
+      "name": "Rick-Jump-Box",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1211",
+      "name": "MCcontroller2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1212",
+      "name": "MCcontroller1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1213",
+      "name": "MCcontroller3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1214",
+      "name": "LDAPDemoController1",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1215",
+      "name": "LDAPDemoController2",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1216",
+      "name": "LDAPDemoController3",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1225",
+      "name": "cloudian2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1226",
+      "name": "cloudian3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1230",
+      "name": "Chris Jump",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1231",
+      "name": "chris_ctrl03",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1232",
+      "name": "chris_ctrl01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1233",
+      "name": "chris_ctrl02",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1235",
+      "name": "SE_Chris-se-ispng",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1236",
+      "name": "SE_Chris-se-jvmpr",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1248",
+      "name": "ErikP-controller-18.2.8-9205",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1251",
+      "name": "EP-se-vlfhw",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1252",
+      "name": "EP-se-krpyq",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1263",
+      "name": "gz-controller",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-1272",
+      "name": "rc-controller-4a",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1276",
+      "name": "JL-k8s-master-134",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1283",
+      "name": "sbe-photon-km",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1284",
+      "name": "sbe-photon-kw",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1288",
+      "name": "IA-workstation",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1319",
+      "name": "JL-splunk-135",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1320",
+      "name": "rcse1-na-01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1321",
+      "name": "docker_server",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1322",
+      "name": "JL-k8s-node-135",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1323",
+      "name": "JL-k8s-node-136",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1327",
+      "name": "logging3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1330",
+      "name": "controller_WR",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1331",
+      "name": "Avi-se-tindk",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1332",
+      "name": "Avi-se-xrlgp",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-1337",
+      "name": "admcli",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1343",
+      "name": "New Virtual Machine",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1347",
+      "name": "controller-pn-na",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1355",
+      "name": "se1-pn-na",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1363",
+      "name": "se2-pn-na",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1371",
+      "name": "webserver-pn-na",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1372",
+      "name": "webserver3",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-1373",
+      "name": "Ubuntu 18.04 MQ1",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1375",
+      "name": "webserver2-pn-na",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1392",
+      "name": "JL-k8s-octant-133",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-1394",
+      "name": "Ubuntu 18.04 MQ2",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1405",
+      "name": "k8s-master",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1406",
+      "name": "k8s-worker1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1407",
+      "name": "k8s-worker2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1408",
+      "name": "controller-pn-wa",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 6144,
+      "vm": "vm-1432",
+      "name": "Nested_ESXi6.7_2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 16,
+      "vm": "vm-1440",
+      "name": "images",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 18432,
+      "vm": "vm-1445",
+      "name": "ESX-Template",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 18432,
+      "vm": "vm-1446",
+      "name": "ESX-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 18432,
+      "vm": "vm-1447",
+      "name": "ESX-2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 18432,
+      "vm": "vm-1448",
+      "name": "ESX-3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1449",
+      "name": "nsx-unified-appliance-3.0.0.0.0.15946739",
+      "power_state": "POWERED_ON",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 32768,
+      "vm": "vm-1451",
+      "name": "NSX-Edge-3.0",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 28672,
+      "vm": "vm-1452",
+      "name": "VC-7.0-temp",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 28672,
+      "vm": "vm-1454",
+      "name": "VC-7.0",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1457",
+      "name": "Chris BMCTR",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1460",
+      "name": "containers",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1482",
+      "name": "Avi-se-cfsyd",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1483",
+      "name": "Avi-se-fuoku",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1484",
+      "name": "Avi-se-onluu",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1485",
+      "name": "Avi-se-chxun",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1493",
+      "name": "sbe-photon-kw2",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 6144,
+      "vm": "vm-1499",
+      "name": "vRO-app-7.2.0.19944-4629837",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1503",
+      "name": "MattAdam-Jump",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1504",
+      "name": "controller-18.2.8-template",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1506",
+      "name": "avicontroller-1a",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1516",
+      "name": "AviSE-se-xcqpp",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1517",
+      "name": "AviSE-se-eblqw",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1518",
+      "name": "avicontroller-1b",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1540",
+      "name": "me-controller-18.2.9",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1582",
+      "name": "K8s - MASTER",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1583",
+      "name": "K8s - NODE1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1584",
+      "name": "K8S - NODE2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1586",
+      "name": "K8s - NODE3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1595",
+      "name": "Swapnil-Avi-SE-BM-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1598",
+      "name": "perf-server-client",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1600",
+      "name": "PERF-SERV-2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1602",
+      "name": "PERF-SERV-3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1605",
+      "name": "Beta-3-Controller",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1608",
+      "name": "gz-20.1-beta3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1609",
+      "name": "LSC SE",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1616",
+      "name": "kube-master-flannel",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1617",
+      "name": "kube-node1-flannel",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1618",
+      "name": "kube-node2-flannel",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1619",
+      "name": "kube-master-calico",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1620",
+      "name": "kube-nod1-calico",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1621",
+      "name": "kube-node2-calico",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1631",
+      "name": "lsc1-centos7",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1633",
+      "name": "mTLS-client",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 3072,
+      "vm": "vm-1638",
+      "name": "rc-lsc-se01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1643",
+      "name": "MB-CTR2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1646",
+      "name": "Apache Web Server",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1649",
+      "name": "Apache Web Server 2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1650",
+      "name": "Apache Web Server 3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1651",
+      "name": "Apache Web Server 4",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1669",
+      "name": "controller.46",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-1672",
+      "name": "worker5",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1688",
+      "name": "dns45-se-zyboa",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1689",
+      "name": "dns46-se-qvoyt",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1692",
+      "name": "ingress45-se-zdsiw",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1693",
+      "name": "ingress45-se-iugkk",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1694",
+      "name": "ingress46-se-jsluy",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1695",
+      "name": "ingress46-se-qigri",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1696",
+      "name": "ingress46-se-vvyce",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1697",
+      "name": "ingress46-se-ilmhh",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1701",
+      "name": "avi-20.1.1-beta3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1705",
+      "name": "contr-20.1.1-Beta3-6183",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1706",
+      "name": "AVI Shell",
+      "power_state": "SUSPENDED",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 18432,
+      "vm": "vm-1710",
+      "name": "baremetal-pn-cont",
+      "power_state": "SUSPENDED",
+      "cpu_count": 5
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1721",
+      "name": "rcse2-se-lwuys",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 14336,
+      "vm": "vm-1722",
+      "name": "baremetal-pn-se",
+      "power_state": "SUSPENDED",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1728",
+      "name": "rc-controller-1a",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1734",
+      "name": "rcse1g-se-banne",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1737",
+      "name": "controller -18.2.5 test",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1738",
+      "name": "Avi-se-rtltz",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1739",
+      "name": "Avi-se-gfyxw",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1749",
+      "name": "vdnet-launcher-1.0.0.15469797",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1750",
+      "name": "locust-slave-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1751",
+      "name": "locust-master",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1760",
+      "name": "perf52-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1761",
+      "name": "perf52-2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1763",
+      "name": "perf52-3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1764",
+      "name": "perf52-4",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1765",
+      "name": "perf52-5",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1766",
+      "name": "perf52-6",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1774",
+      "name": "perf53-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1776",
+      "name": "perf53-2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1777",
+      "name": "perf53-3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1778",
+      "name": "perf53-4",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1779",
+      "name": "perf53-5",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-1780",
+      "name": "perf53-6",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1794",
+      "name": "rcse2-se-mkddk",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1796",
+      "name": "rcse1-se-qquhc",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1802",
+      "name": "Controller",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-1824",
+      "name": "baremetal-pn",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1833",
+      "name": "rcse1-se-seeth",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1834",
+      "name": "1cpu-se-fqdyx",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1837",
+      "name": "controller-2011",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1845",
+      "name": "rwhitt-se-flfeb",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1847",
+      "name": "rwhitt-se-xrurz",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1849",
+      "name": "johnallen-002",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1852",
+      "name": "Pam-se-yzqov",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-1858",
+      "name": "Pam-se-oojni",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1871",
+      "name": "rc-tkg-tkg-system-lb",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1872",
+      "name": "rc-tkg-control-plane-wnn29",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1873",
+      "name": "rc-tkg-md-0-5874b68879-xh8dl",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1874",
+      "name": "rc-tkg-wkld-default-lb",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1875",
+      "name": "rc-tkg-wkld-control-plane-cltsd",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1878",
+      "name": "rc-tkg-wkld-md-0-8ff478556-58xmt",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1879",
+      "name": "controller-20.1.1-9068",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1880",
+      "name": "tkg-mgmt-vsphere-20200728190729-tkg-system-lb",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1881",
+      "name": "tkg-mgmt-vsphere-20200728190729-control-plane-gtcfs",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1882",
+      "name": "tkg-mgmt-vsphere-20200728190729-md-0-7c697d889f-n74l2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1883",
+      "name": "me-tkg-cluster-default-lb",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1884",
+      "name": "me-tkg-cluster-control-plane-67krj",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1885",
+      "name": "me-tkg-cluster-md-0-84d95b7457-64sg7",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 10240,
+      "vm": "vm-1887",
+      "name": "VCSA-6.7.0.44000-16046470_OVF10",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1896",
+      "name": "JL_Avi-se-vckzz",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1897",
+      "name": "JL_Avi-se-cyhoz",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1899",
+      "name": "me-controller-20.1.1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1900",
+      "name": "rwhitt-se-hlgya",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1901",
+      "name": "rc-controller-3a",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1904",
+      "name": "rcse3g-se-zvdxa",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-1905",
+      "name": "rcse3-se-ktwvo",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1928",
+      "name": "testOvf",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-1934",
+      "name": "nicController",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 512,
+      "vm": "vm-328",
+      "name": "wdc-06-vc12-tr-dlr01-0",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 512,
+      "vm": "vm-330",
+      "name": "wdc-06-vc12-tr-dlr01-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-331",
+      "name": "wdc-06-vc12-tr-ecmp01-0",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-332",
+      "name": "wdc-06-vc12-tr-ecmp02-0",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 512,
+      "vm": "vm-333",
+      "name": "wdc-06-vc12-tr-dlr02-0",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 512,
+      "vm": "vm-334",
+      "name": "wdc-06-vc12-tr-dlr02-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-335",
+      "name": "GVM-jenkins-1804-client-template",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-336",
+      "name": "GVM-jenkins-1804-server-template",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-337",
+      "name": "jenkins-GVM-ubuntu-1404-client",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-338",
+      "name": "jenkins-GVM-ubuntu-1404-server",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-339",
+      "name": "dev-template",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-340",
+      "name": "dhcp-server",
+      "power_state": "POWERED_ON",
+      "cpu_count": 3
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-341",
+      "name": "photon-webrepo",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 6144,
+      "vm": "vm-346",
+      "name": "rc-winserver",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-351",
+      "name": "rc-linux-01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-352",
+      "name": "rc-kub-m01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-353",
+      "name": "rc-router",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-355",
+      "name": "rc-linux-02",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-356",
+      "name": "rc-linux-03",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-357",
+      "name": "rc-kub-n01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-358",
+      "name": "rc-kub-n02",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-359",
+      "name": "rc-democlient",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-360",
+      "name": "rc-kub-n03",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-361",
+      "name": "remo-test",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-370",
+      "name": "remo_CentOS-LDAP",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-386",
+      "name": "me-server",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-387",
+      "name": "me-client",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-389",
+      "name": "Jason-dev",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-397",
+      "name": "me-server2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-398",
+      "name": "Jason-controller2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-400",
+      "name": "Jason-controller-18",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-402",
+      "name": "Jason-controller1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-406",
+      "name": "remo_Windows-Connection-Server",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-407",
+      "name": "Avi-se-pxims",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 6144,
+      "vm": "vm-409",
+      "name": "remo_horizon_Windows Domain Controller",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-410",
+      "name": "remo_Win-Horizon-Agent1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-417",
+      "name": "sbe-photon-3.0",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-426",
+      "name": "master1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-427",
+      "name": "worker1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-428",
+      "name": "worker2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-429",
+      "name": "master2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-430",
+      "name": "worker4",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-432",
+      "name": "photon-52-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-433",
+      "name": "photon-52-2",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-434",
+      "name": "Windows-2016-server-trial",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-436",
+      "name": "photon_scan",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-441",
+      "name": "me-controller-18.2.7",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-444",
+      "name": "VMW-se-oiwnt",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-447",
+      "name": "VMW-se-obpky",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-448",
+      "name": "sbe-infoblox-8.2.4",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-453",
+      "name": "rwhitt-dev",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-457",
+      "name": "rwhitt-ctlr1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-461",
+      "name": "Avi-se-ezryv",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-462",
+      "name": "Avi-se-gjboa",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-516",
+      "name": "remo_ctrl-k8s",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-520",
+      "name": "Kube-Master-0",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-523",
+      "name": "Avi-se-nljge",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-524",
+      "name": "Avi-se-mwvpi",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-525",
+      "name": "Avi-se-bgnsj",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-526",
+      "name": "Avi-se-jrysp",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-529",
+      "name": "Kube-Master-1",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-593",
+      "name": "AK-Controller-18.2.8-BETA2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-594",
+      "name": "Avi-se-diiqb",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-599",
+      "name": "Avi-se-qjoso",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-600",
+      "name": "Avi-se-ymain",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-604",
+      "name": "AK-Ubuntu-16.04-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-606",
+      "name": "AK-Ubuntu-16.04-2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-608",
+      "name": "rc-controller-2a",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-610",
+      "name": "Swapnil-Controller-18.2.7",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-613",
+      "name": "Avi-se-dhlqv",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-614",
+      "name": "Avi-se-gkpei",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-635",
+      "name": "JL-controller-128",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-644",
+      "name": "JL-AVI_SE1-131",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-645",
+      "name": "JL-AVI_SE2-132",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-646",
+      "name": "JL-client-linux-129",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-667",
+      "name": "aca-infoblox-8.2.4",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 1024,
+      "vm": "vm-668",
+      "name": "JL-services-139",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-672",
+      "name": "rcse2g-se-ckdqh",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-692",
+      "name": "MitchChen-centos-jumpbox",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-70",
+      "name": "wdc-06-controller-NSX-controller-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 6144,
+      "vm": "vm-709",
+      "name": "rm-centos7",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-71",
+      "name": "wdc-06-controller-NSX-controller-2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-714",
+      "name": "remo_ctrl01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-715",
+      "name": "remo_ctrl03",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-716",
+      "name": "remo_ctrl02",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-72",
+      "name": "wdc-06-controller-NSX-controller-3",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-741",
+      "name": "Windows-VDI-Client",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-746",
+      "name": "sm-server1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-751",
+      "name": "Avi-se-hpjij",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-752",
+      "name": "Avi-se-tzzph",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-753",
+      "name": "Swapnil-Controller-18.2.7-2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-755",
+      "name": "Avi-se-aywoo",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-756",
+      "name": "Avi-se-arnia",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-761",
+      "name": "AK-Controller-18.2.6",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-762",
+      "name": "AK-se-cwljj",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-763",
+      "name": "AK2-se-iumkx",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-764",
+      "name": "remo_ctrl-vdi02",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-765",
+      "name": "remo_ctrl-vdi01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-766",
+      "name": "remo_ctrl-vdi03",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-784",
+      "name": "Swapnil-Dev",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-786",
+      "name": "test docker",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-813",
+      "name": "remo-python-stuff",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 6144,
+      "vm": "vm-815",
+      "name": "remo-Win-2016",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-820",
+      "name": "remo-perf-server-client-v16",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-821",
+      "name": "remo-Windows-Connection-Server1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-827",
+      "name": "remo-OpenStack-ctl",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 61440,
+      "vm": "vm-828",
+      "name": "remo-OpenStack-compute01",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 12
+    },
+    {
+      "memory_size_MiB": 61440,
+      "vm": "vm-829",
+      "name": "remo-OpenStack-compute02",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 10
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-834",
+      "name": "euc-unified-access-gateway-3.7.2.0-15239702_OVF10",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-850",
+      "name": "se_b2",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-856",
+      "name": "Avi-se-klfbz",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-873",
+      "name": "Avi-se-szjpr",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-874",
+      "name": "Avi-se-veyct",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 3072,
+      "vm": "vm-882",
+      "name": "SE_Remo-se-qpiqx",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 3072,
+      "vm": "vm-883",
+      "name": "SE_Remo-se-fdiqu",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 3072,
+      "vm": "vm-884",
+      "name": "SE_Remo-se-fajil",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-887",
+      "name": "fse-mikael-controller-01",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-896",
+      "name": "Avi-se-lunyh",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-897",
+      "name": "Avi-se-jympp",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-899",
+      "name": "fse-mikael-jumphost",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-903",
+      "name": "fse-mikael-server",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-910",
+      "name": "Swapnil-k8s-master",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 3072,
+      "vm": "vm-913",
+      "name": "SE_Remo-se-iojag",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-927",
+      "name": "Avi-se-tcvjp",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-928",
+      "name": "Avi-se-jndqk",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 10240,
+      "vm": "vm-934",
+      "name": "k8s-node-1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 10240,
+      "vm": "vm-937",
+      "name": "k8s-node-2",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-944",
+      "name": "SE_Remo-se-gphut",
+      "power_state": "POWERED_ON",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-945",
+      "name": "SE_Remo-se-ixsfd",
+      "power_state": "POWERED_ON",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-946",
+      "name": "SE_Remo-se-hwker",
+      "power_state": "POWERED_ON",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 12288,
+      "vm": "vm-947",
+      "name": "SE_Remo-se-bkqdc",
+      "power_state": "POWERED_ON",
+      "cpu_count": 6
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-973",
+      "name": "demo_ctrl01",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-974",
+      "name": "demo_ctrl02",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-975",
+      "name": "demo_ctrl03",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 8192,
+      "vm": "vm-976",
+      "name": "se-web-server",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 4
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-977",
+      "name": "SE_demo-se-qtxlt",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-979",
+      "name": "SE_demo-se-lprav",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-980",
+      "name": "IA-Windows",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-981",
+      "name": "windows2019-efi",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 2
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-983",
+      "name": "app1",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-986",
+      "name": "IA-Client",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-990",
+      "name": "JS-OS",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-991",
+      "name": "controller-1",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 2048,
+      "vm": "vm-992",
+      "name": "Service-Engine",
+      "power_state": "POWERED_OFF",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 4096,
+      "vm": "vm-993",
+      "name": "IA-Centos7",
+      "power_state": "POWERED_ON",
+      "cpu_count": 1
+    },
+    {
+      "memory_size_MiB": 24576,
+      "vm": "vm-995",
+      "name": "controller.45",
+      "power_state": "POWERED_ON",
+      "cpu_count": 8
+    },
+    {
+      "memory_size_MiB": 16384,
+      "vm": "vm-998",
+      "name": "win-2019-ad",
+      "power_state": "POWERED_ON",
+      "cpu_count": 2
+    }
+  ]
+}

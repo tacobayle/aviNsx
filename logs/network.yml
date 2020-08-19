@@ -1,0 +1,29 @@
+---
+count: 1
+results:
+- url: https://10.206.112.47/api/network/dvportgroup-129-cloud-7e158792-4228-4bf2-ade2-ddc64472fe65
+  uuid: dvportgroup-129-cloud-7e158792-4228-4bf2-ade2-ddc64472fe65
+  name: vxw-dvs-34-virtualwire-56-sid-6120055-wdc-06-vc12-avi-dev052
+  vrf_context_ref: https://10.206.112.47/api/vrfcontext/vrfcontext-9db18043-5309-422f-b1d9-94c5ea7e1b69
+  tenant_ref: https://10.206.112.47/api/tenant/admin
+  cloud_ref: https://10.206.112.47/api/cloud/cloud-7e158792-4228-4bf2-ade2-ddc64472fe65
+  _last_modified: '1596709125802867'
+  vcenter_dvs: true
+  dhcp_enabled: true
+  exclude_discovered_subnets: false
+  configured_subnets:
+  - prefix:
+      ip_addr:
+        addr: 100.64.60.0
+        type: V4
+      mask: 24
+    static_ranges:
+    - begin:
+        addr: 100.64.60.210
+        type: V4
+      end:
+        addr: 100.64.60.230
+        type: V4
+  synced_from_se: true
+  ip6_autocfg_enabled: true
+  vimgrnw_ref: https://10.206.112.47/api/vimgrnwruntime/dvportgroup-129-cloud-7e158792-4228-4bf2-ade2-ddc64472fe65

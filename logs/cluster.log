@@ -1,0 +1,53 @@
+ok: [localhost] => {
+    "msg": {
+        "ansible_facts": {
+            "avi_api_context": {
+                "10.206.114.127:ansible:None": null
+            }
+        },
+        "api_context": null,
+        "attempts": 1,
+        "changed": false,
+        "failed": false,
+        "obj": {
+            "cluster_state": {
+                "progress": 100,
+                "state": "CLUSTER_UP_HA_ACTIVE",
+                "up_since": "2020-08-05 14:04:50"
+            },
+            "node_info": {
+                "cluster_uuid": "cluster-7e74caf6-05b3-4aa8-876a-402496062166",
+                "ip": "node1.controller.local",
+                "mgmt_ip": "10.206.114.127",
+                "uuid": "005056aae023",
+                "version": "18.2.9(9147) 2020-06-06 00:39:37 UTC",
+                "vm_mor": "vm-2045",
+                "vm_uuid": "005056aae023"
+            },
+            "node_states": [
+                {
+                    "mgmt_ip": "10.206.114.127",
+                    "name": "10.206.114.127",
+                    "role": "CLUSTER_LEADER",
+                    "state": "CLUSTER_ACTIVE",
+                    "up_since": "2020-08-05 14:04:50"
+                },
+                {
+                    "mgmt_ip": "10.206.114.125",
+                    "name": "10.206.114.125",
+                    "role": "CLUSTER_FOLLOWER",
+                    "state": "CLUSTER_ACTIVE",
+                    "up_since": "2020-08-05 14:04:50"
+                },
+                {
+                    "mgmt_ip": "10.206.114.128",
+                    "name": "10.206.114.128",
+                    "role": "CLUSTER_FOLLOWER",
+                    "state": "CLUSTER_ACTIVE",
+                    "up_since": "2020-08-05 14:04:50"
+                }
+            ]
+        },
+        "old_obj": null
+    }
+}

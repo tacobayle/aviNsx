@@ -1,0 +1,49 @@
+---
+count: 2
+results:
+- url: https://10.206.112.47/api/cloud/cloud-7e158792-4228-4bf2-ade2-ddc64472fe65
+  uuid: cloud-7e158792-4228-4bf2-ade2-ddc64472fe65
+  name: Default-Cloud
+  tenant_ref: https://10.206.112.47/api/tenant/admin
+  _last_modified: '1596189035297175'
+  vtype: CLOUD_VCENTER
+  vcenter_configuration:
+    username: aviuser6
+    password: "<sensitive>"
+    vcenter_url: wdc-06-vc12.oc.vmware.com
+    privilege: WRITE_ACCESS
+    datacenter: wdc-06-vc12
+    management_network: https://10.206.112.47/api/vimgrnwruntime/dvportgroup-76-cloud-7e158792-4228-4bf2-ade2-ddc64472fe65
+  apic_mode: false
+  dhcp_enabled: true
+  mtu: 1500
+  prefer_static_routes: false
+  enable_vip_static_routes: false
+  license_type: LIC_CORES
+  state_based_dns_registration: false
+  ip6_autocfg_enabled: false
+  dns_resolution_on_se: false
+  enable_vip_on_all_interfaces: false
+  license_tier: ENTERPRISE
+  autoscale_polling_interval: 60
+  ipam_provider_ref: https://10.206.112.47/api/ipamdnsproviderprofile/ipamdnsproviderprofile-d9fd5b04-348b-4c3c-8d75-13232901b781
+  dns_provider_ref: https://10.206.112.47/api/ipamdnsproviderprofile/ipamdnsproviderprofile-b9cfa262-2567-408f-af87-941b4db17938
+  se_group_template_ref: https://10.206.112.47/api/serviceenginegroup/serviceenginegroup-4d4ceea8-ae06-4db8-b0ae-ba909cfa5f60
+- url: https://10.206.112.47/api/cloud/cloud-4fa195a6-01fb-4711-8c8f-e8c8998f9084
+  uuid: cloud-4fa195a6-01fb-4711-8c8f-e8c8998f9084
+  name: no_access_test
+  tenant_ref: https://10.206.112.47/api/tenant/admin
+  _last_modified: '1595233214708582'
+  vtype: CLOUD_NONE
+  apic_mode: false
+  dhcp_enabled: false
+  mtu: 1500
+  prefer_static_routes: false
+  enable_vip_static_routes: false
+  license_type: LIC_CORES
+  state_based_dns_registration: true
+  ip6_autocfg_enabled: false
+  dns_resolution_on_se: false
+  enable_vip_on_all_interfaces: false
+  license_tier: ENTERPRISE
+  autoscale_polling_interval: 60

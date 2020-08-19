@@ -1,0 +1,85 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars_files:
+    - "vars/fromTerraform.yml"
+    #- "vars/creds.json"
+
+  roles:
+    - role: "avinetworks.avisdk"
+
+  tasks:
+
+    - name: Debug
+      debug:
+        msg: "{{ avi_cloud }}"
+      tags:
+        - debug
+
+
+    - name: Configure Avi Cloud
+      avi_cloud:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        name: "{{ avi_cloud.name }}"
+        vtype: "{{ avi_cloud.vtype }}"
+        vcenter_configuration: "{{ avi_cloud.vcenter_configuration }}"
+        dhcp_enabled: "{{ avi_cloud.dhcp_enabled }}"
+      register: aviCloudOutput
+      when: avi_cloud is defined
+      tags:
+        - cloud
+
+    - pause:
+        minutes: 1
+
+    - name: Update Mgmt Network
+      avi_network:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        cloud_ref: "/api/cloud/?name={{ avi_cloud.name }}"
+        tenant_ref: "/api/tenant?name={{ item.tenant_ref | default('admin') }}"
+        name: "{{ avi_cloud.network }}"
+        dhcp_enabled: true
+        exclude_discovered_subnets: true
+        vcenter_dvs: true
+      when: avi_cloud.network is defined
+      tags:
+        - ipam
+
+    - pause:
+        minutes: 1
+
+    - set_fact:
+        aviCloudUuid: "{{ aviCloudOutput.obj.uuid }}"
+
+    - name: Configure Avi Cloud
+      avi_cloud:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        name: "{{ avi_cloud.name }}"
+        vtype: "{{ avi_cloud.vtype }}"
+        se_group_template_ref: "/api/serviceenginegroup?name=Default-Group"
+        vcenter_configuration: "{{ avi_cloud.vcenter_configuration }}"
+        dhcp_enabled: "{{ avi_cloud.dhcp_enabled }}"
+      register: aviCloudOutput
+      when: avi_cloud is defined
+      tags:
+        - cloud
+
+
+
+    - name: Wait for the cloud to be ready
+      avi_api_session:
+        avi_credentials: "{{ avi_credentials }}"
+        api_version: "{{ avi_credentials.api_version }}"
+        http_method: get
+        timeout: 300
+        path: cloud-inventory
+      register: statusCloud
+      when: avi_cloud is defined
+      until: statusCloud.obj.results.0.status.state == "CLOUD_STATE_PLACEMENT_READY"
+      retries: 120
+      delay: 10

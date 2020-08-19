@@ -1,0 +1,16 @@
+resource "vsphere_virtual_machine" "controller" {
+  name                       = "nicController"
+  folder                     = vsphere_folder.folder.path
+  resource_pool_id           = data.vsphere_resource_pool.pool.id
+  datastore_id               = data.vsphere_datastore.datastore.id
+  host_system_id             = data.vsphere_host.host.id
+  #wait_for_guest_net_timeout = 0
+  #wait_for_guest_ip_timeout  = 0
+  datacenter_id              = data.vsphere_datacenter.dc.id
+  ovf_deploy {
+    remote_ovf_url = "http://10.206.112.50/controller-20.1.1-9071.ova"
+  }
+  network_interface {
+  network_id = data.vsphere_network.network.id
+  }
+}

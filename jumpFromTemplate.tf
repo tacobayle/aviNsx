@@ -117,7 +117,7 @@ data "vsphere_virtual_machine" "jump" {
 #
 resource "vsphere_virtual_machine" "jump" {
   name             = var.jump["name"]
-  depends_on = [null_resource.foo6]
+  #depends_on = [null_resource.foo6]
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
   folder           = vsphere_folder.folder.path

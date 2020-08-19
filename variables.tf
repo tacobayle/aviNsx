@@ -57,7 +57,7 @@ variable "jump" {
     name = "jump"
     cpu = 2
     memory = 4096
-    disk = 20
+    disk = 32
     password = "Avi_2020"
     public_key_path = "~/n1-ubuntu-20.04-template.key.pub"
     private_key_path = "~/n1-ubuntu-20.04-template.key"

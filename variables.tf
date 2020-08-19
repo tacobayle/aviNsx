@@ -59,7 +59,7 @@ variable "jump" {
     memory = 4096
     disk = 20
     password = "Avi_2020"
-    public_key_path = "n1-ubuntu-20.04-template.key.pub"
+    public_key_path = "~/n1-ubuntu-20.04-template.key.pub"
     private_key_path = "~/n1-ubuntu-20.04-template.key"
     wait_for_guest_net_timeout = 2
     template_name = "n1-ubuntu-20.04-template"

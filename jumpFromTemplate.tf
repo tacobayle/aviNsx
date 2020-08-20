@@ -108,8 +108,11 @@ data "template_file" "jumpbox_userdata" {
     pubkey        = file(var.jump["public_key_path"])
     aviSdkVersion = var.jump["aviSdkVersion"]
     ipMgmt  = var.backend["ipMgmt"]
+    ip = split("/", var.backend["ipMgmt"])[0]
+    defaultGwMgt = var.bastion["defaultGwMgt"]
     dnsMain      = var.backend["dnsMain"]
     defaultGwMgt = var.backend["defaultGwMgt"]
+    netplanFile = var.bastion["netplanFile"]
   }
 }
 #

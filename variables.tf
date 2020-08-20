@@ -65,6 +65,7 @@ variable "jump" {
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     aviSdkVersion = "18.2.9"
     ipMgmt = "10.0.0.210/24"
+    netplanFile = "/etc/netplan/50-cloud-init.yaml"
     defaultGwMgt = "10.0.0.1"
     dnsMain = "172.18.0.15"
   }

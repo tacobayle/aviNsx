@@ -106,9 +106,10 @@ data "template_file" "jumpbox_userdata" {
   vars = {
     password      = var.jump["password"]
     pubkey        = file(var.jump["public_key_path"])
-    avisdkVersion = var.jump["avisdkVersion"]
-    netplanFile  = var.backend["netplanFile"]
+    aviSdkVersion = var.jump["aviSdkVersion"]
+    ipMgmt  = var.backend["ipMgmt"]
     dnsMain      = var.backend["dnsMain"]
+    defaultGwMgt = var.backend["defaultGwMgt"]
   }
 }
 #
@@ -148,6 +149,17 @@ resource "vsphere_virtual_machine" "jump" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.jump.id
+
+    customize {
+      network_interface {
+        ipv4_address = var.jump["mgmt_ip"]
+        ipv4_netmask = var.jump["mgmt_mask"]
+      }
+
+      ipv4_gateway = var.jump["default_gw"]
+    }
+
+
   }
 
   vapp {
@@ -156,10 +168,6 @@ resource "vsphere_virtual_machine" "jump" {
      password    = var.jump["password"]
      public-keys = file(var.jump["public_key_path"])
      user-data   = base64encode(data.template_file.jumpbox_userdata.rendered)
-     "mgmt-ip"     = var.jump["mgmt_ip"]
-     "mgmt-mask"   = var.jump["mgmt_mask"]
-     "default-gw"  = var.jump["default_gw"]
-
    }
  }
 

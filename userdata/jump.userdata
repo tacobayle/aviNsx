@@ -15,23 +15,24 @@ chpasswd:
     aviadmin: $password
   expire: False
 
-packages:
-  - language-pack-en
-  - python3-pip
-  - python-pip
-  - python-jmespath
-
 write_files:
   - content: |
-      #!/bin/sh
-      # save the variable netplan wo the last line of the current netplan file, recreate the netplan file with dns infor and apply it
-      netplan=`cat ${netplanFile} | head -n -1`
-      echo "$netplan" | sudo tee ${netplanFile}
-      # recreate the netplan file
-      echo $'            nameservers:\n                addresses: [${dnsMain}]\n    version: 2' | sudo tee -a ${netplanFile}
-      sudo netplan apply
+      #!/bin/bash
+      # retrieve the last network interface
+      sudo systemctl disable systemd-resolved
+      sudo systemctl stop systemd-resolved
+      iface=`ip -o link show | awk -F': ' '{print $2}' | tail -1`
+      sudo ip link set $iface down
+      sudo ip link set $iface up
+      sudo ip address add ${ipMgmt} dev $iface
+      sudo ip route add default via ${defaultGwMgt}
+      echo 'nameserver ${dnsMain}' | sudo tee /etc/resolv.conf
+      sudo apt-get update
+      sudo apt install -y python3-pip
+      sudo apt install -y python-pip
+      sudo apt install -y python-jmespath
       pip install ansible
-      pip install avisdk==${avisdkVersion}
+      pip install avisdk==${aviSdkVersion}
       sudo -u ubuntu ansible-galaxy install -f avinetworks.avisdk
       echo "cloud init done" | tee /tmp/cloudInitDone.log
     path: /opt/bootstrap.sh

@@ -172,7 +172,7 @@ resource "vsphere_virtual_machine" "jump" {
  }
 
   connection {
-   host        = self.default_ip_address
+   host        = split("/", var.jump["ipMgmt"])[0]
    type        = "ssh"
    agent       = false
    user        = "ubuntu"

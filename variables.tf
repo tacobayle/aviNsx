@@ -61,7 +61,7 @@ variable "jump" {
     password = "Avi_2020"
     public_key_path = "~/n1-ubuntu-20.04-template.key.pub"
     private_key_path = "~/n1-ubuntu-20.04-template.key"
-    wait_for_guest_net_timeout = 2
+    wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     aviSdkVersion = "18.2.9"
     ipMgmt = "10.0.0.210/24"

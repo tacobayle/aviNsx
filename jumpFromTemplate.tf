@@ -133,7 +133,7 @@ resource "vsphere_virtual_machine" "jump" {
 
   num_cpus = var.jump["cpu"]
   memory = var.jump["memory"]
-  wait_for_guest_net_timeout = var.jump["wait_for_guest_net_timeout"]
+  wait_for_guest_net_routable = var.jump["wait_for_guest_net_routable"]
   guest_id = data.vsphere_virtual_machine.jump.guest_id
   scsi_type = data.vsphere_virtual_machine.jump.scsi_type
   scsi_bus_sharing = data.vsphere_virtual_machine.jump.scsi_bus_sharing

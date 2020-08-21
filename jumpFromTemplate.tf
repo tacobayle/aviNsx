@@ -152,17 +152,6 @@ resource "vsphere_virtual_machine" "jump" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.jump.id
-
-    customize {
-      network_interface {
-        ipv4_address = var.jump["mgmt_ip"]
-        ipv4_netmask = var.jump["mgmt_mask"]
-      }
-
-      ipv4_gateway = var.jump["default_gw"]
-    }
-
-
   }
 
   vapp {

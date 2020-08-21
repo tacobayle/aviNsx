@@ -89,7 +89,7 @@ EOD
 # Ansible host file creation (finishing)
 
 resource "null_resource" "foo7" {
-  depends_on = [null_resource.foo6]
+  depends_on = [null_resource.foo3]
   provisioner "local-exec" {
     command = <<EOD
 cat <<EOF >> ${var.ansibleHostFile}

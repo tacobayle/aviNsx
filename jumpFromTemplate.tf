@@ -73,18 +73,18 @@ EOD
 
 # Ansible hosts file creation (continuing)
 
-resource "null_resource" "foo6" {
-  depends_on = [null_resource.foo3]
-  provisioner "local-exec" {
-    command = <<EOD
-cat <<EOF >> ${var.ansibleHostFile}
-      vars:
-        ansible_user: admin
-        ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
-EOF
-EOD
-  }
-}
+#resource "null_resource" "foo6" {
+#  depends_on = [null_resource.foo3]
+#  provisioner "local-exec" {
+#    command = <<EOD
+#cat <<EOF >> ${var.ansibleHostFile}
+#      vars:
+#        ansible_user: admin
+#        ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
+#EOF
+#EOD
+#  }
+#}
 
 # Ansible host file creation (finishing)
 
@@ -189,7 +189,7 @@ resource "vsphere_virtual_machine" "jump" {
 
   provisioner "file" {
   content      = <<EOF
-aviVersion: ${var.controller["version"]}
+aviVersion: ${split("-", var.controller["version"])[0]}
 aviCluster: ${var.controller["count"]}
 aviAdminUser: ${var.avi_user}
 aviPassword: ${var.avi_password}
@@ -217,4 +217,12 @@ avi_systemconfiguration:
 EOF
   destination = "~/ansible/vars/fromTerraform.yml"
   }
+
+  provisioner "remote-exec" {
+    inline      = [
+      "chmod 600 ~/.ssh/${basename(var.jump["private_key_path"])}",
+      "cd ansible ; git clone https://github.com/tacobayle/aviConfigure ; ansible-playbook -i hosts aviConfigure/local.yml --extra-vars @vars/fromTerraform.yml",
+    ]
+  }
+
 }

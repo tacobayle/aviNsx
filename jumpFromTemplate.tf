@@ -1,47 +1,47 @@
 # Ansible host file creation
 
-#resource "null_resource" "foo1" {
-#
-#  provisioner "local-exec" {
-#    command = <<EOD
-#cat <<EOF > ${var.ansibleHostFile}
-#---
-#all:
-#  children:
-#    controller:
-#      hosts:
-#EOF
-#EOD
-#  }
-#}
+resource "null_resource" "foo1" {
+
+  provisioner "local-exec" {
+    command = <<EOD
+cat <<EOF > ${var.ansibleHostFile}
+---
+all:
+  children:
+    controller:
+      hosts:
+EOF
+EOD
+  }
+}
 
 # Ansible hosts file creation (continuing)
 
-#resource "null_resource" "foo2" {
-#  count = var.controller["count"]
-#  provisioner "local-exec" {
-#    command = <<EOD
-#cat <<EOF >> ${var.ansibleHostFile}
-#        ${vsphere_virtual_machine.controller[count.index].default_ip_address}:
-#EOF
-#EOD
-#  }
-#}
+resource "null_resource" "foo2" {
+  count = var.controller["count"]
+  provisioner "local-exec" {
+    command = <<EOD
+cat <<EOF >> ${var.ansibleHostFile}
+        ${vsphere_virtual_machine.controller[count.index].default_ip_address}:
+EOF
+EOD
+  }
+}
 
 # Ansible hosts file creation (continuing)
 
-#resource "null_resource" "foo3" {
-#  depends_on = [null_resource.foo2]
-#  provisioner "local-exec" {
-#    command = <<EOD
-#cat <<EOF >> ${var.ansibleHostFile}
-#      vars:
-#        ansible_user: admin
-#        ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
-#EOF
-#EOD
-#  }
-#}
+resource "null_resource" "foo3" {
+  depends_on = [null_resource.foo2]
+  provisioner "local-exec" {
+    command = <<EOD
+cat <<EOF >> ${var.ansibleHostFile}
+      vars:
+        ansible_user: admin
+        ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
+EOF
+EOD
+  }
+}
 
 # Ansible hosts file creation (continuing)
 
@@ -73,32 +73,32 @@
 
 # Ansible hosts file creation (continuing)
 
-#resource "null_resource" "foo6" {
-#  depends_on = [null_resource.foo5]
-#  provisioner "local-exec" {
-#    command = <<EOD
-#cat <<EOF >> ${var.ansibleHostFile}
-#      vars:
-#        ansible_user: admin
-#        ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
-#EOF
-#EOD
-#  }
-#}
+resource "null_resource" "foo6" {
+  depends_on = [null_resource.foo3]
+  provisioner "local-exec" {
+    command = <<EOD
+cat <<EOF >> ${var.ansibleHostFile}
+      vars:
+        ansible_user: admin
+        ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
+EOF
+EOD
+  }
+}
 
 # Ansible host file creation (finishing)
 
-#resource "null_resource" "foo7" {
-#  depends_on = [null_resource.foo6]
-#  provisioner "local-exec" {
-#    command = <<EOD
-#cat <<EOF >> ${var.ansibleHostFile}
-#  vars:
-#    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-#EOF
-#EOD
-#  }
-#}
+resource "null_resource" "foo7" {
+  depends_on = [null_resource.foo6]
+  provisioner "local-exec" {
+    command = <<EOD
+cat <<EOF >> ${var.ansibleHostFile}
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+EOF
+EOD
+  }
+}
 
 
 data "template_file" "jumpbox_userdata" {
@@ -187,4 +187,34 @@ resource "vsphere_virtual_machine" "jump" {
   destination = "~/ansible"
   }
 
+  provisioner "file" {
+  content      = <<EOF
+aviVersion: ${var.controller["version"]}
+aviCluster: ${var.controller["count"]}
+aviAdminUser: ${var.avi_user}
+aviPassword: ${var.avi_password}
+aviUser: ${var.aviUser}
+floatingIp: ${var.controller["floatingIp"]}
+avi_systemconfiguration:
+  global_tenant_config:
+    se_in_provider_context: false
+    tenant_access_to_provider_se: true
+    tenant_vrf: false
+  welcome_workflow_complete: true
+  ntp_configuration:
+    ntp_servers:
+      - server:
+          type: V4
+          addr: ${var.controller["ntpMain"]}
+  dns_configuration:
+    search_domain: ''
+    server_list:
+      - type: V4
+        addr: ${var.controller["dnsMain"]}
+  email_configuration:
+    from_email: test@avicontroller.net
+    smtp_type: SMTP_LOCAL_HOST
+EOF
+  destination = "~/ansible/vars/fromTerraform.yml"
+  }
 }

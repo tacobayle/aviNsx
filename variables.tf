@@ -44,6 +44,9 @@ variable "controller" {
     mgmt_ip = "10.0.0.201"
     mgmt_mask = "255.255.255.0"
     default_gw = "10.0.0.1"
+    dnsMain = "172.18.0.15"
+    ntpMain = "172.18.0.15"
+
   }
 }
 #
@@ -115,22 +118,23 @@ variable "clientIpsMgt" {
   default = ["10.206.112.114/22", "10.206.112.124/22"]
 }
 #
+# NSX-T Variable
+#
+variable "nsx_user" {}
+variable "nsx_password" {}
+variable "nsx_server" {}
+#
 ### Ansible variables
 #
+variable "avi_password" {}
+variable "avi_controller" {}
+variable "avi_user" {}
 variable "ansibleHostFile" {
   default = "ansible/hosts"
 }
 #
 variable "ansibleDirectory" {
   default = "ansible"
-}
-#
-variable "aviAdminUser" {
-  default = "admin"
-}
-#
-variable "aviPassword" {
-  default = "Avi_2020"
 }
 #
 # please keep the blank line after default = <<EOT
@@ -181,34 +185,6 @@ variable "aviUser" {
         tenant_ref: "/api/tenant/admin#admin"
       - all_tenants: true
         role_ref: "/api/role?name=System-Admin"
-  EOT
-}
-#
-# please keep the blank line after default = <<EOT
-#
-variable "avi_systemconfiguration" {
-  default = <<EOT
-
-  global_tenant_config:
-    se_in_provider_context: false
-    tenant_access_to_provider_se: true
-    tenant_vrf: false
-  welcome_workflow_complete: true
-  ntp_configuration:
-    ntp_servers:
-      - server:
-          type: V4
-          addr: 192.168.10.3
-  dns_configuration:
-    search_domain: ''
-    server_list:
-      - type: V4
-        addr: 8.8.8.8
-      - type: V4
-        addr: 4.4.4.4
-  email_configuration:
-    from_email: test@avicontroller.net
-    smtp_type: SMTP_LOCAL_HOST
   EOT
 }
 #

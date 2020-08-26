@@ -46,7 +46,7 @@ variable "controller" {
     default_gw = "10.0.0.1"
     dnsMain = "172.18.0.15"
     ntpMain = "172.18.0.15"
-
+    environment = "VMWARE"
   }
 }
 #
@@ -137,63 +137,11 @@ variable "ansibleDirectory" {
   default = "ansible"
 }
 #
-# please keep the blank line after default = <<EOT
-#
-variable "aviUser" {
-  default = <<EOT
-
-  - name: ansible
-    is_superuser: true
-    user_profile_ref: "/api/useraccountprofile?name=Default-User-Account-Profile"
-    is_active: true
-    default_tenant_ref: "/api/tenant?name=admin"
-    access:
-      - role_ref: "/api/role?name=System-Admin"
-        tenant_ref: "/api/tenant/admin#admin"
-      - all_tenants: true
-        role_ref: "/api/role?name=System-Admin"
-    credsJsonFile: ../aviLscCloud/vars/creds.json
-  - name: terraform
-    is_superuser: true
-    user_profile_ref: "/api/useraccountprofile?name=Default-User-Account-Profile"
-    is_active: true
-    default_tenant_ref: "/api/tenant?name=admin"
-    access:
-      - role_ref: "/api/role?name=System-Admin"
-        tenant_ref: "/api/tenant/admin#admin"
-      - all_tenants: true
-        role_ref: "/api/role?name=System-Admin"
-    credsJsonFile: ../../terraform/aviVs/creds.tfvars.json
-  - name: python
-    is_superuser: true
-    user_profile_ref: "/api/useraccountprofile?name=Default-User-Account-Profile"
-    is_active: true
-    default_tenant_ref: "/api/tenant?name=admin"
-    access:
-      - role_ref: "/api/role?name=System-Admin"
-        tenant_ref: "/api/tenant/admin#admin"
-      - all_tenants: true
-        role_ref: "/api/role?name=System-Admin"
-    credsJsonFile: ../../python/aviVs/creds.json
-  - name: vrovra
-    is_superuser: true
-    user_profile_ref: "/api/useraccountprofile?name=Default-User-Account-Profile"
-    is_active: true
-    default_tenant_ref: "/api/tenant?name=admin"
-    access:
-      - role_ref: "/api/role?name=System-Admin"
-        tenant_ref: "/api/tenant/admin#admin"
-      - all_tenants: true
-        role_ref: "/api/role?name=System-Admin"
-  EOT
-}
-#
 variable "avi_cloud" {
   type = map
   default = {
-    name = "CloudVmw"
-    vtype = "CLOUD_VCENTER"
-    network = "vxw-dvs-34-virtualwire-3-sid-6120002-wdc-06-vc12-avi-mgmt"
+    name = "CloudNsxT"
+    vtype = "CLOUD_NSXT"
   }
 }
 #

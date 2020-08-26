@@ -189,12 +189,15 @@ resource "vsphere_virtual_machine" "jump" {
 
   provisioner "file" {
   content      = <<EOF
-aviVersion: ${split("-", var.controller["version"])[0]}
-aviCluster: ${var.controller["count"]}
-aviAdminUser: ${var.avi_user}
-aviPassword: ${var.avi_password}
-aviUser: ${var.aviUser}
-floatingIp: ${var.controller["floatingIp"]}
+
+controller:
+  environment: ${var.controller["environment"]}
+  username: ${var.avi_user}
+  version: ${split("-", var.controller["version"])[0]}
+  floatingIp: ${var.controller["floatingIp"]}
+  count: ${var.controller["count"]}
+  password: ${var.avi_password}
+
 avi_systemconfiguration:
   global_tenant_config:
     se_in_provider_context: false
@@ -214,6 +217,16 @@ avi_systemconfiguration:
   email_configuration:
     from_email: test@avicontroller.net
     smtp_type: SMTP_LOCAL_HOST
+
+nsx:
+  username: ${var.nsx_user}
+  password: ${var.nsx_password}
+  server: ${var.nsx_server}
+
+avi_cloud:
+  name: ${var.avi_cloud["name"]}
+  vtype: ${var.avi_cloud["vtype"]}
+
 EOF
   destination = "~/ansible/vars/fromTerraform.yml"
   }

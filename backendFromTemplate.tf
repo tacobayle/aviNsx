@@ -2,13 +2,13 @@
 
 
 data "template_file" "backend_userdata" {
-  count = length(var.backendIpsMgt)
+  count = length(var.backendIps)
   template = file("${path.module}/userdata/backend.userdata")
   vars = {
     password     = var.backend["password"]
     defaultGwMgt = var.backend["defaultGwMgt"]
     pubkey       = file(var.jump["public_key_path"])
-    ip_mgmt      = element(var.backendIpsMgt, count.index)
+    ip           = element(var.backendIps, count.index)
     netplanFile  = var.backend["netplanFile"]
     dnsMain      = var.backend["dnsMain"]
     dnsSec       = var.backend["dnsSec"]
@@ -21,7 +21,7 @@ data "vsphere_virtual_machine" "backend" {
 }
 #
 resource "vsphere_virtual_machine" "backend" {
-  count            = length(var.backendIpsMgt)
+  count            = length(var.backendIps)
   name             = "backend-${count.index}"
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
@@ -29,10 +29,6 @@ resource "vsphere_virtual_machine" "backend" {
 
   network_interface {
                       network_id = data.vsphere_network.networkBackend.id
-  }
-
-  network_interface {
-                      network_id = data.vsphere_network.networkMgt.id
   }
 
   num_cpus = var.backend["cpu"]
@@ -57,16 +53,6 @@ resource "vsphere_virtual_machine" "backend" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.backend.id
-
-    #customize {
-
-    #  network_interface {
-    #    ipv4_address = "10.0.0.10"
-    #    ipv4_netmask = 24
-    #  }
-    #  ipv4_gateway = "10.0.0.1"
-    #  dns_server_list = "8.8.8.8"
-    #}
   }
 
   vapp {
@@ -79,7 +65,7 @@ resource "vsphere_virtual_machine" "backend" {
  }
 
   connection {
-    host        = split("/", element(var.backendIpsMgt, count.index))[0]
+    host        = split("/", element(var.backendIps, count.index))[0]
     type        = "ssh"
     agent       = false
     user        = "ubuntu"

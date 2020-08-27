@@ -1,14 +1,11 @@
-
-
-
 data "template_file" "client_userdata" {
-  count = length(var.clientIpsMgt)
+  count = length(var.clientIps)
   template = file("${path.module}/userdata/client.userdata")
   vars = {
     password     = var.client["password"]
     defaultGwMgt = var.client["defaultGwMgt"]
     pubkey       = file(var.jump["public_key_path"])
-    ip_mgmt      = element(var.clientIpsMgt, count.index)
+    ip      = element(var.clientIps, count.index)
     netplanFile  = var.client["netplanFile"]
     dnsMain      = var.client["dnsMain"]
     dnsSec       = var.client["dnsSec"]
@@ -21,7 +18,7 @@ data "vsphere_virtual_machine" "client" {
 }
 #
 resource "vsphere_virtual_machine" "client" {
-  count            = length(var.clientIpsMgt)
+  count            = length(var.clientIps)
   name             = "client-${count.index}"
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
@@ -57,16 +54,6 @@ resource "vsphere_virtual_machine" "client" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.client.id
-
-    #customize {
-
-    #  network_interface {
-    #    ipv4_address = "10.0.0.10"
-    #    ipv4_netmask = 24
-    #  }
-    #  ipv4_gateway = "10.0.0.1"
-    #  dns_server_list = "8.8.8.8"
-    #}
   }
 
   vapp {
@@ -78,17 +65,19 @@ resource "vsphere_virtual_machine" "client" {
    }
  }
 
-  connection {
-    host        = split("/", element(var.clientIpsMgt, count.index))[0]
-    type        = "ssh"
-    agent       = false
-    user        = "ubuntu"
-    private_key = file(var.jump["private_key_path"])
-    }
+ connection {
+   host        = split("/", element(var.clientIps, count.index))[0]
+   type        = "ssh"
+   agent       = false
+   user        = "ubuntu"
+   private_key = file(var.jump["private_key_path"])
+   }
 
-  provisioner "remote-exec" {
-    inline      = [
-      "while [ ! -f /tmp/cloudInitDone.log ]; do sleep 1; done"
-    ]
-  }
+ provisioner "remote-exec" {
+   inline      = [
+     "while [ ! -f /tmp/cloudInitDone.log ]; do sleep 1; done"
+   ]
+ }
+
+
 }

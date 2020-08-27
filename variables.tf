@@ -77,45 +77,45 @@ variable "jump" {
 variable "backend" {
   type = map
   default = {
-    cpu = 2
-    memory = 4096
-    disk = 20
+    cpu = 1
+    memory = 2048
+    disk = 10
     password = "Avi_2020"
-    network = "vxw-dvs-34-virtualwire-116-sid-6120115-wdc-06-vc12-avi-dev112"
+    network = "N1-T1_Segment-Backend_10.7.6.0-24"
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
-    defaultGwMgt = "10.206.112.1"
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
-    dnsMain = "10.206.8.130"
+    defaultGwMgt = "10.7.6.1"
+    dnsMain = "172.18.0.15"
     dnsSec = "10.206.8.131"
   }
+}
+#
+variable "backendIps" {
+  type = list
+  default = ["10.7.6.2/24", "10.7.6.3/24"]
 }
 #
 variable "client" {
   type = map
   default = {
-    cpu = 2
-    memory = 4096
-    disk = 20
+    cpu = 1
+    memory = 2048
+    disk = 10
     password = "Avi_2020"
-    network = "vxw-dvs-34-virtualwire-120-sid-6120119-wdc-06-vc12-avi-dev116"
+    network = "N1-T1_AVI-VIP-A"
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
-    defaultGwMgt = "10.206.112.1"
+    defaultGwMgt = "10.7.4.1"
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
-    dnsMain = "10.206.8.130"
+    dnsMain = "172.18.0.15"
     dnsSec = "10.206.8.131"
   }
 }
 #
-variable "backendIpsMgt" {
+variable "clientIps" {
   type = list
-  default = ["10.206.112.120/22", "10.206.112.121/22", "10.206.112.123/22"]
-}
-#
-variable "clientIpsMgt" {
-  type = list
-  default = ["10.206.112.114/22", "10.206.112.124/22"]
+  default = ["10.7.4.2/24"]
 }
 #
 # NSX-T Variable
@@ -140,28 +140,38 @@ variable "ansibleDirectory" {
 variable "avi_cloud" {
   type = map
   default = {
-    name = "CloudNsxT"
+    name = "CloudNsxt"
     vtype = "CLOUD_NSXT"
+    transportZone = "TZ_nested_nsx-overlay"
+    network = "N1-T1_Segment-AVI-SE-Mgt_10.7.3.0-24"
+    dhcp_enabled = "false"
+    tier1 = "N1-T1_AVI-SE-Mgmt"
   }
 }
 #
 variable "avi_network_vip" {
   type = map
   default = {
-    name = "vxw-dvs-34-virtualwire-120-sid-6120119-wdc-06-vc12-avi-dev116"
-    subnet = "100.64.133.0/24"
-    begin = "100.64.133.50"
-    end = "100.64.133.99"
+    name = "N1-T1_Segment-VIP-A_10.7.4.0-24"
+    subnet = "10.7.4.0/24"
+    begin = "10.7.4.11"
+    end = "10.7.4.99"
     type = "V4"
+    exclude_discovered_subnets = "true"
+    vcenter_dvs = "true"
+    dhcp_enabled = "false"
+    tier1 = "N1-T1_AVI-VIP-A"
   }
 }
 #
 variable "avi_network_backend" {
   type = map
   default = {
-    subnet = "100.64.129.0/24"
+    subnet = "10.7.6.0/24"
     type = "V4"
-    dhcp = "yes"
+    dhcp_enabled = "no"
+    exclude_discovered_subnets = "true"
+    vcenter_dvs = "true"
   }
 }
 #
@@ -172,11 +182,10 @@ variable "ipam" {
   }
 }
 #
-variable "dns" {
+variable "domain" {
   type = map
   default = {
-    name = "dns-avi"
-    domainName = "vmw.avidemo.fr"
+    name = "nsx.avidemo.fr"
   }
 }
 #

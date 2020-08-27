@@ -47,7 +47,7 @@ Avi 20.1.1 with three controller nodes cluster
 1. Create a new folder
 2. Spin up n Avi Controller
 3. Spin up n backend VM(s) - (count based on the length of var.backendIpsMgt)
-4. Spin up n client server(s) - (count based on the length of var.clientIpsMgt) - while true ; do ab -n 1000 -c 1000 https://100.64.133.51/ ; done 
+4. Spin up n client server(s) - (count based on the length of var.clientIpsMgt) - while true ; do ab -n 1000 -c 1000 https://100.64.133.51/ ; done
 5. Create an ansible hosts file including a group for avi controller(s), a group for backend server(s)
 6. Spin up a jump server with ansible intalled - userdata to install package
 7. All the following tasks are done through Ansible via the jump VM:
@@ -71,3 +71,13 @@ terraform apply -auto-approve
 
 - autoscaling
 - GSLB
+
+
+## Notes
+- Create a cloud connector NSX and vsphere: OK
+- Create a cloud type NSXT: cloud name, DHCP disabled, Object name prefix, CloudConnector, [Mgt: TZ name, logical router, and segment], [Vip: t1 logical router and t1 logical segment], [NSX server list, CloudConnector, NSX IP address or FQDN?], DNS profile
+- Ipam Profile Creation
+- Updating VIP network
+- Updating SE Mgt network
+- Updating the cloud
+- Creating a VS

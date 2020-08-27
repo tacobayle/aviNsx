@@ -93,7 +93,7 @@ variable "backend" {
 #
 variable "backendIps" {
   type = list
-  default = ["10.7.6.2/24", "10.7.6.3/24"]
+  default = ["10.7.6.10/24", "10.7.6.11/24"]
 }
 #
 variable "client" {
@@ -115,7 +115,7 @@ variable "client" {
 #
 variable "clientIps" {
   type = list
-  default = ["10.7.4.2/24"]
+  default = ["10.7.4.10/24"]
 }
 #
 # NSX-T Variable

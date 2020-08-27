@@ -146,6 +146,7 @@ variable "avi_cloud" {
     network = "N1-T1_Segment-AVI-SE-Mgt_10.7.3.0-24"
     dhcp_enabled = "false"
     tier1 = "N1-T1_AVI-SE-Mgmt"
+    vcenterContentLibrary = "Avi Content Library"
   }
 }
 #

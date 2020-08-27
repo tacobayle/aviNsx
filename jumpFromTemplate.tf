@@ -235,6 +235,7 @@ avi_cloud:
   tier1: ${var.avi_cloud["tier1"]}
   dhcp_enabled: ${var.avi_cloud["dhcp_enabled"]}
   network: ${var.avi_cloud["network"]}
+  vcenterContentLibrary: ${var.avi_cloud["vcenterContentLibrary"]}
 
 serviceEngineGroup:
   - name: &segroup0 Default-Group
@@ -314,7 +315,7 @@ avi_network_backend:
           addr: "${element(split("/", var.avi_network_backend["subnet"]),0)}"
 
 avi_servers:
-  ${yamlencode(var.backendIps)}
+${yamlencode(var.backendIps)}
 
 avi_healthmonitor:
   - name: &hm0 hm1

@@ -103,7 +103,7 @@ variable "client" {
     memory = 2048
     disk = 10
     password = "Avi_2020"
-    network = "N1-T1_AVI-VIP-A"
+    network = "N1-T1_Segment-VIP-A_10.7.4.0-24"
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     defaultGwMgt = "10.7.4.1"

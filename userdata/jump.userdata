@@ -47,7 +47,7 @@ write_files:
       sudo apt install -y python-jmespath
       pip install ansible
       pip install avisdk==${aviSdkVersion}
-      pip3 install avisdk==18.2.9
+      pip3 install avisdk==${aviSdkVersion}
       sudo -u ubuntu ansible-galaxy install -f avinetworks.avisdk
       echo "cloud init done" | tee /tmp/cloudInitDone.log
     path: /opt/bootstrap.sh

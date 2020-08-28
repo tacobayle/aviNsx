@@ -62,8 +62,8 @@ variable "jump" {
     memory = 4096
     disk = 32
     password = "Avi_2020"
-    public_key_path = "~/n1-ubuntu-20.04-template.key.pub"
-    private_key_path = "~/n1-ubuntu-20.04-template.key"
+    public_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key"
+    private_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key.pub"
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     aviSdkVersion = "18.2.9"

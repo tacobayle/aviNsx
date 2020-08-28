@@ -235,7 +235,11 @@ avi_cloud:
   tier1: ${var.avi_cloud["tier1"]}
   dhcp_enabled: ${var.avi_cloud["dhcp_enabled"]}
   network: ${var.avi_cloud["network"]}
+  networkType: ${var.avi_cloud["networkType"]}
+  networkRangeBegin: ${var.avi_cloud["networkRangeBegin"]}
+  networkRangeEnd: ${var.avi_cloud["networkRangeEnd"]}
   vcenterContentLibrary: ${var.avi_cloud["vcenterContentLibrary"]}
+  obj_name_prefix: ${var.avi_cloud["obj_name_prefix"]}
 
 serviceEngineGroup:
   - name: &segroup0 Default-Group
@@ -288,31 +292,17 @@ avi_network_vip:
   dhcp_enabled: ${var.avi_network_vip["dhcp_enabled"]}
   exclude_discovered_subnets: ${var.avi_network_vip["exclude_discovered_subnets"]}
   vcenter_dvs: ${var.avi_network_vip["vcenter_dvs"]}
-  subnet:
-    - prefix:
-        mask: "${element(split("/", var.avi_network_vip["subnet"]),1)}"
-        ip_addr:
-          type: "${var.avi_network_vip["type"]}"
-          addr: "${element(split("/", var.avi_network_vip["subnet"]),0)}"
-      static_ranges:
-        - begin:
-            type: "${var.avi_network_vip["type"]}"
-            addr: "${var.avi_network_vip["begin"]}"
-          end:
-            type: "${var.avi_network_vip["type"]}"
-            addr: "${var.avi_network_vip["end"]}"
+  type: ${var.avi_network_vip["type"]}
+  networkRangeBegin: ${var.avi_network_vip["networkRangeBegin"]}
+  networkRangeEnd: ${var.avi_network_vip["networkRangeEnd"]}
 
 avi_network_backend:
   name: ${var.backend["network"]}
   dhcp_enabled: ${var.avi_network_backend["dhcp_enabled"]}
   exclude_discovered_subnets: ${var.avi_network_backend["exclude_discovered_subnets"]}
   vcenter_dvs: ${var.avi_network_backend["vcenter_dvs"]}
-  subnet:
-    - prefix:
-        mask: "${element(split("/", var.avi_network_backend["subnet"]),1)}"
-        ip_addr:
-          type: "${var.avi_network_backend["type"]}"
-          addr: "${element(split("/", var.avi_network_backend["subnet"]),0)}"
+  type: ${var.avi_network_backend["type"]}
+
 
 avi_servers:
 ${yamlencode(var.backendIps)}

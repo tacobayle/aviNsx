@@ -144,9 +144,13 @@ variable "avi_cloud" {
     vtype = "CLOUD_NSXT"
     transportZone = "TZ_nested_nsx-overlay"
     network = "N1-T1_Segment-AVI-SE-Mgt_10.7.3.0-24"
+    networkType = "V4"
+    networkRangeBegin = "11"
+    networkRangeEnd = "99"
     dhcp_enabled = "false"
     tier1 = "N1-T1_AVI-SE-Mgmt"
     vcenterContentLibrary = "Avi Content Library"
+    obj_name_prefix = "NSXTCLOUD"
   }
 }
 #
@@ -154,21 +158,20 @@ variable "avi_network_vip" {
   type = map
   default = {
     name = "N1-T1_Segment-VIP-A_10.7.4.0-24"
-    subnet = "10.7.4.0/24"
-    begin = "10.7.4.11"
-    end = "10.7.4.99"
     type = "V4"
     exclude_discovered_subnets = "true"
     vcenter_dvs = "true"
     dhcp_enabled = "false"
     tier1 = "N1-T1_AVI-VIP-A"
+    networkRangeBegin = "11"
+    networkRangeEnd = "99"
   }
 }
 #
 variable "avi_network_backend" {
   type = map
   default = {
-    subnet = "10.7.6.0/24"
+    name = "N1-T1_Segment-Backend_10.7.6.0-24"
     type = "V4"
     dhcp_enabled = "no"
     exclude_discovered_subnets = "true"

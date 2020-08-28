@@ -145,6 +145,7 @@ variable "avi_cloud" {
     transportZone = "TZ_nested_nsx-overlay"
     network = "N1-T1_Segment-AVI-SE-Mgt_10.7.3.0-24"
     networkType = "V4"
+    networkVrf = "management"
     networkRangeBegin = "11"
     networkRangeEnd = "99"
     dhcp_enabled = "false"
@@ -190,7 +191,7 @@ variable "ipam" {
 variable "domain" {
   type = map
   default = {
-    name = "nsx.avidemo.fr"
+    name = " altherr.info"
   }
 }
 #

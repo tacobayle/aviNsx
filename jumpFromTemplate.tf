@@ -238,6 +238,7 @@ avi_cloud:
   networkType: ${var.avi_cloud["networkType"]}
   networkRangeBegin: ${var.avi_cloud["networkRangeBegin"]}
   networkRangeEnd: ${var.avi_cloud["networkRangeEnd"]}
+  networkVrf: ${var.avi_cloud["networkVrf"]}
   vcenterContentLibrary: ${var.avi_cloud["vcenterContentLibrary"]}
   obj_name_prefix: ${var.avi_cloud["obj_name_prefix"]}
 

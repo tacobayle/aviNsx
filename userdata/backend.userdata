@@ -15,8 +15,8 @@ chpasswd:
     aviadmin: $password
   expire: False
 
-packages:
-  - language-pack-en
+# packages:
+#   - language-pack-en
 
 write_files:
   - content: |
@@ -41,7 +41,7 @@ write_files:
       sudo netplan apply
       sudo ip link set $iface down
       sudo ip link set $iface up
-      sudo ip address add ${ip} dev $iface
+      sudo ip address add ${cidr} dev $iface
       sudo ip route add default via ${defaultGwMgt}
       echo 'nameserver ${dnsMain}' | sudo tee /etc/resolv.conf
       ping -c 3 www.google.com

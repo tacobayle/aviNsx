@@ -107,7 +107,7 @@ data "template_file" "jumpbox_userdata" {
     password      = var.jump["password"]
     pubkey        = file(var.jump["public_key_path"])
     aviSdkVersion = var.jump["aviSdkVersion"]
-    ipMgmt  = var.jump["ipMgmt"]
+    cidr  = var.jump["ipMgmt"]
     ip = split("/", var.jump["ipMgmt"])[0]
     defaultGwMgt = var.jump["defaultGwMgt"]
     dnsMain      = var.jump["dnsMain"]

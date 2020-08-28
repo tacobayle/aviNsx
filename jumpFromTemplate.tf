@@ -295,6 +295,7 @@ avi_network_vip:
   type: ${var.avi_network_vip["type"]}
   networkRangeBegin: ${var.avi_network_vip["networkRangeBegin"]}
   networkRangeEnd: ${var.avi_network_vip["networkRangeEnd"]}
+  gwAddr: ${var.avi_network_vip["gwAddr"]}
 
 avi_network_backend:
   name: ${var.backend["network"]}

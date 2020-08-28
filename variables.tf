@@ -165,6 +165,7 @@ variable "avi_network_vip" {
     tier1 = "N1-T1_AVI-VIP-A"
     networkRangeBegin = "11"
     networkRangeEnd = "99"
+    gwAddr ="1"
   }
 }
 #

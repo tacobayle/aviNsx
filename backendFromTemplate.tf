@@ -8,8 +8,8 @@ data "template_file" "backend_userdata" {
     password     = var.backend["password"]
     defaultGw = var.backend["defaultGw"]
     pubkey       = file(var.jump["public_key_path"])
-    ipCidr         = element(var.backendIps, count.index)
-    ip = split("/", element(var.backendIps, count.index))[0]
+    ip         = element(var.backendIps, count.index)
+    subnetMask = var.backend["subnetMask"]
     netplanFile  = var.backend["netplanFile"]
     dnsMain      = var.backend["dnsMain"]
     dnsSec       = var.backend["dnsSec"]
@@ -66,7 +66,7 @@ resource "vsphere_virtual_machine" "backend" {
  }
 
   connection {
-    host        = split("/", element(var.backendIps, count.index))[0]
+    host        = element(var.backendIps, count.index)
     type        = "ssh"
     agent       = false
     user        = "ubuntu"

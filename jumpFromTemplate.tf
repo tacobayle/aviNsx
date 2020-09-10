@@ -65,7 +65,7 @@ resource "null_resource" "foo5" {
   provisioner "local-exec" {
     command = <<EOD
 cat <<EOF >> ${var.ansible["host"]}
-        ${split("/", element(var.backendIps, count.index))[0]}:
+        ${element(var.backendIps, count.index)}:
 EOF
 EOD
   }

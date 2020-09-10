@@ -88,12 +88,13 @@ variable "backend" {
     defaultGw = "10.7.6.1"
     dnsMain = "172.18.0.15"
     dnsSec = "10.206.8.131"
+    subnetMask = "/24"
   }
 }
 #
 variable "backendIps" {
   type = list
-  default = ["10.7.6.10/24", "10.7.6.11/24"]
+  default = ["10.7.6.10", "10.7.6.11"]
 }
 #
 variable "client" {

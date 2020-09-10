@@ -15,17 +15,13 @@ chpasswd:
     aviadmin: $password
   expire: False
 
-packages:
-  - language-pack-en
-
 write_files:
   - content: |
       #!/bin/bash
+      # retrieve the last network interface
       sudo systemctl disable systemd-resolved
       sudo systemctl stop systemd-resolved
-      # retrieve the last network interface name
       iface=`ip -o link show | awk -F': ' '{print $2}' | tail -1`
-      # retrieve the last mac address
       mac=`ip -o link show | awk -F'link/ether ' '{print $2}' | awk -F' ' '{print $1}'| tail -1`
       hostname=`hostname`
       echo "${ip} $hostname" | sudo tee -a /etc/hosts
@@ -41,8 +37,8 @@ write_files:
       sudo netplan apply
       sudo ip link set $iface down
       sudo ip link set $iface up
-      sudo ip address add ${ip} dev $iface
-      sudo ip route add default via ${defaultGwMgt}
+      sudo ip address add ${ipCidr} dev $iface
+      sudo ip route add default via ${defaultGw}
       echo 'nameserver ${dnsMain}' | sudo tee /etc/resolv.conf
       ping -c 3 www.google.com
       sudo apt update

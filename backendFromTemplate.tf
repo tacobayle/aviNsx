@@ -6,9 +6,9 @@ data "template_file" "backend_userdata" {
   template = file("${path.module}/userdata/backend.userdata")
   vars = {
     password     = var.backend["password"]
-    defaultGwMgt = var.backend["defaultGwMgt"]
+    defaultGw = var.backend["defaultGw"]
     pubkey       = file(var.jump["public_key_path"])
-    cidr         = element(var.backendIps, count.index)
+    ipCidr         = element(var.backendIps, count.index)
     ip = split("/", element(var.backendIps, count.index))[0]
     netplanFile  = var.backend["netplanFile"]
     dnsMain      = var.backend["dnsMain"]

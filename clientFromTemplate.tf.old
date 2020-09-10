@@ -3,7 +3,7 @@ data "template_file" "client_userdata" {
   template = file("${path.module}/userdata/client.userdata")
   vars = {
     password     = var.client["password"]
-    defaultGwMgt = var.client["defaultGwMgt"]
+    defaultGw = var.client["defaultGw"]
     pubkey       = file(var.jump["public_key_path"])
     ip      = element(var.clientIps, count.index)
     netplanFile  = var.client["netplanFile"]
@@ -26,10 +26,6 @@ resource "vsphere_virtual_machine" "client" {
 
   network_interface {
                       network_id = data.vsphere_network.networkClient.id
-  }
-
-  network_interface {
-                      network_id = data.vsphere_network.networkMgt.id
   }
 
   num_cpus = var.client["cpu"]

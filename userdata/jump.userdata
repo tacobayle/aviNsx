@@ -37,8 +37,8 @@ write_files:
       sudo netplan apply
       sudo ip link set $iface down
       sudo ip link set $iface up
-      sudo ip address add ${cidr} dev $iface
-      sudo ip route add default via ${defaultGwMgt}
+      sudo ip address add ${ipCidr} dev $iface
+      sudo ip route add default via ${defaultGw}
       echo 'nameserver ${dnsMain}' | sudo tee /etc/resolv.conf
       ping -c 3 www.google.com
       sudo apt-get update

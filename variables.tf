@@ -58,18 +58,18 @@ variable "jump" {
   type = map
   default = {
     name = "jump"
-    cpu = 2
-    memory = 4096
-    disk = 32
+    cpu = 1
+    memory = 2048
+    disk = 24
     password = "Avi_2020"
-    public_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key"
-    private_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key.pub"
+    public_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key.pub"
+    private_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key"
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     aviSdkVersion = "18.2.9"
-    ipMgmt = "10.0.0.210/24"
+    ipCidr = "10.0.0.210/24"
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
-    defaultGwMgt = "10.0.0.1"
+    defaultGw = "10.0.0.1"
     dnsMain = "172.18.0.15"
   }
 }
@@ -85,7 +85,7 @@ variable "backend" {
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
-    defaultGwMgt = "10.7.6.1"
+    defaultGw = "10.7.6.1"
     dnsMain = "172.18.0.15"
     dnsSec = "10.206.8.131"
   }
@@ -106,7 +106,7 @@ variable "client" {
     network = "N1-T1_Segment-VIP-A_10.7.4.0-24"
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
-    defaultGwMgt = "10.7.4.1"
+    defaultGw = "10.7.4.1"
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
     dnsMain = "172.18.0.15"
     dnsSec = "10.206.8.131"
@@ -140,14 +140,14 @@ variable "ansibleDirectory" {
 variable "avi_cloud" {
   type = map
   default = {
-    name = "CloudNsxt"
+    name = "cloudNsxt"
     vtype = "CLOUD_NSXT"
     transportZone = "TZ_nested_nsx-overlay"
     network = "N1-T1_Segment-AVI-SE-Mgt_10.7.3.0-24"
     networkType = "V4"
     networkVrf = "management"
     networkRangeBegin = "11"
-    networkRangeEnd = "99"
+    networkRangeEnd = "50"
     dhcp_enabled = "false"
     tier1 = "N1-T1_AVI-SE-Mgmt"
     vcenterContentLibrary = "Avi Content Library"
@@ -165,7 +165,7 @@ variable "avi_network_vip" {
     dhcp_enabled = "false"
     tier1 = "N1-T1_AVI-VIP-A"
     networkRangeBegin = "11"
-    networkRangeEnd = "99"
+    networkRangeEnd = "50"
     gwAddr ="1"
   }
 }
@@ -175,45 +175,32 @@ variable "avi_network_backend" {
   default = {
     name = "N1-T1_Segment-Backend_10.7.6.0-24"
     type = "V4"
-    dhcp_enabled = "no"
+    dhcp_enabled = "false"
     exclude_discovered_subnets = "true"
     vcenter_dvs = "true"
-  }
-}
-#
-variable "ipam" {
-  type = map
-  default = {
-    name = "ipam-avi"
   }
 }
 #
 variable "domain" {
   type = map
   default = {
-    name = " altherr.info"
+    name = "avi.altherr.info"
   }
 }
 #
-# please keep the blank line after default = <<EOT
-#
-variable "avi_healthmonitor" {
-  default = <<EOT
-
-  - name: &hm0 hm1
-    receive_timeout: 1
-    failed_checks: 2
-    send_interval: 1
-    successful_checks: 2
-    type: HEALTH_MONITOR_HTTP
-    http_request: "HEAD / HTTP/1.0"
-    http_response_code:
-      - HTTP_2XX
-      - HTTP_3XX
-      - HTTP_5XX
-  EOT
+variable "nsxtGroup" {
+  type = map
+  default = {
+    name = "n1-avi-backend-servers-01"
+    tag = "n1-avi-backend-servers-01"
+  }
 }
 #
-variable "ansibleAviPbAbsent" {
-  default     = "https://github.com/tacobayle/ansiblePbAviAbsent"
+variable "ansible" {
+  type = map
+  default = {
+    aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
+    aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
+    aviConfigureTag = "v1.27"
+  }
 }

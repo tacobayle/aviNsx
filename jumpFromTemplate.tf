@@ -45,51 +45,51 @@ EOD
 
 # Ansible hosts file creation (continuing)
 
-#resource "null_resource" "foo4" {
-#  depends_on = [null_resource.foo3]
-#  provisioner "local-exec" {
-#    command = <<EOD
-#cat <<EOF >> ${var.ansibleHostFile}
-#    backend:
-#      hosts:
-#EOF
-#EOD
-#  }
-#}
+resource "null_resource" "foo4" {
+  depends_on = [null_resource.foo3]
+  provisioner "local-exec" {
+    command = <<EOD
+cat <<EOF >> ${var.ansibleHostFile}
+    backend:
+      hosts:
+EOF
+EOD
+  }
+}
 
 # Ansible hosts file creation (continuing)
 
-#resource "null_resource" "foo5" {
-#  depends_on = [null_resource.foo4]
-#  count = length(var.backendIpsMgt)
-#  provisioner "local-exec" {
-#    command = <<EOD
-#cat <<EOF >> ${var.ansibleHostFile}
-#        ${split("/", element(var.backendIpsMgt, count.index))[0]}:
-#EOF
-#EOD
-#  }
-#}
+resource "null_resource" "foo5" {
+  depends_on = [null_resource.foo4]
+  count = length(var.backendIpsMgt)
+  provisioner "local-exec" {
+    command = <<EOD
+cat <<EOF >> ${var.ansibleHostFile}
+        ${split("/", element(var.backendIps, count.index))[0]}:
+EOF
+EOD
+  }
+}
 
 # Ansible hosts file creation (continuing)
 
-#resource "null_resource" "foo6" {
-#  depends_on = [null_resource.foo3]
-#  provisioner "local-exec" {
-#    command = <<EOD
-#cat <<EOF >> ${var.ansibleHostFile}
-#      vars:
-#        ansible_user: admin
-#        ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
-#EOF
-#EOD
-#  }
-#}
+resource "null_resource" "foo6" {
+  depends_on = [null_resource.foo5]
+  provisioner "local-exec" {
+    command = <<EOD
+cat <<EOF >> ${var.ansibleHostFile}
+      vars:
+        ansible_user: admin
+        ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
+EOF
+EOD
+  }
+}
 
 # Ansible host file creation (finishing)
 
 resource "null_resource" "foo7" {
-  depends_on = [null_resource.foo3]
+  depends_on = [null_resource.foo6]
   provisioner "local-exec" {
     command = <<EOD
 cat <<EOF >> ${var.ansibleHostFile}
@@ -107,11 +107,10 @@ data "template_file" "jumpbox_userdata" {
     password      = var.jump["password"]
     pubkey        = file(var.jump["public_key_path"])
     aviSdkVersion = var.jump["aviSdkVersion"]
-    cidr  = var.jump["ipMgmt"]
-    ip = split("/", var.jump["ipMgmt"])[0]
-    defaultGwMgt = var.jump["defaultGwMgt"]
+    ipCidr  = var.jump["ipCidr"]
+    ip = split("/", var.jump["ipCidr"])[0]
+    defaultGw = var.jump["defaultGw"]
     dnsMain      = var.jump["dnsMain"]
-    defaultGwMgt = var.jump["defaultGwMgt"]
     netplanFile = var.jump["netplanFile"]
   }
 }
@@ -123,7 +122,7 @@ data "vsphere_virtual_machine" "jump" {
 #
 resource "vsphere_virtual_machine" "jump" {
   name             = var.jump["name"]
-  #depends_on = [null_resource.foo6]
+  depends_on = [null_resource.foo7]
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
   folder           = vsphere_folder.folder.path
@@ -164,7 +163,7 @@ resource "vsphere_virtual_machine" "jump" {
  }
 
   connection {
-   host        = split("/", var.jump["ipMgmt"])[0]
+   host        = split("/", var.jump["ipCidr"])[0]
    type        = "ssh"
    agent       = false
    user        = "ubuntu"
@@ -249,16 +248,16 @@ serviceEngineGroup:
     buffer_se: 1
     extra_shared_config_memory: 0
     vcenter_folder: ${var.folder}
-    vcpus_per_se: 2
-    memory_per_se: 4096
+    vcpus_per_se: 1
+    memory_per_se: 2048
     disk_per_se: 25
     realtime_se_metrics:
       enabled: true
       duration: 0
   - name: &segroup1 seGroupCpuAutoScale
     ha_mode: HA_MODE_SHARED
-    min_scaleout_per_vs: 1
-    buffer_se: 2
+    min_scaleout_per_vs: 2
+    buffer_se: 0
     extra_shared_config_memory: 0
     vcenter_folder: ${var.folder}
     vcpus_per_se: 1
@@ -305,7 +304,6 @@ avi_network_backend:
   vcenter_dvs: ${var.avi_network_backend["vcenter_dvs"]}
   type: ${var.avi_network_backend["type"]}
 
-
 avi_servers:
 ${yamlencode(var.backendIps)}
 
@@ -327,6 +325,11 @@ avi_pool:
   lb_algorithm: LB_ALGORITHM_ROUND_ROBIN
   health_monitor_refs: *hm0
 
+avi_pool_nsxtGroup:
+  - name: &pool1 pool2BasedOnNsxtGroup
+    groupName: ${var.nsxtGroup["name"]}
+    health_monitor_refs: *hm0
+
 avi_virtualservice:
   http:
     - name: &vs0 app1
@@ -341,9 +344,15 @@ avi_virtualservice:
       services:
         - port: 443
           enable_ssl: true
-      pool_ref: pool1
+      pool_ref: *pool0
       enable_rhi: false
       se_group_ref: *segroup1
+    - name: &vs2 app3-nsxtGroupBased
+      services:
+        - port: 443
+          enable_ssl: true
+      pool_ref: *pool1
+      enable_rhi: false
   dns:
     - name: app3-dns
       services:
@@ -360,7 +369,7 @@ EOF
   provisioner "remote-exec" {
     inline      = [
       "chmod 600 ~/.ssh/${basename(var.jump["private_key_path"])}",
-      "cd ansible ; git clone https://github.com/tacobayle/aviConfigure ; ansible-playbook -i hosts aviConfigure/local.yml --extra-vars @vars/fromTerraform.yml",
+      "cd ansible ; git clone ${ansible["aviConfigureUrl"]} --branch ${ansible["aviConfigureTag"]} ; ansible-playbook -i hosts aviConfigure/local.yml --extra-vars @vars/fromTerraform.yml",
     ]
   }
 

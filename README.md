@@ -33,7 +33,6 @@ nic@jump:~/aviVmw$
 
 ```
 Avi 20.1.1 with one controller node
-Avi 20.1.1 with three controller nodes cluster
 ```
 
 ### V-center version:
@@ -44,20 +43,14 @@ Avi 20.1.1 with three controller nodes cluster
 1. All the paramaters/variables are stored in variables.tf
 
 ## Use the the terraform script to:
-1. Create a new folder
-2. Spin up n Avi Controller
-3. Spin up n backend VM(s) - (count based on the length of var.backendIpsMgt)
-4. Spin up n client server(s) - (count based on the length of var.clientIpsMgt) - while true ; do ab -n 1000 -c 1000 https://100.64.133.51/ ; done
-5. Create an ansible hosts file including a group for avi controller(s), a group for backend server(s)
-6. Spin up a jump server with ansible intalled - userdata to install package
-7. All the following tasks are done through Ansible via the jump VM:
-- Bootsrap the controller (with cluster config with Virtual IP - if 3 Avi controller deployed)
-- Create accounts with auto-generated password for automation accounts
-- Configure Avi Controller System config.
-- Configure VMware Cloud with update of the Management network
-- Configure DNS/IPAM based on Avi
-- Configure SE group (Default-Group, seGroupGslb, seGroupCpuAutoScale)
-- Configure health monitor, pool, vsvip, virtualservice (app1, app2-se-cpu-auto-scale-out)
+- Create a new folder
+- Spin up n Avi Controller
+- Spin up n backend VM(s) - (count based on the length of var.backendIps)
+- Spin up n client server(s) - (count based on the length of var.clientIps) - while true ; do ab -n 1000 -c 1000 https://100.64.133.51/ ; done
+- Create an ansible hosts file including a group for avi controller(s), a group for backend server(s)
+- Spin up a jump server with ansible intalled - userdata to install packages
+- Create a yaml variable file - in the jump server
+- Call ansible to do the Avi configuration (git clone)
 
 ## Run the terraform:
 ```
@@ -68,16 +61,3 @@ terraform apply -auto-approve
 ## Improvement:
 
 ### future devlopment:
-
-- autoscaling
-- GSLB
-
-
-## Notes
-- Create a cloud connector NSX and vsphere: OK
-- Create a cloud type NSXT: cloud name, DHCP disabled, Object name prefix, CloudConnector, [Mgt: TZ name, logical router, and segment], [Vip: t1 logical router and t1 logical segment], [NSX server list, CloudConnector, NSX IP address or FQDN?], DNS profile
-- Ipam Profile Creation
-- Updating VIP network
-- Updating SE Mgt network
-- Updating the cloud
-- Creating a VS

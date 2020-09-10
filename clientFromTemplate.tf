@@ -5,7 +5,8 @@ data "template_file" "client_userdata" {
     password     = var.client["password"]
     defaultGw = var.client["defaultGw"]
     pubkey       = file(var.jump["public_key_path"])
-    ip      = element(var.clientIps, count.index)
+    ipCidr         = element(var.clientIps, count.index)
+    ip = split("/", element(var.clientIps, count.index))[0]
     netplanFile  = var.client["netplanFile"]
     dnsMain      = var.client["dnsMain"]
     dnsSec       = var.client["dnsSec"]

@@ -118,7 +118,7 @@ variable "clientIps" {
   default = ["10.7.4.10/24"]
 }
 #
-# NSX-T Variable
+# NSX-T Variables
 #
 variable "nsx_user" {}
 variable "nsx_password" {}

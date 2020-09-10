@@ -129,9 +129,6 @@ variable "nsx_server" {}
 variable "avi_password" {}
 variable "avi_controller" {}
 variable "avi_user" {}
-variable "ansibleHostFile" {
-  default = "ansible/hosts"
-}
 #
 variable "ansibleDirectory" {
   default = "ansible"

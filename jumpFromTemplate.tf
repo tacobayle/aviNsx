@@ -61,7 +61,7 @@ EOD
 
 resource "null_resource" "foo5" {
   depends_on = [null_resource.foo4]
-  count = length(var.backendIpsMgt)
+  count = length(var.backendIps)
   provisioner "local-exec" {
     command = <<EOD
 cat <<EOF >> ${var.ansibleHostFile}

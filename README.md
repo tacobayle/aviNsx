@@ -60,7 +60,7 @@ Avi 20.1.1 with one controller node
 
 ## Run the terraform:
 ```
-git clone https://github.com/tacobayle/aviNsx ; cd aviNsx ;  terraform 0.13upgrade .
+cd ..  ; rm -fr aviNsx ; git clone https://github.com/tacobayle/aviNsx ; cd aviNsx ;  terraform 0.13upgrade .
 terraform init ; terraform apply -auto-approve ;
 # the terraform will output the command to destroy the environment.
 ```

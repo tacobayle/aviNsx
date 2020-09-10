@@ -1,21 +1,26 @@
 # aviVmw
 
 ## Goals
-Spin up a full VMware/Avi environment (through Terraform and Ansible) with V-center integration without NSX-T integration
+Spin up a full VMware/Avi environment (through Terraform) with V-center and NSX-T integration
 
 ## Prerequisites:
-1. Make sure terraform in installed in the orchestrator VM
-2. Make sure VMware credential/details are configured as environment variable:
+- Make sure terraform in installed in the orchestrator VM
+- Make sure VMware credential/details are configured as environment variable for Vcenter:
 ```
 TF_VAR_vsphere_user=******
 TF_VAR_vsphere_server=******
 TF_VAR_vsphere_password=******
-
+```
+- Make sure VMware credential/details are configured as environment variable for NSXT:
+```
+TF_VAR_nsx_user=******
+TF_VAR_nsx_password=******
+TF_VAR_nsx_server=******
 ```
 
 ## Environment:
 
-Terraform Plan and Ansible Playbook(s) has/have been tested against:
+Terraform Plan has/have been tested against:
 
 ### terraform
 
@@ -37,6 +42,7 @@ Avi 20.1.1 with one controller node
 
 ### V-center version:
 
+### NSXT version:
 
 ## Input/Parameters:
 
@@ -54,7 +60,8 @@ Avi 20.1.1 with one controller node
 
 ## Run the terraform:
 ```
-terraform apply -auto-approve
+git clone https://github.com/tacobayle/aviNsx ; cd aviNsx
+terraform init ; terraform apply -auto-approve ;
 # the terraform will output the command to destroy the environment.
 ```
 

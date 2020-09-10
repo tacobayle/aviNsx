@@ -4,7 +4,7 @@ resource "null_resource" "foo1" {
 
   provisioner "local-exec" {
     command = <<EOD
-cat <<EOF > ${var.ansibleHostFile}
+cat <<EOF > ${var.ansible["host"}}
 ---
 all:
   children:
@@ -21,7 +21,7 @@ resource "null_resource" "foo2" {
   count = var.controller["count"]
   provisioner "local-exec" {
     command = <<EOD
-cat <<EOF >> ${var.ansibleHostFile}
+cat <<EOF >> ${var.ansible["host"}}
         ${vsphere_virtual_machine.controller[count.index].default_ip_address}:
 EOF
 EOD
@@ -34,7 +34,7 @@ resource "null_resource" "foo3" {
   depends_on = [null_resource.foo2]
   provisioner "local-exec" {
     command = <<EOD
-cat <<EOF >> ${var.ansibleHostFile}
+cat <<EOF >> ${var.ansible["host"}}
       vars:
         ansible_user: admin
         ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
@@ -49,7 +49,7 @@ resource "null_resource" "foo4" {
   depends_on = [null_resource.foo3]
   provisioner "local-exec" {
     command = <<EOD
-cat <<EOF >> ${var.ansibleHostFile}
+cat <<EOF >> ${var.ansible["host"}}
     backend:
       hosts:
 EOF
@@ -64,7 +64,7 @@ resource "null_resource" "foo5" {
   count = length(var.backendIps)
   provisioner "local-exec" {
     command = <<EOD
-cat <<EOF >> ${var.ansibleHostFile}
+cat <<EOF >> ${var.ansible["host"}}
         ${split("/", element(var.backendIps, count.index))[0]}:
 EOF
 EOD
@@ -77,7 +77,7 @@ resource "null_resource" "foo6" {
   depends_on = [null_resource.foo5]
   provisioner "local-exec" {
     command = <<EOD
-cat <<EOF >> ${var.ansibleHostFile}
+cat <<EOF >> ${var.ansible["host"}}
       vars:
         ansible_user: admin
         ansible_ssh_private_key_file: '~/.ssh/${basename(var.jump["private_key_path"])}'
@@ -92,7 +92,7 @@ resource "null_resource" "foo7" {
   depends_on = [null_resource.foo6]
   provisioner "local-exec" {
     command = <<EOD
-cat <<EOF >> ${var.ansibleHostFile}
+cat <<EOF >> ${var.ansible["host"}}
   vars:
     ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 EOF

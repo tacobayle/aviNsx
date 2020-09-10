@@ -369,7 +369,7 @@ EOF
   provisioner "remote-exec" {
     inline      = [
       "chmod 600 ~/.ssh/${basename(var.jump["private_key_path"])}",
-      "cd ansible ; git clone ${ansible["aviConfigureUrl"]} --branch ${ansible["aviConfigureTag"]} ; ansible-playbook -i hosts aviConfigure/local.yml --extra-vars @vars/fromTerraform.yml",
+      "cd ansible ; git clone ${var.ansible["aviConfigureUrl"]} --branch ${var.ansible["aviConfigureTag"]} ; ansible-playbook -i hosts aviConfigure/local.yml --extra-vars @vars/fromTerraform.yml",
     ]
   }
 

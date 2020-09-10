@@ -17,6 +17,10 @@ TF_VAR_nsx_user=******
 TF_VAR_nsx_password=******
 TF_VAR_nsx_server=******
 ```
+- Make sure the content library has been configured on V-center
+- Make sure you have an avi_network_vip segment configured on NSXT
+- Make sure you have an avi_network_backend segment configured on NSXT
+- Make sure you have an avi_network_management segment configured on NSXT (which should be configured within the avi_cloud dict variable)
 
 ## Environment:
 
@@ -25,24 +29,29 @@ Terraform Plan has/have been tested against:
 ### terraform
 
 ```
-avi@ansible:~$ terraform -v
-nic@jump:~/aviVmw$ terraform -v
-Terraform v0.12.29
-+ provider.null v2.1.2
-+ provider.template v2.1.2
-+ provider.vsphere v1.15.0
-nic@jump:~/aviVmw$
+Terraform v0.13.1
++ provider registry.terraform.io/hashicorp/null v2.1.2
++ provider registry.terraform.io/hashicorp/template v2.1.2
++ provider registry.terraform.io/hashicorp/vsphere v1.24.0
++ provider registry.terraform.io/terraform-providers/nsxt v3.0.1
+Your version of Terraform is out of date! The latest version is 0.13.2. You can update by downloading from https://www.terraform.io/downloads.html
 ```
 
 ### Avi version
-
 ```
 Avi 20.1.1 with one controller node
 ```
 
-### V-center version:
+### V-center/ESXi version:
+```
+vCSA - 7.0.0 Build 16749670
+ESXi host - 7.0.0 Build 16324942
+```
 
 ### NSXT version:
+```
+NSX 3.0.1.1
+```
 
 ## Input/Parameters:
 

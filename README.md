@@ -57,7 +57,7 @@ NSX 3.0.1.1
 
 1. All the paramaters/variables are stored in variables.tf
 
-## Use the the terraform script to:
+## Use the the terraform plan to:
 - Create a new folder
 - Spin up n Avi Controller
 - Spin up n backend VM(s) - (count based on the length of var.backendIps)

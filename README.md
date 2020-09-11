@@ -61,7 +61,7 @@ NSX 3.0.1.1
 - Create a new folder
 - Spin up n Avi Controller
 - Spin up n backend VM(s) - (count based on the length of var.backendIps)
-- Spin up n client server(s) - (count based on the length of var.clientIps) - while true ; do ab -n 1000 -c 1000 https://100.64.133.51/ ; done
+- Spin up n client server(s) - (count based on the length of var.clientIps) - while true ; do ab -n 1000 -c 1000 https://a.b.c.d/ ; done
 - Create an ansible hosts file including a group for avi controller(s), a group for backend server(s)
 - Spin up a jump server with ansible intalled - userdata to install packages
 - Create a yaml variable file - in the jump server

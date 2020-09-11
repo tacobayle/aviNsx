@@ -111,12 +111,13 @@ variable "client" {
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
     dnsMain = "172.18.0.15"
     dnsSec = "10.206.8.131"
+    subnetMask = "/24"
   }
 }
 #
 variable "clientIps" {
   type = list
-  default = ["10.7.4.10/24"]
+  default = ["10.7.4.10"]
 }
 #
 # NSX-T Variables

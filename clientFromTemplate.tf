@@ -5,8 +5,8 @@ data "template_file" "client_userdata" {
     password     = var.client["password"]
     defaultGw = var.client["defaultGw"]
     pubkey       = file(var.jump["public_key_path"])
-    ipCidr         = element(var.clientIps, count.index)
-    ip = split("/", element(var.clientIps, count.index))[0]
+    ip         = element(var.clientIps, count.index)
+    subnetMask = var.client["subnetMask"]
     netplanFile  = var.client["netplanFile"]
     dnsMain      = var.client["dnsMain"]
     dnsSec       = var.client["dnsSec"]
@@ -63,7 +63,7 @@ resource "vsphere_virtual_machine" "client" {
  }
 
  connection {
-   host        = split("/", element(var.clientIps, count.index))[0]
+   host        = element(var.clientIps, count.index)
    type        = "ssh"
    agent       = false
    user        = "ubuntu"

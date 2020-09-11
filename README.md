@@ -1,4 +1,4 @@
-# aviVmw
+# aviNsx
 
 ## Goals
 Spin up a full VMware/Avi environment (through Terraform) with V-center and NSX-T integration

@@ -1,5 +1,7 @@
-
-
+resource "vsphere_tag" "ansible_group_backend" {
+  name             = "backend"
+  category_id      = vsphere_tag_category.ansible_group_backend.id
+}
 
 data "template_file" "backend_userdata" {
   count = length(var.backendIps)
@@ -55,6 +57,11 @@ resource "vsphere_virtual_machine" "backend" {
   clone {
     template_uuid = data.vsphere_virtual_machine.backend.id
   }
+
+  tags = [
+        vsphere_tag.ansible_group_backend.id,
+  ]
+
 
   vapp {
     properties = {

@@ -1,3 +1,8 @@
+resource "vsphere_tag" "ansible_group_client" {
+  name             = "client"
+  category_id      = vsphere_tag_category.ansible_group_client.id
+}
+
 data "template_file" "client_userdata" {
   count = length(var.clientIps)
   template = file("${path.module}/userdata/client.userdata")
@@ -52,6 +57,11 @@ resource "vsphere_virtual_machine" "client" {
   clone {
     template_uuid = data.vsphere_virtual_machine.client.id
   }
+
+  tags = [
+        vsphere_tag.ansible_group_client.id,
+  ]
+
 
   vapp {
     properties = {

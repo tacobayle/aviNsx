@@ -17,10 +17,10 @@ output "client" {
 }
 
 output "loadcommand" {
-  value = "while true ; do ab -n 1000 -c 1000 https://a.b.c.d/ ; done"
+  value = "while true ; do ab -n 200 -c 200 https://a.b.c.d/ ; done"
 }
 
 output "destroy" {
-  value = "ssh -o StrictHostKeyChecking=no -i ${var.jump["private_key_path"]} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'ansible-pull --url ${var.ansible["aviPbAbsentUrl"]} --extra-vars @~/ansible/vars/fromTerraform.yml --extra-vars @~/ansible/vars/creds.json' ; sleep 5 ; terraform destroy -auto-approve"
+  value = "ssh -o StrictHostKeyChecking=no -i ${var.jump["private_key_path"]} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible["aviPbAbsentUrl"]} --branch ${var.ansible["aviPbAbsentTag"]} ; ansible-playbook ansiblePbAviAbsent/local.yml --extra-vars @~/ansible/vars/fromTerraform.yml --extra-vars @~/ansible/vars/creds.json' ; sleep 20 ; terraform destroy -auto-approve"
   description = "command to destroy the infra"
 }

@@ -71,6 +71,7 @@ variable "jump" {
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
     defaultGw = "10.0.0.1"
     dnsMain = "172.18.0.15"
+    username = "ubuntu"
   }
 }
 #
@@ -199,8 +200,9 @@ variable "ansible" {
   type = map
   default = {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
+    aviPbAbsentTag = "v1.32"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v1.27"
-    host = "ansible/hosts"
+    aviConfigureTag = "v1.66"
+    version = "2.9.12"
   }
 }

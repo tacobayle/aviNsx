@@ -45,10 +45,34 @@ write_files:
       sudo apt install -y python3-pip
       sudo apt install -y python-pip
       sudo apt install -y python-jmespath
-      pip install ansible
+      pip install ansible==${ansibleVersion}
       pip install avisdk==${aviSdkVersion}
       pip3 install avisdk==${aviSdkVersion}
+      pip install pyvmomi
+      pip install dnspython
+      pip3 install dnspython
+      pip install --upgrade pip setuptools
+      pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
       sudo -u ubuntu ansible-galaxy install -f avinetworks.avisdk
+      sudo mkdir -p /opt/ansible/inventory
+      sudo tee /opt/ansible/inventory/inventory.vmware.yml  > /dev/null <<EOT
+      plugin: vmware_vm_inventory
+      strict: False
+      hostname: ${vsphere_server}
+      username: ${vsphere_user}
+      password: ${vsphere_password}
+      validate_certs: False
+      with_tags: True
+      EOT
+      sudo mkdir -p /etc/ansible
+      sudo tee /etc/ansible/ansible.cfg > /dev/null <<EOT
+      [defaults]
+      private_key_file = /home/${username}/.ssh/${basename(privateKey)}
+      host_key_checking = False
+      host_key_auto_add = True
+      [inventory]
+      enable_plugins = vmware_vm_inventory
+      EOT
       echo "cloud init done" | tee /tmp/cloudInitDone.log
     path: /opt/bootstrap.sh
     permissions: 0755

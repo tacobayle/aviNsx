@@ -1,5 +1,7 @@
-
-
+resource "vsphere_tag" "ansible_group_controller" {
+  name             = "controller"
+  category_id      = vsphere_tag_category.ansible_group_controller.id
+}
 
 data "vsphere_virtual_machine" "controller_template" {
   name          = "controller-${var.controller["version"]}-template"
@@ -35,6 +37,10 @@ resource "vsphere_virtual_machine" "controller" {
   clone {
     template_uuid = data.vsphere_virtual_machine.controller_template.id
   }
+
+  tags = [
+        vsphere_tag.ansible_group_controller.id,
+  ]
 
   vapp {
     properties = {

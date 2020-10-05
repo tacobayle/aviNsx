@@ -20,7 +20,8 @@ TF_VAR_nsx_server=******
 - Make sure the content library has been configured on V-center
 - Make sure you have an avi_network_vip segment configured on NSXT
 - Make sure you have an avi_network_backend segment configured on NSXT
-- Make sure you have an avi_network_management segment configured on NSXT (which should be configured within the avi_cloud dict variable)
+- Make sure you have an avi_network_management segment configured on NSXT
+- Make sure an NSXT group has been created: with DFW rules associated and tag associated with it
 
 ## Environment:
 
@@ -48,6 +49,15 @@ vCSA - 7.0.0 Build 16749670
 ESXi host - 7.0.0 Build 16324942
 ```
 
+### Avi Configure (anisble playbook) tag:
+```
+```
+
+### Avi Destroy (anisble playbook) tag:
+```
+```
+
+
 ### NSXT version:
 ```
 NSX 3.0.1.1
@@ -55,15 +65,14 @@ NSX 3.0.1.1
 
 ## Input/Parameters:
 
-1. All the paramaters/variables are stored in variables.tf
+- All the paramaters/variables are stored in variables.tf
 
 ## Use the the terraform plan to:
 - Create a new folder
-- Spin up n Avi Controller
-- Spin up n backend VM(s) - (count based on the length of var.backendIps)
-- Spin up n client server(s) - (count based on the length of var.clientIps) - while true ; do ab -n 1000 -c 1000 https://a.b.c.d/ ; done
-- Create an ansible hosts file including a group for avi controller(s), a group for backend server(s)
-- Spin up a jump server with ansible intalled - userdata to install packages
+- Spin up n Avi Controller - count based on var.controller["count"]
+- Spin up n backend VM(s) - count based on the length of var.backendIps - Assign  NSXT tag
+- Spin up n client server(s) - count based on the length of var.clientIps - while true ; do ab -n 1000 -c 1000 https://a.b.c.d/ ; done
+- Spin up a jump server with ansible intalled - userdata to install packages - VMware dynamic inventory enabled/configured
 - Create a yaml variable file - in the jump server
 - Call ansible to do the Avi configuration (git clone)
 
@@ -74,6 +83,5 @@ terraform init ; terraform apply -auto-approve ;
 # the terraform will output the command to destroy the environment.
 ```
 
-## Improvement:
-
-### future devlopment:
+## to be done:
+- Input a correct value for aviPbAbsentTag

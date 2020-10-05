@@ -150,6 +150,7 @@ variable "avi_cloud" {
     networkRangeEnd = "50"
     dhcp_enabled = "false"
     tier1 = "N1-T1_AVI-SE-Mgmt"
+    vcenterContentLibrary = "Avi Content Library"
     obj_name_prefix = "NSXTCLOUD"
   }
 }
@@ -201,7 +202,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.32"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v1.67"
+    aviConfigureTag = "v1.68"
     version = "2.9.12"
   }
 }

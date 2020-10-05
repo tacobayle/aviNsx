@@ -152,7 +152,7 @@ avi_cloud:
   networkRangeBegin: ${var.avi_cloud["networkRangeBegin"]}
   networkRangeEnd: ${var.avi_cloud["networkRangeEnd"]}
   networkVrf: ${var.avi_cloud["networkVrf"]}
-  vcenterContentLibraryId: ${vsphere_content_library.library.id}
+  vcenterContentLibrary: ${var.avi_cloud["vcenterContentLibrary"]}
   obj_name_prefix: ${var.avi_cloud["obj_name_prefix"]}
 
 serviceEngineGroup:

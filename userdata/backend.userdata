@@ -44,6 +44,8 @@ write_files:
       # apt config
       sudo apt update
       sudo apt install -y apache2
+      sudo mv /var/www/html/index.html /var/www/html/index.html.old
+      echo -e "Hello World - cloud is NSXT - Node is $(hostname)" | sudo tee /var/www/html/index.html
       echo "cloud init done" | tee /tmp/cloudInitDone.log
       #while true ; do echo -e "HTTP/1.1 200 OK\n\nHello World - cloud is Vcenter/NSX-T - Node is $(hostname)" | sudo nc -N -l -p 80 ; done
     path: /opt/bootstrap.sh

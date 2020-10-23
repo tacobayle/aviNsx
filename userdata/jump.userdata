@@ -42,6 +42,7 @@ write_files:
       echo 'nameserver ${dnsMain}' | sudo tee /etc/resolv.conf
       ping -c 3 www.google.com
       sudo apt-get update
+      sudo apt-get install -y apache2-utils
       sudo apt install -y python3-pip
       sudo apt install -y python-pip
       sudo apt install -y python-jmespath

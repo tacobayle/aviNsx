@@ -37,7 +37,7 @@ variable "controller" {
     memory = 24768
     disk = 128
     count = "1"
-    version = "20.1.1-9071"
+    version = "20.1.2-9071"
     floatingIp = "10.0.0.200"
     wait_for_guest_net_timeout = 2
     private_key_path = "~/.ssh/cloudKey"
@@ -58,8 +58,8 @@ variable "jump" {
   type = map
   default = {
     name = "jump"
-    cpu = 1
-    memory = 2048
+    cpu = 2
+    memory = 4096
     disk = 24
     password = "Avi_2020"
     public_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key.pub"

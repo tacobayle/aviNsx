@@ -4,24 +4,31 @@
 Spin up a full VMware/Avi environment (through Terraform) with V-center and NSX-T integration
 
 ## Prerequisites:
-- Make sure terraform in installed in the orchestrator VM
-- Make sure VMware credential/details are configured as environment variable for Vcenter:
+- Terraform in installed in the orchestrator VM
+- credential/details configured as environment variables for vCenter:
 ```
 TF_VAR_vsphere_user=******
 TF_VAR_vsphere_server=******
 TF_VAR_vsphere_password=******
 ```
-- Make sure VMware credential/details are configured as environment variable for NSXT:
+- credential/details configured as environment variables for NSX-T:
 ```
 TF_VAR_nsx_user=******
 TF_VAR_nsx_password=******
 TF_VAR_nsx_server=******
 ```
-- Make sure the content library has been configured on V-center
-- Make sure you have an avi_network_vip segment configured on NSXT
-- Make sure you have an avi_network_backend segment configured on NSXT
-- Make sure you have an avi_network_management segment configured on NSXT
+- credential/details configured as environment variables for Avi:
+```
+TF_VAR_avi_user=******
+TF_VAR_avi_password=******
+TF_VAR_avi_controller=******
+```
+- avi_network_vip segment configured on NSXT
+- avi_network_backend segment configured on NSXT
+- avi_network_management segment configured on NSXT
 - Make sure an NSXT group has been created: with DFW rules associated and tag associated with it
+- Make sure you have the following files available in your TF VM:
+files = ["/home/ubuntu/controller-20.1.2-9171.ova", "/home/ubuntu/bionic-server-cloudimg-amd64.ova"]
 
 ## Environment:
 
@@ -49,15 +56,6 @@ vCSA - 7.0.0 Build 16749670
 ESXi host - 7.0.0 Build 16324942
 ```
 
-### Avi Configure (anisble playbook) tag:
-```
-```
-
-### Avi Destroy (anisble playbook) tag:
-```
-```
-
-
 ### NSXT version:
 ```
 NSX 3.0.1.1
@@ -82,6 +80,3 @@ cd ~  ; rm -fr aviNsx ; git clone https://github.com/tacobayle/aviNsx ; cd aviNs
 terraform init ; terraform apply -auto-approve ;
 # the terraform will output the command to destroy the environment.
 ```
-
-## to be done:
-- Input a correct value for aviPbAbsentTag

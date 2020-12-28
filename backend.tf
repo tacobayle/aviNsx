@@ -7,7 +7,6 @@ data "template_file" "backend_userdata" {
   count = length(var.backendIps)
   template = file("${path.module}/userdata/backend.userdata")
   vars = {
-    password     = var.backend["password"]
     defaultGw = var.backend["defaultGw"]
     pubkey       = file(var.jump["public_key_path"])
     ip         = element(var.backendIps, count.index)
@@ -17,18 +16,13 @@ data "template_file" "backend_userdata" {
     dnsSec       = var.backend["dnsSec"]
   }
 }
-#
-data "vsphere_virtual_machine" "backend" {
-  name          = var.backend["template_name"]
-  datacenter_id = data.vsphere_datacenter.dc.id
-}
-#
+
 resource "vsphere_virtual_machine" "backend" {
   count            = length(var.backendIps)
   name             = "backend-${count.index}"
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
-  folder           = vsphere_folder.folder.path
+  folder           = vsphere_folder.folderApps.path
 
   network_interface {
                       network_id = data.vsphere_network.networkBackend.id
@@ -38,16 +32,13 @@ resource "vsphere_virtual_machine" "backend" {
   memory = var.backend["memory"]
   #wait_for_guest_net_timeout = var.backend["wait_for_guest_net_timeout"]
   wait_for_guest_net_routable = var.backend["wait_for_guest_net_routable"]
-  guest_id = data.vsphere_virtual_machine.backend.guest_id
-  scsi_type = data.vsphere_virtual_machine.backend.scsi_type
-  scsi_bus_sharing = data.vsphere_virtual_machine.backend.scsi_bus_sharing
-  scsi_controller_count = data.vsphere_virtual_machine.backend.scsi_controller_scan_count
+  guest_id = "guestid-backend-${count.index}"
+
 
   disk {
     size             = var.backend["disk"]
     label            = "backend-${count.index}.lab_vmdk"
-    eagerly_scrub    = data.vsphere_virtual_machine.backend.disks.0.eagerly_scrub
-    thin_provisioned = data.vsphere_virtual_machine.backend.disks.0.thin_provisioned
+    thin_provisioned = true
   }
 
   cdrom {
@@ -55,7 +46,7 @@ resource "vsphere_virtual_machine" "backend" {
   }
 
   clone {
-    template_uuid = data.vsphere_virtual_machine.backend.id
+    template_uuid = vsphere_content_library_item.files[1].id
   }
 
   tags = [

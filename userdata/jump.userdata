@@ -1,19 +1,12 @@
 #cloud-config
 users:
-  - default
-  - name: aviadmin
+  - name: ubuntu
     lock_passwd: true
     shell: /bin/bash
     sudo:  ALL=(ALL) NOPASSWD:ALL
     chpasswd: {expire: False}
     ssh_authorized_keys:
       - ${pubkey}
-
-chpasswd:
-  list: |
-    ubuntu: $password
-    aviadmin: $password
-  expire: False
 
 write_files:
   - content: |

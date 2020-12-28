@@ -1,35 +1,63 @@
-#
-### VMware variables
-#
 variable "vsphere_user" {}
 variable "vsphere_password" {}
 variable "vsphere_server" {}
-#
-#
-variable "dc" {
-  default     = "N1-DC"
+variable "nsx_user" {}
+variable "nsx_password" {}
+variable "nsx_server" {}
+variable "avi_password" {}
+variable "avi_controller" {}
+variable "avi_user" {}
+
+variable "vcenter" {
+  type = map
+  default = {
+    dc = "N1-DC"
+    cluster = "N1-Cluster1"
+    datastore = "vsanDatastore"
+    resource_pool = "N1-Cluster1/Resources"
+    folderApps = "Avi-Apps"
+    folderAvi = "Avi-Controllers"
+  }
 }
-#
-variable "cluster" {
-  default     = "N1-Cluster1"
-}
-#
-variable "datastore" {
-  default     = "vsanDatastore"
-}
-#
+
 variable "networkMgt" {
   default     = "N1_vds-01_management"
 }
-#
-variable "folder" {
-  default     = "N1-AVI"
+
+variable "avi_network_vip" {
+  type = map
+  default = {
+    name = "N1-T1_Segment-VIP-A_10.7.4.0-24"
+    type = "V4"
+    exclude_discovered_subnets = "true"
+    vcenter_dvs = "true"
+    dhcp_enabled = "false"
+    tier1 = "N1-T1_AVI-VIP-A"
+    networkRangeBegin = "11"
+    networkRangeEnd = "50"
+    gwAddr ="1"
+  }
 }
-#
-variable "resource_pool" {
-  default     = "N1-Cluster1/Resources"
+
+variable "avi_network_backend" {
+  type = map
+  default = {
+    name = "N1-T1_Segment-Backend_10.7.6.0-24"
+    type = "V4"
+    dhcp_enabled = "false"
+    exclude_discovered_subnets = "true"
+    vcenter_dvs = "true"
+  }
 }
-#
+
+variable "contentLibrary" {
+  default = {
+    name = "Content Library Build Avi"
+    description = "Content Library Build Avi"
+    files = ["/home/ubuntu/controller-20.1.2-9171.ova", "/home/ubuntu/bionic-server-cloudimg-amd64.ova"] # keep the avi image first and the ubuntu image in the second position // don't change the name of the Avi OVA file
+  }
+}
+
 variable "controller" {
   type = map
   default = {
@@ -37,7 +65,6 @@ variable "controller" {
     memory = 24768
     disk = 128
     count = "1"
-    version = "20.1.2-9171"
     floatingIp = "10.0.0.200"
     wait_for_guest_net_timeout = 2
     private_key_path = "~/.ssh/cloudKey"
@@ -61,7 +88,6 @@ variable "jump" {
     cpu = 2
     memory = 4096
     disk = 24
-    password = "Avi_2020"
     public_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key.pub"
     private_key_path = "~/.ssh/id_rsa/ubuntu-bionic-18.04-cloudimg-template.key"
     wait_for_guest_net_routable = "false"
@@ -81,7 +107,6 @@ variable "backend" {
     cpu = 1
     memory = 2048
     disk = 10
-    password = "Avi_2020"
     network = "N1-T1_Segment-Backend_10.7.6.0-24"
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
@@ -92,19 +117,18 @@ variable "backend" {
     subnetMask = "/24"
   }
 }
-#
+
 variable "backendIps" {
   type = list
   default = ["10.7.6.10", "10.7.6.11"]
 }
-#
+
 variable "client" {
   type = map
   default = {
     cpu = 1
     memory = 2048
     disk = 10
-    password = "Avi_2020"
     network = "N1-T1_Segment-VIP-A_10.7.4.0-24"
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
@@ -115,28 +139,16 @@ variable "client" {
     subnetMask = "/24"
   }
 }
-#
+
 variable "clientIps" {
   type = list
   default = ["10.7.4.10"]
 }
-#
-# NSX-T Variables
-#
-variable "nsx_user" {}
-variable "nsx_password" {}
-variable "nsx_server" {}
-#
-### Ansible variables
-#
-variable "avi_password" {}
-variable "avi_controller" {}
-variable "avi_user" {}
-#
+
 variable "ansibleDirectory" {
   default = "ansible"
 }
-#
+
 variable "avi_cloud" {
   type = map
   default = {
@@ -154,40 +166,14 @@ variable "avi_cloud" {
     obj_name_prefix = "NSXTCLOUD"
   }
 }
-#
-variable "avi_network_vip" {
-  type = map
-  default = {
-    name = "N1-T1_Segment-VIP-A_10.7.4.0-24"
-    type = "V4"
-    exclude_discovered_subnets = "true"
-    vcenter_dvs = "true"
-    dhcp_enabled = "false"
-    tier1 = "N1-T1_AVI-VIP-A"
-    networkRangeBegin = "11"
-    networkRangeEnd = "50"
-    gwAddr ="1"
-  }
-}
-#
-variable "avi_network_backend" {
-  type = map
-  default = {
-    name = "N1-T1_Segment-Backend_10.7.6.0-24"
-    type = "V4"
-    dhcp_enabled = "false"
-    exclude_discovered_subnets = "true"
-    vcenter_dvs = "true"
-  }
-}
-#
+
 variable "domain" {
   type = map
   default = {
     name = "avi.altherr.info"
   }
 }
-#
+
 variable "nsxtGroup" {
   type = map
   default = {
@@ -195,7 +181,7 @@ variable "nsxtGroup" {
     tag = "n1-avi-backend-servers-01"
   }
 }
-#
+
 variable "ansible" {
   type = map
   default = {

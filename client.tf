@@ -56,7 +56,6 @@ resource "vsphere_virtual_machine" "client" {
   vapp {
     properties = {
      hostname    = "client-${count.index}"
-     password    = var.client["password"]
      public-keys = file(var.jump["public_key_path"])
      user-data   = base64encode(data.template_file.client_userdata[count.index].rendered)
    }

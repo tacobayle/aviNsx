@@ -58,7 +58,6 @@ resource "vsphere_virtual_machine" "jump" {
   vapp {
     properties = {
       hostname = "jump"
-      password = var.jump["password"]
       public-keys = file(var.jump["public_key_path"])
       user-data = base64encode(data.template_file.jumpbox_userdata.rendered)
     }

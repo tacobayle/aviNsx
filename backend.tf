@@ -57,7 +57,6 @@ resource "vsphere_virtual_machine" "backend" {
   vapp {
     properties = {
      hostname    = "backend-${count.index}"
-     password    = var.backend["password"]
      public-keys = file(var.jump["public_key_path"])
      user-data   = base64encode(data.template_file.backend_userdata[count.index].rendered)
    }

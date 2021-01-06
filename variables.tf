@@ -154,7 +154,7 @@ variable "avi_cloud" {
   default = {
     name = "cloudNsxt"
     vtype = "CLOUD_NSXT"
-    transportZone = "TZ_nested_nsx-overlay"
+    transportZone = "N1_TZ_nested_nsx-overlay"
     network = "N1-T1_Segment-AVI-SE-Mgt_10.7.3.0-24"
     networkType = "V4"
     networkVrf = "management"

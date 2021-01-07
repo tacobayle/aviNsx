@@ -28,14 +28,14 @@ variable "avi_network_vip" {
   type = map
   default = {
     name = "N1-T1_Segment-VIP-A_10.7.4.0-24"
+    tier1 = "N1-T1_AVI-VIP-A"
+    cidr = "10.7.4.0/24"
     type = "V4"
     exclude_discovered_subnets = "true"
     vcenter_dvs = "true"
     dhcp_enabled = "false"
-    tier1 = "N1-T1_AVI-VIP-A"
     networkRangeBegin = "11"
     networkRangeEnd = "50"
-    gwAddr ="1"
   }
 }
 
@@ -43,27 +43,14 @@ variable "avi_network_backend" {
   type = map
   default = {
     name = "N1-T1_Segment-Backend_10.7.6.0-24"
+    tier1 = "N1-T1_AVI-VIP-A"
+    cidr = "10.7.6.0/24"
     type = "V4"
-    dhcp_enabled = "false"
     exclude_discovered_subnets = "true"
     vcenter_dvs = "true"
+    dhcp_enabled = "false"
   }
 }
-
-variable "networkBackend" {
-  type = map
-  default = {
-    name     = "avi-backend"
-    cidr = "10.1.2.0/24"
-    networkRangeBegin = "11" # for NSX-T segment if DHCP enabled
-    networkRangeEnd = "50" # for NSX-T segment if DHCP enabled
-    type = "V4" # for Avi
-    dhcp_enabled = "false" # for Avi
-    exclude_discovered_subnets = "true" # for Avi
-    vcenter_dvs = "true" # for Avi
-  }
-}
-
 
 variable "contentLibrary" {
   default = {
@@ -203,7 +190,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.32"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v3.13"
+    aviConfigureTag = "v3.14"
     version = "2.9.12"
   }
 }

@@ -21,7 +21,7 @@ resource "null_resource" "foo" {
   }
 
   provisioner "file" {
-    source      = var.ansibleDirectory
+    source      = var.ansible.directory
     destination = "~/ansible"
   }
 
@@ -35,29 +35,20 @@ controller:
   floatingIp: ${var.controller.floatingIp}
   count: ${var.controller.count}
   password: ${var.avi_password}
+  from_email: ${var.controller.from_email}
+  se_in_provider_context: ${var.controller.se_in_provider_context}
+  tenant_access_to_provider_se: ${var.controller.tenant_access_to_provider_se}
+  tenant_vrf: ${var.controller.tenant_vrf}
+  aviCredsJsonFile: ${var.controller.aviCredsJsonFile}
 
 controllerPrivateIps:
 ${yamlencode(vsphere_virtual_machine.controller.*.default_ip_address)}
 
-avi_systemconfiguration:
-  global_tenant_config:
-    se_in_provider_context: false
-    tenant_access_to_provider_se: true
-    tenant_vrf: false
-  welcome_workflow_complete: true
-  ntp_configuration:
-    ntp_servers:
-      - server:
-          type: V4
-          addr: ${var.controller.ntpMain}
-  dns_configuration:
-    search_domain: ''
-    server_list:
-      - type: V4
-        addr: ${var.controller.dnsMain}
-  email_configuration:
-    from_email: test@avicontroller.net
-    smtp_type: SMTP_LOCAL_HOST
+ntpServers:
+${yamlencode(var.controller.ntp.*)}
+
+dnsServers:
+${yamlencode(var.controller.dns.*)}
 
 nsxt:
   username: ${var.nsx_user}
@@ -80,134 +71,32 @@ vcenter:
   password: ${var.vsphere_password}
   server: ${var.vsphere_server}
 
-serviceEngineGroup:
-  - name: &segroup0 Default-Group
-    ha_mode: HA_MODE_SHARED
-    min_scaleout_per_vs: 2
-    buffer_se: 1
-    extra_shared_config_memory: 0
-    vcenter_folder: ${var.vcenter.folderAvi}
-    vcpus_per_se: 1
-    memory_per_se: 2048
-    disk_per_se: 25
-    realtime_se_metrics:
-      enabled: true
-      duration: 0
-  - name: &segroup1 seGroupCpuAutoScale
-    ha_mode: HA_MODE_SHARED
-    min_scaleout_per_vs: 2
-    buffer_se: 0
-    extra_shared_config_memory: 0
-    vcenter_folder: ${var.vcenter.folderAvi}
-    vcpus_per_se: 1
-    memory_per_se: 2048
-    disk_per_se: 25
-    auto_rebalance: true
-    auto_rebalance_interval: 30
-    auto_rebalance_criteria:
-    - SE_AUTO_REBALANCE_CPU
-    realtime_se_metrics:
-      enabled: true
-      duration: 0
-  - name: &segroup2 seGroupGslb
-    ha_mode: HA_MODE_SHARED
-    min_scaleout_per_vs: 1
-    buffer_se: 0
-    extra_shared_config_memory: 2000
-    vcenter_folder: ${var.vcenter.folderAvi}
-    vcpus_per_se: 2
-    memory_per_se: 8192
-    disk_per_se: 25
-    realtime_se_metrics:
-      enabled: true
-      duration: 0
-
 domain:
   name: ${var.domain.name}
-
-avi_network_vip:
-  name: ${var.avi_network_vip.name}
-  tier1: ${var.avi_network_vip.tier1}
-  dhcp_enabled: ${var.avi_network_vip.dhcp_enabled}
-  exclude_discovered_subnets: ${var.avi_network_vip.exclude_discovered_subnets}
-  vcenter_dvs: ${var.avi_network_vip.vcenter_dvs}
-  type: ${var.avi_network_vip.type}
-  networkRangeBegin: ${var.avi_network_vip.networkRangeBegin}
-  networkRangeEnd: ${var.avi_network_vip.networkRangeEnd}
-
-avi_network_backend:
-  name: ${var.backend["network"]}
-  dhcp_enabled: ${var.avi_network_backend["dhcp_enabled"]}
-  exclude_discovered_subnets: ${var.avi_network_backend["exclude_discovered_subnets"]}
-  vcenter_dvs: ${var.avi_network_backend["vcenter_dvs"]}
-  type: ${var.avi_network_backend["type"]}
 
 avi_servers:
 ${yamlencode(var.backendIps)}
 
-avi_healthmonitor:
-  - name: &hm0 hm1
-    receive_timeout: 1
-    failed_checks: 2
-    send_interval: 1
-    successful_checks: 2
-    type: HEALTH_MONITOR_HTTP
-    http_request: "HEAD / HTTP/1.0"
-    http_response_code:
-      - HTTP_2XX
-      - HTTP_3XX
-      - HTTP_5XX
-
-avi_pool:
-  name: &pool0 pool1
-  lb_algorithm: LB_ALGORITHM_ROUND_ROBIN
-  health_monitor_refs: *hm0
-
 avi_pool_nsxtGroup:
-  - name: &pool1 pool2BasedOnNsxtGroup
-    groupName: ${var.nsxtGroup["name"]}
-    health_monitor_refs: *hm0
-
-avi_virtualservice:
-  http:
-    - name: &vs0 app1
-      services:
-        - port: 80
-          enable_ssl: false
-        - port: 443
-          enable_ssl: true
-      pool_ref: *pool0
-      enable_rhi: false
-    - name: &vs1 app2-se-cpu-auto-scale-out
-      services:
-        - port: 443
-          enable_ssl: true
-      pool_ref: *pool0
-      enable_rhi: false
-      se_group_ref: *segroup1
-    - name: &vs2 app3-nsxtGroupBased
-      services:
-        - port: 443
-          enable_ssl: true
-      pool_ref: *pool1
-      enable_rhi: false
-  dns:
-    - name: app3-dns
-      services:
-        - port: 53
-    - name: app4-gslb
-      services:
-        - port: 53
-      se_group_ref: *segroup2
+  - name: pool2BasedOnNsxtGroup
+    id: ${nsxt_policy_group.backend.id}
+    cloud_ref: ${var.avi_cloud.name}
 
 EOF
-    destination = "~/ansible/vars/fromTerraform.yml"
+    destination = var.ansible.yamlFile
+  }
+
+  provisioner "file" {
+    content = <<EOF
+{"serviceEngineGroup": ${jsonencode(var.serviceEngineGroup)}, "avi_virtualservice": ${jsonencode(var.avi_virtualservice)}, "avi_network_vip": ${jsonencode(var.avi_network_vip)}, "avi_network_backend": ${jsonencode(var.avi_network_backend)}, "avi_pool": ${jsonencode(var.avi_pool)}}
+EOF
+    destination = var.ansible.jsonFile
   }
 
   provisioner "remote-exec" {
     inline      = [
       "chmod 600 ~/.ssh/${basename(var.jump["private_key_path"])}",
-      "cd ~/ansible ; git clone ${var.ansible["aviConfigureUrl"]} --branch ${var.ansible["aviConfigureTag"]} ; ansible-playbook -i /opt/ansible/inventory/inventory.vmware.yml aviConfigure/local.yml --extra-vars @vars/fromTerraform.yml",
+      "cd ~/ansible ; git clone ${var.ansible.aviConfigureUrl} --branch ${var.ansible.aviConfigureTag} ; cd ${split("/", var.ansible.aviConfigureUrl)[4]} ; ansible-playbook -i /opt/ansible/inventory/inventory.vmware.yml local.yml --extra-vars @${var.ansible.jsonFile} --extra-vars @${var.ansible.yamlFile}",
     ]
   }
 }

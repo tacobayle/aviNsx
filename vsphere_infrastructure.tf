@@ -24,13 +24,13 @@ data "vsphere_network" "networkMgt" {
 }
 #
 data "vsphere_network" "networkBackend" {
-  depends_on = [time_sleep.wait_60_seconds]
+  depends_on = [time_sleep.wait_segment]
   name = var.backend["network"]
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 #
 data "vsphere_network" "networkClient" {
-  depends_on = [time_sleep.wait_60_seconds]
+  depends_on = [time_sleep.wait_segment]
   name = var.client["network"]
   datacenter_id = data.vsphere_datacenter.dc.id
 }
@@ -43,6 +43,12 @@ resource "vsphere_folder" "folderAvi" {
 
 resource "vsphere_folder" "folderApps" {
   path          = var.vcenter.folderApps
+  type          = "vm"
+  datacenter_id = data.vsphere_datacenter.dc.id
+}
+
+resource "vsphere_folder" "folderSe" {
+  path          = var.vcenter.folderSe
   type          = "vm"
   datacenter_id = data.vsphere_datacenter.dc.id
 }

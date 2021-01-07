@@ -17,6 +17,7 @@ variable "vcenter" {
     resource_pool = "N1-Cluster1/Resources"
     folderApps = "Avi-Apps"
     folderAvi = "Avi-Controllers"
+    folderSe = "Avi-SE" # this is referenced by vcenter_folder in the SE group
   }
 }
 
@@ -70,7 +71,6 @@ variable "contentLibrary" {
 }
 
 variable "controller" {
-  type = map
   default = {
     cpu = 8
     memory = 24768
@@ -82,9 +82,14 @@ variable "controller" {
     mgmt_ip = "10.0.0.201"
     mgmt_mask = "255.255.255.0"
     default_gw = "10.0.0.1"
-    dnsMain = "172.18.0.15"
-    ntpMain = "172.18.0.15"
+    dns = ["172.18.0.15"]
+    ntp = ["172.18.0.15"]
     environment = "VMWARE"
+    from_email = "avicontroller@avidemo.fr"
+    se_in_provider_context = "false"
+    tenant_access_to_provider_se = "true"
+    tenant_vrf = "false"
+    aviCredsJsonFile = "~/.avicreds.json"
   }
 }
 #
@@ -111,9 +116,8 @@ variable "jump" {
     username = "ubuntu"
   }
 }
-#
+
 variable "backend" {
-  type = map
   default = {
     cpu = 1
     memory = 2048
@@ -126,6 +130,11 @@ variable "backend" {
     dnsMain = "172.18.0.15"
     dnsSec = "10.206.8.131"
     subnetMask = "/24"
+    nsxtGroup = {
+      name = "n1-avi-backend"
+      description = "Created by TF - For Avi Build"
+      tag = "n1-avi-backend"
+    }
   }
 }
 
@@ -156,9 +165,7 @@ variable "clientIps" {
   default = ["10.7.4.10"]
 }
 
-variable "ansibleDirectory" {
-  default = "ansible"
-}
+
 
 variable "avi_cloud" {
   type = map
@@ -179,6 +186,147 @@ variable "avi_cloud" {
   }
 }
 
+variable "serviceEngineGroup" {
+  default = [
+    {
+      name = "Default-Group"
+      cloud_ref = "cloudNsxt"
+      ha_mode = "HA_MODE_SHARED"
+      min_scaleout_per_vs = 2
+      buffer_se = 1
+      extra_shared_config_memory = 0
+      vcenter_folder = "Avi-SE"
+      vcpus_per_se = 1
+      memory_per_se = 2048
+      disk_per_se = 25
+      realtime_se_metrics = {
+        enabled = true
+        duration = 0
+      }
+    },
+    {
+      name = "seGroupCpuAutoScale"
+      cloud_ref = "cloudNsxt"
+      ha_mode = "HA_MODE_SHARED"
+      min_scaleout_per_vs = 2
+      buffer_se = 0
+      extra_shared_config_memory = 0
+      vcenter_folder = "Avi-SE"
+      vcpus_per_se = 1
+      memory_per_se = 1024
+      disk_per_se = 25
+      auto_rebalance = true
+      auto_rebalance_interval = 30
+      auto_rebalance_criteria = [
+        "SE_AUTO_REBALANCE_CPU"
+      ]
+      realtime_se_metrics = {
+        enabled = true
+        duration = 0
+      }
+    },
+    {
+      name = "seGroupGslb"
+      cloud_ref = "cloudNsxt"
+      ha_mode = "HA_MODE_SHARED"
+      min_scaleout_per_vs = 1
+      buffer_se = 0
+      extra_shared_config_memory = 2000
+      vcenter_folder = "Avi-SE"
+      vcpus_per_se = 2
+      memory_per_se = 8192
+      disk_per_se = 25
+      realtime_se_metrics = {
+        enabled = true
+        duration = 0
+      }
+    }
+  ]
+}
+
+variable "avi_pool" {
+  type = map
+  default = {
+    name = "pool1"
+    lb_algorithm = "LB_ALGORITHM_ROUND_ROBIN"
+    cloud_ref = "cloudNsxt"
+  }
+}
+
+variable "avi_virtualservice" {
+  default = {
+    http = [
+      {
+        name = "app1"
+        pool_ref = "pool1"
+        cloud_ref = "cloudNsxt"
+        services: [
+          {
+            port = 80
+            enable_ssl = "false"
+          },
+          {
+            port = 443
+            enable_ssl = "true"
+          }
+        ]
+      },
+      {
+        name = "app2-se-cpu-auto-scale"
+        pool_ref = "pool1"
+        cloud_ref = "cloudNsxt"
+        services: [
+          {
+            port = 80
+            enable_ssl = "false"
+          },
+          {
+            port = 443
+            enable_ssl = "true"
+          }
+        ]
+        se_group_ref: "seGroupCpuAutoScale"
+      },
+      {
+        name = "app3-nsxtGroupBased"
+        pool_ref = "pool2BasedOnNsxtGroup"
+        cloud_ref = "cloudNsxt"
+        services: [
+        {
+          port = 80
+          enable_ssl = "false"
+        },
+        {
+        port = 443
+        enable_ssl = "true"
+        }
+      ]
+      },
+    ]
+    dns = [
+      {
+        name = "app4-dns"
+        cloud_ref = "cloudNsxt"
+        services: [
+          {
+            port = 53
+          }
+        ]
+      },
+      {
+        name = "app5-gslb"
+        cloud_ref = "cloudNsxt"
+        services: [
+          {
+            port = 53
+          }
+        ]
+        se_group_ref: "seGroupGslb"
+      }
+    ]
+  }
+}
+
 variable "domain" {
   type = map
   default = {
@@ -186,13 +334,7 @@ variable "domain" {
   }
 }
 
-variable "nsxtGroup" {
-  type = map
-  default = {
-    name = "n1-avi-backend-servers-01"
-    tag = "n1-avi-backend-servers-01"
-  }
-}
+
 
 variable "ansible" {
   type = map
@@ -200,7 +342,10 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.32"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v3.15"
+    aviConfigureTag = "v3.17"
     version = "2.9.12"
+    jsonFile = "~/ansible/fromTf.json"
+    yamlFile = "~/ansible/fromTf.yml"
+    directory = "ansible"
   }
 }

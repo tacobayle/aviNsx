@@ -72,15 +72,29 @@ resource "nsxt_policy_segment" "networkMgmt" {
   }
 }
 
-resource "time_sleep" "wait_60_seconds" {
+resource "time_sleep" "wait_segment" {
   depends_on = [nsxt_policy_segment.networkVip, nsxt_policy_segment.networkBackend]
-  create_duration = "60s"
+  create_duration = "5s"
 }
 
-resource "nsxt_vm_tags" "backendTags" {
+resource "nsxt_policy_group" "backend" {
+  display_name = var.backend.nsxtGroup.name
+  description = var.backend.nsxtGroup.description
+
+  criteria {
+    condition {
+      key = "tag"
+      member_type = "VirtualMachine"
+      operator = "EQUALS"
+      value = var.backend.nsxtGroup.tag
+    }
+  }
+}
+
+resource "nsxt_vm_tags" "backend" {
   count = length(var.backendIps)
   instance_id = vsphere_virtual_machine.backend[count.index].id
   tag {
-    tag   = var.nsxtGroup["tag"]
+    tag   = var.backend.nsxtGroup.tag
   }
 }

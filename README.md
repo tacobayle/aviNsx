@@ -67,7 +67,7 @@ NSX 3.0.1.1
 
 ## Use the the terraform plan to:
 - Create a new folder
-- Spin up n Avi Controller - count based on var.controller["count"]
+- Spin up n Avi Controller - count based on var.controller.count
 - Spin up n backend VM(s) - count based on the length of var.backendIps - Assign  NSXT tag
 - Spin up n client server(s) - count based on the length of var.clientIps - while true ; do ab -n 1000 -c 1000 https://a.b.c.d/ ; done
 - Spin up a jump server with ansible intalled - userdata to install packages - VMware dynamic inventory enabled/configured

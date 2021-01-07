@@ -1,11 +1,12 @@
 variable "vsphere_user" {}
 variable "vsphere_password" {}
 variable "vsphere_server" {}
+
 variable "nsx_user" {}
 variable "nsx_password" {}
 variable "nsx_server" {}
+
 variable "avi_password" {}
-variable "avi_controller" {}
 variable "avi_user" {}
 
 variable "vcenter" {
@@ -18,6 +19,14 @@ variable "vcenter" {
     folderApps = "Avi-Apps"
     folderAvi = "Avi-Controllers"
     folderSe = "Avi-SE" # this is referenced by vcenter_folder in the SE group
+  }
+}
+
+variable "contentLibrary" {
+  default = {
+    name = "Content Library Build Avi"
+    description = "Content Library Build Avi"
+    files = ["/home/christoph/Downloads/controller-20.1.2-9171.ova", "/home/christoph/Downloads/bionic-server-cloudimg-amd64.ova"] # keep the avi image first and the ubuntu image in the second position // don't change the name of the Avi OVA file
   }
 }
 
@@ -62,14 +71,6 @@ variable "avi_network_backend" {
   }
 }
 
-variable "contentLibrary" {
-  default = {
-    name = "Content Library Build Avi"
-    description = "Content Library Build Avi"
-    files = ["/home/christoph/Downloads/controller-20.1.2-9171.ova", "/home/christoph/Downloads/bionic-server-cloudimg-amd64.ova"] # keep the avi image first and the ubuntu image in the second position // don't change the name of the Avi OVA file
-  }
-}
-
 variable "controller" {
   default = {
     cpu = 8
@@ -92,11 +93,7 @@ variable "controller" {
     aviCredsJsonFile = "~/.avicreds.json"
   }
 }
-#
-variable "wait_for_guest_net_timeout" {
-  default = "5"
-}
-#
+
 variable "jump" {
   type = map
   default = {
@@ -164,8 +161,6 @@ variable "clientIps" {
   type = list
   default = ["10.7.4.10"]
 }
-
-
 
 variable "avi_cloud" {
   type = map
@@ -333,8 +328,6 @@ variable "domain" {
     name = "avi.altherr.info"
   }
 }
-
-
 
 variable "ansible" {
   type = map

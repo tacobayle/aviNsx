@@ -61,7 +61,7 @@ resource "nsxt_policy_segment" "networkBackend" {
 
 resource "nsxt_policy_segment" "networkMgmt" {
   display_name        = var.avi_cloud.network
-  connectivity_path   = data.nsxt_policy_tier1_gateway.avi_network_mgmt_tier1_router
+  connectivity_path   = data.nsxt_policy_tier1_gateway.avi_network_mgmt_tier1_router.path
   transport_zone_path = data.nsxt_policy_transport_zone.tz.path
   #domain_name         = "runvmc.local"
   description         = "Network Segment built by Terraform"

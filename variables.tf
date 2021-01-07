@@ -22,7 +22,7 @@ variable "vcenter" {
 
 variable "tier1" {
   default = {
-    name     = "N1-T1_AVI-VIP-A"
+    name     = "N1-T1_AVI"
     description = "Created by TF - For Avi Build"
     tier0 = "N1_T0"
     route_advertisement_types = ["TIER1_STATIC_ROUTES", "TIER1_CONNECTED"]
@@ -37,7 +37,7 @@ variable "avi_network_vip" {
   type = map
   default = {
     name = "N1-T1_Segment-VIP-A_10.7.4.0-24"
-    tier1 = "N1-T1_AVI-VIP-A"
+    tier1 = "N1-T1_AVI"
     cidr = "10.7.4.0/24"
     type = "V4"
     exclude_discovered_subnets = "true"
@@ -52,7 +52,7 @@ variable "avi_network_backend" {
   type = map
   default = {
     name = "N1-T1_Segment-Backend_10.7.6.0-24"
-    tier1 = "N1-T1_AVI-VIP-A"
+    tier1 = "N1-T1_AVI"
     cidr = "10.7.6.0/24"
     type = "V4"
     exclude_discovered_subnets = "true"
@@ -166,13 +166,14 @@ variable "avi_cloud" {
     name = "cloudNsxt"
     vtype = "CLOUD_NSXT"
     transportZone = "N1_TZ_nested_nsx-overlay"
-    network = "N1-T1_Segment-AVI-SE-Mgt_10.7.3.0-24"
+    cidr = "10.7.3.0/24"
+    network = "N1-T1_Segment-Mgmt-10.7.3.0-24"
     networkType = "V4"
     networkVrf = "management"
     networkRangeBegin = "11"
     networkRangeEnd = "50"
     dhcp_enabled = "false"
-    tier1 = "N1-T1_AVI-SE-Mgmt"
+    tier1 = "N1-T1_AVI"
     vcenterContentLibrary = "Avi SE Content Library"
     obj_name_prefix = "NSXTCLOUD"
   }

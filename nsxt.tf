@@ -28,6 +28,11 @@ data "nsxt_policy_tier1_gateway" "avi_network_backend_tier1_router" {
   display_name = var.avi_network_backend.tier1
 }
 
+data "nsxt_policy_tier1_gateway" "avi_network_mgmt_tier1_router" {
+  depends_on = [time_sleep.wait_10_seconds]
+  display_name = var.avi_cloud.tier1
+}
+
 resource "nsxt_policy_segment" "networkVip" {
   display_name        = var.avi_network_vip.name
   connectivity_path   = data.nsxt_policy_tier1_gateway.avi_network_vip_tier1_router.path
@@ -49,6 +54,19 @@ resource "nsxt_policy_segment" "networkBackend" {
   description         = "Network Segment built by Terraform"
   subnet {
     cidr        = "${cidrhost(var.avi_network_backend["cidr"], 1)}/${split("/", var.avi_network_backend["cidr"])[1]}"
+    //    dhcp_ranges = ["${cidrhost(var.networkBackend["cidr"], var.networkBackend["networkRangeBegin"])}-${cidrhost(var.networkBackend["cidr"], var.networkBackend["networkRangeEnd"])}"]
+
+  }
+}
+
+resource "nsxt_policy_segment" "networkMgmt" {
+  display_name        = var.avi_cloud.network
+  connectivity_path   = data.nsxt_policy_tier1_gateway.avi_network_mgmt_tier1_router
+  transport_zone_path = data.nsxt_policy_transport_zone.tz.path
+  #domain_name         = "runvmc.local"
+  description         = "Network Segment built by Terraform"
+  subnet {
+    cidr        = "${cidrhost(var.avi_cloud["cidr"], 1)}/${split("/", var.avi_cloud["cidr"])[1]}"
     //    dhcp_ranges = ["${cidrhost(var.networkBackend["cidr"], var.networkBackend["networkRangeBegin"])}-${cidrhost(var.networkBackend["cidr"], var.networkBackend["networkRangeEnd"])}"]
 
   }

@@ -42,7 +42,7 @@ resource "nsxt_policy_segment" "networkVip" {
 }
 
 resource "nsxt_policy_segment" "networkBackend" {
-  display_name        = var.avi_network_vip.name
+  display_name        = var.avi_network_backend.name
   connectivity_path   = data.nsxt_policy_tier1_gateway.avi_network_backend_tier1_router.path
   transport_zone_path = data.nsxt_policy_transport_zone.tz.path
   #domain_name         = "runvmc.local"

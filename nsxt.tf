@@ -7,8 +7,8 @@ data "nsxt_policy_tier0_gateway" "T0" {
 }
 
 resource "nsxt_policy_tier1_gateway" "tier1_gw" {
-  description               = var.tier1.name
-  display_name              = var.tier1.description
+  description               = var.tier1.description
+  display_name              = var.tier1.name
   tier0_path                = data.nsxt_policy_tier0_gateway.T0.path
   route_advertisement_types = var.tier1.route_advertisement_types
 }

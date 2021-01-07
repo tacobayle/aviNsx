@@ -29,11 +29,11 @@ resource "null_resource" "foo" {
     content      = <<EOF
 
 controller:
-  environment: ${var.controller["environment"]}
+  environment: ${var.controller.environment}
   username: ${var.avi_user}
   version: ${split("-", basename(var.contentLibrary.files[0]))[1]}
-  floatingIp: ${var.controller["floatingIp"]}
-  count: ${var.controller["count"]}
+  floatingIp: ${var.controller.floatingIp}
+  count: ${var.controller.count}
   password: ${var.avi_password}
 
 controllerPrivateIps:
@@ -49,12 +49,12 @@ avi_systemconfiguration:
     ntp_servers:
       - server:
           type: V4
-          addr: ${var.controller["ntpMain"]}
+          addr: ${var.controller.ntpMain}
   dns_configuration:
     search_domain: ''
     server_list:
       - type: V4
-        addr: ${var.controller["dnsMain"]}
+        addr: ${var.controller.dnsMain}
   email_configuration:
     from_email: test@avicontroller.net
     smtp_type: SMTP_LOCAL_HOST
@@ -63,17 +63,17 @@ nsxt:
   username: ${var.nsx_user}
   password: ${var.nsx_password}
   server: ${var.nsx_server}
-  name: ${var.avi_cloud["name"]}
-  transportZone: ${var.avi_cloud["transportZone"]}
-  tier1: ${var.avi_cloud["tier1"]}
-  dhcp_enabled: ${var.avi_cloud["dhcp_enabled"]}
-  network: ${var.avi_cloud["network"]}
-  networkType: ${var.avi_cloud["networkType"]}
-  networkRangeBegin: ${var.avi_cloud["networkRangeBegin"]}
-  networkRangeEnd: ${var.avi_cloud["networkRangeEnd"]}
-  networkVrf: ${var.avi_cloud["networkVrf"]}
+  name: ${var.avi_cloud.name}
+  transportZone: ${var.avi_cloud.transportZone}
+  tier1: ${var.avi_cloud.tier1}
+  dhcp_enabled: ${var.avi_cloud.dhcp_enabled}
+  network: ${var.avi_cloud.network}
+  networkType: ${var.avi_cloud.networkType}
+  networkRangeBegin: ${var.avi_cloud.networkRangeBegin}
+  networkRangeEnd: ${var.avi_cloud.networkRangeEnd}
+  networkVrf: ${var.avi_cloud.networkVrf}
   vcenterContentLibraryId: ${vsphere_content_library.libraryAviSe.id}
-  obj_name_prefix: ${var.avi_cloud["obj_name_prefix"]}
+  obj_name_prefix: ${var.avi_cloud.obj_name_prefix}
 
 vcenter:
   username: ${var.vsphere_user}
@@ -123,18 +123,17 @@ serviceEngineGroup:
       duration: 0
 
 domain:
-  name: ${var.domain["name"]}
+  name: ${var.domain.name}
 
 avi_network_vip:
-  name: ${var.avi_network_vip["name"]}
-  tier1: ${var.avi_network_vip["tier1"]}
-  dhcp_enabled: ${var.avi_network_vip["dhcp_enabled"]}
-  exclude_discovered_subnets: ${var.avi_network_vip["exclude_discovered_subnets"]}
-  vcenter_dvs: ${var.avi_network_vip["vcenter_dvs"]}
-  type: ${var.avi_network_vip["type"]}
-  networkRangeBegin: ${var.avi_network_vip["networkRangeBegin"]}
-  networkRangeEnd: ${var.avi_network_vip["networkRangeEnd"]}
-  gwAddr: ${var.avi_network_vip["gwAddr"]}
+  name: ${var.avi_network_vip.name}
+  tier1: ${var.avi_network_vip.tier1}
+  dhcp_enabled: ${var.avi_network_vip.dhcp_enabled}
+  exclude_discovered_subnets: ${var.avi_network_vip.exclude_discovered_subnets}
+  vcenter_dvs: ${var.avi_network_vip.vcenter_dvs}
+  type: ${var.avi_network_vip.type}
+  networkRangeBegin: ${var.avi_network_vip.networkRangeBegin}
+  networkRangeEnd: ${var.avi_network_vip.networkRangeEnd}
 
 avi_network_backend:
   name: ${var.backend["network"]}

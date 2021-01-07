@@ -20,6 +20,15 @@ variable "vcenter" {
   }
 }
 
+variable "tier1" {
+  default = {
+    name     = "N1-T1_AVI-VIP-A"
+    description = "Created by TF - For Avi Build"
+    tier0 = "N1_T0"
+    route_advertisement_types = ["TIER1_STATIC_ROUTES", "TIER1_CONNECTED"]
+  }
+}
+
 variable "networkMgt" {
   default     = "N1_vds-01_management"
 }
@@ -190,7 +199,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.32"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v3.14"
+    aviConfigureTag = "v3.15"
     version = "2.9.12"
   }
 }

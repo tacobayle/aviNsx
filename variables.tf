@@ -50,6 +50,21 @@ variable "avi_network_backend" {
   }
 }
 
+variable "networkBackend" {
+  type = map
+  default = {
+    name     = "avi-backend"
+    cidr = "10.1.2.0/24"
+    networkRangeBegin = "11" # for NSX-T segment if DHCP enabled
+    networkRangeEnd = "50" # for NSX-T segment if DHCP enabled
+    type = "V4" # for Avi
+    dhcp_enabled = "false" # for Avi
+    exclude_discovered_subnets = "true" # for Avi
+    vcenter_dvs = "true" # for Avi
+  }
+}
+
+
 variable "contentLibrary" {
   default = {
     name = "Content Library Build Avi"
@@ -188,7 +203,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.32"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v3.12"
+    aviConfigureTag = "v3.13"
     version = "2.9.12"
   }
 }

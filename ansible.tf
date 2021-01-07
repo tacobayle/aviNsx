@@ -63,15 +63,7 @@ nsxt:
   username: ${var.nsx_user}
   password: ${var.nsx_password}
   server: ${var.nsx_server}
-
-vcenter:
-  username: ${var.vsphere_user}
-  password: ${var.vsphere_password}
-  server: ${var.vsphere_server}
-
-avi_cloud:
   name: ${var.avi_cloud["name"]}
-  vtype: ${var.avi_cloud["vtype"]}
   transportZone: ${var.avi_cloud["transportZone"]}
   tier1: ${var.avi_cloud["tier1"]}
   dhcp_enabled: ${var.avi_cloud["dhcp_enabled"]}
@@ -82,6 +74,11 @@ avi_cloud:
   networkVrf: ${var.avi_cloud["networkVrf"]}
   vcenterContentLibraryId: ${vsphere_content_library.libraryAviSe.id}
   obj_name_prefix: ${var.avi_cloud["obj_name_prefix"]}
+
+vcenter:
+  username: ${var.vsphere_user}
+  password: ${var.vsphere_password}
+  server: ${var.vsphere_server}
 
 serviceEngineGroup:
   - name: &segroup0 Default-Group

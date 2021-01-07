@@ -14,6 +14,19 @@ data "nsxt_policy_transport_zone" "tz" {
 //  }
 //}
 
+resource "nsxt_policy_segment" "networkBackend" {
+  display_name        = var.networkBackend["name"]
+//  connectivity_path   = "/infra/tier-1s/cgw"
+  transport_zone_path = data.nsxt_policy_transport_zone.tz.path
+  #domain_name         = "runvmc.local"
+  description         = "Network Segment built by Terraform for Avi"
+  subnet {
+    cidr        = "${cidrhost(var.networkBackend["cidr"], 1)}/${split("/", var.networkBackend["cidr"])[1]}"
+//    dhcp_ranges = ["${cidrhost(var.networkBackend["cidr"], var.networkBackend["networkRangeBegin"])}-${cidrhost(var.networkBackend["cidr"], var.networkBackend["networkRangeEnd"])}"]
+
+  }
+}
+
 
 resource "nsxt_vm_tags" "backendTags" {
   count = length(var.backendIps)

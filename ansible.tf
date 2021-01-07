@@ -59,7 +59,7 @@ avi_systemconfiguration:
     from_email: test@avicontroller.net
     smtp_type: SMTP_LOCAL_HOST
 
-nsx:
+nsxt:
   username: ${var.nsx_user}
   password: ${var.nsx_password}
   server: ${var.nsx_server}

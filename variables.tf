@@ -335,7 +335,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.32"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v3.3"
+    aviConfigureTag = "v3.31"
     version = "2.9.12"
     jsonFile = "~/ansible/fromTf.json"
     yamlFile = "~/ansible/fromTf.yml"

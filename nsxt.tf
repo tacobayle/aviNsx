@@ -83,7 +83,7 @@ resource "nsxt_policy_group" "backend" {
 
   criteria {
     condition {
-      key = "tag"
+      key = "Tag"
       member_type = "VirtualMachine"
       operator = "EQUALS"
       value = var.backend.nsxtGroup.tag

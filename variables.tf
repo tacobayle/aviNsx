@@ -40,7 +40,7 @@ variable "tier1" {
 }
 
 variable "networkMgt" {
-  default     = "N1_vds-01_management"
+  default     = "N1-T0_Segment-01_10.7.1.0-24"
 }
 
 variable "avi_network_vip" {
@@ -77,12 +77,12 @@ variable "controller" {
     memory = 24768
     disk = 128
     count = "1"
-    floatingIp = "10.0.0.200"
+    floatingIp = "10.7.1.200"
     wait_for_guest_net_timeout = 2
     private_key_path = "~/.ssh/cloudKey"
-    mgmt_ip = "10.0.0.201"
+    mgmt_ip = "10.7.1.201"
     mgmt_mask = "255.255.255.0"
-    default_gw = "10.0.0.1"
+    default_gw = "10.7.1.1"
     dns = ["172.18.0.15"]
     ntp = ["172.18.0.15"]
     environment = "VMWARE"
@@ -106,9 +106,9 @@ variable "jump" {
     wait_for_guest_net_routable = "false"
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     aviSdkVersion = "18.2.9"
-    ipCidr = "10.0.0.210/24"
+    ipCidr = "10.7.1.210/24"
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
-    defaultGw = "10.0.0.1"
+    defaultGw = "10.7.1.1"
     dnsMain = "172.18.0.15"
     username = "ubuntu"
   }

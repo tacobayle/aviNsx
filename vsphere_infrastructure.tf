@@ -18,7 +18,7 @@ data "vsphere_resource_pool" "pool" {
 }
 
 data "vsphere_network" "networkMgt" {
-  name = var.networkMgt
+  name = var.networkMgt.name
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 

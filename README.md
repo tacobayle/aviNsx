@@ -28,6 +28,12 @@ TF_VAR_avi_controller=******
 ```
 files = ["/home/christoph/Downloads/controller-20.1.3-9085.ova", "/home/christoph/Downloads/bionic-server-cloudimg-amd64.ova"] # keep the avi image first and the ubuntu image in the second position // don't change the name of the Avi OVA file
 ```
+- ssh key configured for:
+```
+var.jump.public_key_path
+var.jump.private_key_path
+
+```
 
 ## Environment:
 
@@ -65,7 +71,7 @@ NSX 3.1.0.0
 - All the paramaters/variables are stored in variables.tf
 
 ## Use the the terraform plan to:
-- Create a new folder
+- Create new folders in vSphere
 - Spin up n Avi Controller - count based on var.controller.count
 - Spin up n backend VM(s) - count based on the length of var.backendIps - Assign  NSXT tag
 - Spin up n client server(s) - count based on the length of var.clientIps - while true ; do ab -n 1000 -c 1000 https://a.b.c.d/ ; done

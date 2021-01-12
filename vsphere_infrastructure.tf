@@ -18,6 +18,7 @@ data "vsphere_resource_pool" "pool" {
 }
 
 data "vsphere_network" "networkMgt" {
+  depends_on = [time_sleep.wait_segment]
   name = var.networkMgt.name
   datacenter_id = data.vsphere_datacenter.dc.id
 }

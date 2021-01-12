@@ -40,7 +40,12 @@ variable "tier1" {
 }
 
 variable "networkMgt" {
-  default     = "N1-T0_Segment-01_10.7.1.0-24"
+  type = map
+  default     = {
+    name = "N1-T1_Segment-01_10.7.1.0-24"
+    tier1 = "N1-T1_AVI"
+    cidr = "10.7.1.0/24"
+  }
 }
 
 variable "avi_network_vip" {
@@ -333,7 +338,7 @@ variable "ansible" {
   type = map
   default = {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
-    aviPbAbsentTag = "v1.32"
+    aviPbAbsentTag = "v1.43"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
     aviConfigureTag = "v3.35"
     version = "2.9.12"

@@ -23,12 +23,11 @@ TF_VAR_avi_user=******
 TF_VAR_avi_password=******
 TF_VAR_avi_controller=******
 ```
-- avi_network_vip segment configured on NSXT
-- avi_network_backend segment configured on NSXT
-- avi_network_management segment configured on NSXT
-- Make sure an NSXT group has been created: with DFW rules associated and tag associated with it
-- Make sure you have the following files available in your TF VM:
-files = ["/home/ubuntu/controller-20.1.2-9171.ova", "/home/ubuntu/bionic-server-cloudimg-amd64.ova"]
+- tier0 router deployed and need to be configured in var.tier1.tier0
+- following files available in your TF VM:
+```
+files = ["/home/christoph/Downloads/controller-20.1.3-9085.ova", "/home/christoph/Downloads/bionic-server-cloudimg-amd64.ova"] # keep the avi image first and the ubuntu image in the second position // don't change the name of the Avi OVA file
+```
 
 ## Environment:
 
@@ -47,7 +46,7 @@ Your version of Terraform is out of date! The latest version is 0.13.2. You can 
 
 ### Avi version
 ```
-Avi 20.1.1 with one controller node
+Avi 20.1.3 with one controller node
 ```
 
 ### V-center/ESXi version:
@@ -58,7 +57,7 @@ ESXi host - 7.0.0 Build 16324942
 
 ### NSXT version:
 ```
-NSX 3.0.1.1
+NSX 3.1.0.0
 ```
 
 ## Input/Parameters:

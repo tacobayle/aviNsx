@@ -119,6 +119,20 @@ variable "jump" {
   }
 }
 
+variable "ansible" {
+  type = map
+  default = {
+    aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
+    aviPbAbsentTag = "v1.43"
+    aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
+    aviConfigureTag = "v3.35"
+    version = "2.9.12"
+    jsonFile = "~/ansible/fromTf.json"
+    yamlFile = "~/ansible/fromTf.yml"
+    directory = "ansible"
+  }
+}
+
 variable "backend" {
   default = {
     cpu = 1
@@ -331,19 +345,5 @@ variable "domain" {
   type = map
   default = {
     name = "avi.altherr.info"
-  }
-}
-
-variable "ansible" {
-  type = map
-  default = {
-    aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
-    aviPbAbsentTag = "v1.43"
-    aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v3.35"
-    version = "2.9.12"
-    jsonFile = "~/ansible/fromTf.json"
-    yamlFile = "~/ansible/fromTf.yml"
-    directory = "ansible"
   }
 }

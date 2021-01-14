@@ -35,7 +35,7 @@ variable "tier1" {
     name     = "N1-T1_AVI"
     description = "Created by TF - For Avi Build"
     tier0 = "N1_T0"
-    route_advertisement_types = ["TIER1_STATIC_ROUTES", "TIER1_CONNECTED"]
+    route_advertisement_types = ["TIER1_STATIC_ROUTES", "TIER1_CONNECTED", "TIER1_LB_VIP"] # TIER1_LB_VIP needs to be tested - 20.1.3 TOI
   }
 }
 

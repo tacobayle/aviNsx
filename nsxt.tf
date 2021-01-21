@@ -1,5 +1,5 @@
 data "nsxt_policy_transport_zone" "tz" {
-  display_name = var.nsxt.transport_zone
+  display_name = var.nsxt.transport_zone.name
 }
 
 data "nsxt_policy_tier0_gateway" "tier0" {

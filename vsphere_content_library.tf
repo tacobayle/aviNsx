@@ -5,9 +5,9 @@ resource "vsphere_content_library" "library" {
 }
 
 resource "vsphere_content_library" "libraryAviSe" {
-  name            = var.avi_cloud.vcenterContentLibrary
+  name            = var.nsxt.vcenter.content_library.name
   storage_backing = [data.vsphere_datastore.datastore.id]
-  description     = var.avi_cloud.vcenterContentLibrary
+  description     = var.nsxt.vcenter.content_library.description
 }
 
 resource "vsphere_content_library_item" "files" {

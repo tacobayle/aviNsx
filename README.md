@@ -8,20 +8,22 @@ Spin up a full VMware/Avi environment (through Terraform) with V-center and NSX-
 - credential/details configured as environment variables for vCenter:
 ```
 TF_VAR_vsphere_user=******
-TF_VAR_vsphere_server=******
 TF_VAR_vsphere_password=******
 ```
 - credential/details configured as environment variables for NSX-T:
 ```
 TF_VAR_nsx_user=******
 TF_VAR_nsx_password=******
-TF_VAR_nsx_server=******
+```
+- credential/details configured as environment variables for the V-center(s) associated to NSX-T in the AVI cloud:
+```
+TF_VAR_nsx_vsphere_user=******
+TF_VAR_nsx_vsphere_password=******
 ```
 - credential/details configured as environment variables for Avi:
 ```
-TF_VAR_avi_user=******
+TF_VAR_avi_username=******
 TF_VAR_avi_password=******
-TF_VAR_avi_controller=******
 ```
 - tier0 router deployed (connected to the physical network) and the name of the tier 0 router needs to be configured in var.tier1.tier0
 - following files available in your TF VM and need to be configured in var.contentLibrary.files:

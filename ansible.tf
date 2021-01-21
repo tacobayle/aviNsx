@@ -25,78 +25,10 @@ resource "null_resource" "foo" {
     destination = "~/ansible"
   }
 
-  provisioner "file" {
-    content      = <<EOF
-
-controller:
-  environment: ${var.controller.environment}
-  username: ${var.avi_user}
-  version: ${split("-", basename(var.contentLibrary.files[0]))[1]}
-  floatingIp: ${var.controller.floatingIp}
-  count: ${var.controller.count}
-  password: ${var.avi_password}
-  from_email: ${var.controller.from_email}
-  se_in_provider_context: ${var.controller.se_in_provider_context}
-  tenant_access_to_provider_se: ${var.controller.tenant_access_to_provider_se}
-  tenant_vrf: ${var.controller.tenant_vrf}
-  aviCredsJsonFile: ${var.controller.aviCredsJsonFile}
-
-controllerPrivateIps:
-${yamlencode(vsphere_virtual_machine.controller.*.default_ip_address)}
-
-ntpServers:
-${yamlencode(var.controller.ntp.*)}
-
-dnsServers:
-${yamlencode(var.controller.dns.*)}
-
-nsxt:
-  username: ${var.nsx_user}
-  password: ${var.nsx_password}
-  server: ${var.nsx_server}
-  name: ${var.avi_cloud.name}
-  transportZone: ${var.avi_cloud.transportZone}
-  tier1: ${var.avi_cloud.tier1}
-  dhcp_enabled: ${var.avi_cloud.dhcp_enabled}
-  network: ${var.avi_cloud.network}
-  networkType: ${var.avi_cloud.networkType}
-  networkRangeBegin: ${var.avi_cloud.networkRangeBegin}
-  networkRangeEnd: ${var.avi_cloud.networkRangeEnd}
-  networkVrf: ${var.avi_cloud.networkVrf}
-  vcenterContentLibrary: ${var.avi_cloud.vcenterContentLibrary}
-  obj_name_prefix: ${var.avi_cloud.obj_name_prefix}
-
-vcenter:
-  username: ${var.vsphere_user}
-  password: ${var.vsphere_password}
-  server: ${var.vsphere_server}
-
-domain:
-  name: ${var.domain.name}
-
-avi_servers:
-${yamlencode(var.backendIps)}
-
-avi_pool_nsxtGroup:
-  - name: pool2BasedOnNsxtGroup
-    id: ${nsxt_policy_group.backend.id}
-    cloud_ref: ${var.avi_cloud.name}
-
-EOF
-    destination = var.ansible.yamlFile
-  }
-
-  provisioner "file" {
-    content = <<EOF
-{"serviceEngineGroup": ${jsonencode(var.serviceEngineGroup)}, "avi_virtualservice": ${jsonencode(var.avi_virtualservice)}, "avi_network_vip": ${jsonencode(var.avi_network_vip)}, "avi_network_backend": ${jsonencode(var.avi_network_backend)}, "avi_pool": ${jsonencode(var.avi_pool)}}
-EOF
-    destination = var.ansible.jsonFile
-  }
-
   provisioner "remote-exec" {
     inline      = [
       "chmod 600 ~/.ssh/${basename(var.jump["private_key_path"])}",
-      "cd ~/ansible ; git clone ${var.ansible.aviConfigureUrl} --branch ${var.ansible.aviConfigureTag} ; cd ${split("/", var.ansible.aviConfigureUrl)[4]} ; ansible-playbook -i /opt/ansible/inventory/inventory.vmware.yml local.yml --extra-vars @${var.ansible.jsonFile} --extra-vars @${var.ansible.yamlFile}",
+      "cd ~/ansible ; git clone ${var.ansible.aviConfigureUrl} --branch ${var.ansible.aviConfigureTag} ; cd ${split("/", var.ansible.aviConfigureUrl)[4]} ; ansible-playbook -i /opt/ansible/inventory/inventory.vmware.yml local.yml --extra-vars '{\"avi_username\": ${jsonencode(var.avi_username)}, \"avi_password\": ${jsonencode(var.avi_password)}, \"avi_version\": ${split("-", basename(var.contentLibrary.files[0]))[1]}, \"controllerPrivateIps\": ${jsonencode(vsphere_virtual_machine.controller.*.default_ip_address)}, \"controller\": ${jsonencode(var.controller)}, \"nsx_user\": ${jsonencode(var.nsx_user)}, \"nsx_password\": ${jsonencode(var.nsx_password)}, \"nsx_vsphere_user\": ${jsonencode(var.nsx_vsphere_user)}, \"nsx_vsphere_password\": ${jsonencode(var.nsx_vsphere_password)}, \"nsxt\": ${jsonencode(var.nsxt)}, \"domain\": ${jsonencode(var.domain)}, \"avi_backend_servers_nsxt\": ${jsonencode(var.backendIps)}}'",
     ]
   }
 }

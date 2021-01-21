@@ -21,6 +21,6 @@ output "loadcommand" {
 }
 
 output "destroy" {
-  value = "ssh -o StrictHostKeyChecking=no -i ${var.jump.private_key_path} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible.aviPbAbsentUrl} --branch ${var.ansible.aviPbAbsentTag} ; cd ${split("/", var.ansible.aviPbAbsentUrl)[4]} ; ansible-playbook local.yml --extra-vars @${var.controller.aviCredsJsonFile} --extra-vars @${var.ansible.jsonFile} --extra-vars @${var.ansible.yamlFile}' ; sleep 20 ; terraform destroy -auto-approve"
+  value = "ssh -o StrictHostKeyChecking=no -i ${var.jump.private_key_path} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible.aviPbAbsentUrl} --branch ${var.ansible.aviPbAbsentTag} ; cd ${split("/", var.ansible.aviPbAbsentUrl)[4]} ; ansible-playbook local.yml --extra-vars @${var.controller.aviCredsJsonFile}' ; sleep 20 ; terraform destroy -auto-approve"
   description = "command to destroy the infra"
 }

@@ -16,7 +16,7 @@ data "template_file" "jumpbox_userdata" {
     netplanFile = var.jump["netplanFile"]
     vsphere_user  = var.vsphere_user
     vsphere_password = var.vsphere_password
-    vsphere_server = var.vsphere_server
+    vsphere_server = var.vcenter.server
     username = var.jump["username"]
     privateKey = var.jump["private_key_path"]
   }

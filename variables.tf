@@ -90,7 +90,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.43"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v3.63"
+    aviConfigureTag = "v3.64"
     version = "2.9.12"
     directory = "ansible"
   }
@@ -150,6 +150,11 @@ variable "nsxt" {
     server = "10.0.0.20"
     dhcp_enabled = "false"
     obj_name_prefix = "AVINSXT"
+    domains = [
+      {
+        name = "avi.altherr.info"
+      }
+    ]
     transport_zone = {
       name = "N1_TZ_nested_nsx-overlay"
     }
@@ -323,12 +328,5 @@ variable "nsxt" {
         }
       ]
     }
-  }
-}
-
-variable "domain" {
-  type = map
-  default = {
-    name = "avi.altherr.info"
   }
 }

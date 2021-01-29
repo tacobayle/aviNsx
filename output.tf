@@ -21,6 +21,6 @@ output "loadcommand" {
 }
 
 output "Destroy_Command_Below" {
-  value = "\nssh -o StrictHostKeyChecking=no -i ${var.jump.private_key_path} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible.aviPbAbsentUrl} --branch ${var.ansible.aviPbAbsentTag} ; cd ${split("/", var.ansible.aviPbAbsentUrl)[4]} ; ansible-playbook local.yml --extra-vars @${var.controller.aviCredsJsonFile}' ; sleep 20 ; terraform destroy -auto-approve\n"
+  value = "\nPlease run this command in your aviNsx directory:\nssh -o StrictHostKeyChecking=no -i ${var.jump.private_key_path} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible.aviPbAbsentUrl} --branch ${var.ansible.aviPbAbsentTag} ; cd ${split("/", var.ansible.aviPbAbsentUrl)[4]} ; ansible-playbook local.yml --extra-vars @${var.controller.aviCredsJsonFile}' ; sleep 20 ; terraform destroy -auto-approve\n"
   description = "command to destroy the infra"
 }

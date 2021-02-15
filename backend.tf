@@ -14,6 +14,8 @@ data "template_file" "backend_userdata" {
     netplanFile  = var.backend["netplanFile"]
     dnsMain      = var.backend["dnsMain"]
     dnsSec       = var.backend["dnsSec"]
+    url_demovip_server = var.backend.url_demovip_server
+    username = var.backend.username
   }
 }
 
@@ -66,7 +68,7 @@ resource "vsphere_virtual_machine" "backend" {
     host        = element(var.backendIps, count.index)
     type        = "ssh"
     agent       = false
-    user        = "ubuntu"
+    user        = var.backend.username
     private_key = file(var.jump["private_key_path"])
     }
 

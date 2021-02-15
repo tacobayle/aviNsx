@@ -88,9 +88,9 @@ variable "ansible" {
   type = map
   default = {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
-    aviPbAbsentTag = "v1.48"
+    aviPbAbsentTag = "v1.49"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v3.99"
+    aviConfigureTag = "v4.25"
     version = "2.9.12"
     directory = "ansible"
   }
@@ -106,6 +106,8 @@ variable "backend" {
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
     defaultGw = "10.7.6.1"
+    url_demovip_server = "https://github.com/tacobayle/demovip_server"
+    username = "ubuntu"
     dnsMain = "172.18.0.15"
     dnsSec = "10.206.8.131"
     subnetMask = "/24"
@@ -253,20 +255,92 @@ variable "nsxt" {
         }
       }
     ]
-    pool = {
-      name = "pool1"
-      lb_algorithm = "LB_ALGORITHM_ROUND_ROBIN"
-    }
+    httppolicyset = [
+      {
+        name = "http-request-policy-app3-content-switching-nsxt"
+        http_request_policy = {
+          rules = [
+            {
+              name = "Rule 1"
+              match = {
+                path = {
+                  match_criteria = "CONTAINS"
+                  match_str = ["hello", "world"]
+                }
+              }
+              rewrite_url_action = {
+                path = {
+                  type = "URI_PARAM_TYPE_TOKENIZED"
+                  tokens = [
+                    {
+                      type = "URI_TOKEN_TYPE_STRING"
+                      str_value = "index.html"
+                    }
+                  ]
+                }
+                query = {
+                  keep_query = true
+                }
+              }
+              switching_action = {
+                action = "HTTP_SWITCHING_SELECT_POOL"
+                status_code = "HTTP_LOCAL_RESPONSE_STATUS_CODE_200"
+                pool_ref = "/api/pool?name=pool1-hello-nsxt"
+              }
+            },
+            {
+              name = "Rule 2"
+              match = {
+                path = {
+                  match_criteria = "CONTAINS"
+                  match_str = ["avi"]
+                }
+              }
+              rewrite_url_action = {
+                path = {
+                  type = "URI_PARAM_TYPE_TOKENIZED"
+                  tokens = [
+                    {
+                      type = "URI_TOKEN_TYPE_STRING"
+                      str_value = ""
+                    }
+                  ]
+                }
+                query = {
+                  keep_query = true
+                }
+              }
+              switching_action = {
+                action = "HTTP_SWITCHING_SELECT_POOL"
+                status_code = "HTTP_LOCAL_RESPONSE_STATUS_CODE_200"
+                pool_ref = "/api/pool?name=pool2-avi-nsxt"
+              }
+            },
+          ]
+        }
+      }
+    ]
+    pools = [
+      {
+        name = "pool1-hello-nsxt"
+        lb_algorithm = "LB_ALGORITHM_ROUND_ROBIN"
+      },
+      {
+        name = "pool2-avi-nsxt"
+        application_persistence_profile_ref = "System-Persistence-Client-IP"
+        default_server_port = 8080
+      }
+    ]
     pool_nsxt_group = {
-      name = "pool2BasedOnNsxtGroup"
+      name = "pool3BasedOnNsxtGroup"
       lb_algorithm = "LB_ALGORITHM_ROUND_ROBIN"
       nsxt_group_name = "n1-avi-backend"
     }
     virtualservices = {
       http = [
         {
-          name = "app1"
-          pool_ref = "pool1"
+          name = "app1-hello-world-nsxt"
+          pool_ref = "pool1-hello-nsxt"
           services: [
             {
               port = 80
@@ -279,8 +353,42 @@ variable "nsxt" {
           ]
         },
         {
-          name = "app2-se-cpu-auto-scale"
-          pool_ref = "pool1"
+          name = "app2-avi-nsxt"
+          pool_ref = "pool2-avi-nsxt"
+          services: [
+            {
+              port = 80
+              enable_ssl = "false"
+            },
+            {
+              port = 443
+              enable_ssl = "true"
+            }
+          ]
+        },
+        {
+          name = "app3-content-switching-nsxt"
+          pool_ref = "pool2-avi-nsxt"
+          http_policies = [
+            {
+              http_policy_set_ref = "/api/httppolicyset?name=http-request-policy-app3-content-switching-nsxt"
+              index = 11
+            }
+          ]
+          services: [
+            {
+              port = 80
+              enable_ssl = "false"
+            },
+            {
+              port = 443
+              enable_ssl = "true"
+            }
+          ]
+        },
+        {
+          name = "app4-se-cpu-auto-scale-nsxt"
+          pool_ref = "pool1-hello-nsxt"
           services: [
             {
               port = 80
@@ -294,8 +402,8 @@ variable "nsxt" {
           se_group_ref: "seGroupCpuAutoScale"
         },
         {
-          name = "app3-nsxtGroupBased"
-          pool_ref = "pool2BasedOnNsxtGroup"
+          name = "app5-nsxtGroupBased"
+          pool_ref = "pool3BasedOnNsxtGroup"
           services: [
             {
               port = 80
@@ -310,7 +418,7 @@ variable "nsxt" {
       ]
       dns = [
         {
-          name = "app4-dns"
+          name = "app6-dns"
           services: [
             {
               port = 53
@@ -318,7 +426,7 @@ variable "nsxt" {
           ]
         },
         {
-          name = "app5-gslb"
+          name = "app7-gslb"
           services: [
             {
               port = 53

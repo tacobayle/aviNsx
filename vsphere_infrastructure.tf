@@ -47,8 +47,9 @@ resource "vsphere_folder" "folderApps" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-resource "vsphere_folder" "folderSe" {
-  path          = var.vcenter.folderSe
+resource "vsphere_folder" "folderSes" {
+  count = length(var.nsxt.vcenter.serviceEngineGroup)
+  path          = var.nsxt.vcenter.serviceEngineGroup[count.index].vcenter_folder
   type          = "vm"
   datacenter_id = data.vsphere_datacenter.dc.id
 }

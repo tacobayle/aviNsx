@@ -20,7 +20,6 @@ variable "vcenter" {
     resource_pool = "N1-Cluster1/Resources"
     folderApps = "Avi-Apps"
     folderAvi = "Avi-Controllers"
-    folderSe = "Avi-SE" # this is referenced by vcenter_folder in the SE group
   }
 }
 
@@ -90,7 +89,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.49"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v4.25"
+    aviConfigureTag = "v4.26"
     version = "2.9.12"
     directory = "ansible"
   }
@@ -198,63 +197,64 @@ variable "nsxt" {
     }
     vcenter = {
       server = "10.0.0.10"
+      name = "vcenter-server-A"
       content_library = {
         name = "Avi SE Content Library"
         description = "TF built - Avi SE Content Library"
       }
+      serviceEngineGroup = [
+        {
+          name = "Default-Group"
+          ha_mode = "HA_MODE_SHARED"
+          min_scaleout_per_vs = 2
+          buffer_se = 1
+          extra_shared_config_memory = 0
+          vcenter_folder = "Avi-SE-Default-Group"
+          vcpus_per_se = 1
+          memory_per_se = 2048
+          disk_per_se = 25
+          realtime_se_metrics = {
+            enabled = true
+            duration = 0
+          }
+        },
+        {
+          name = "seGroupCpuAutoScale"
+          ha_mode = "HA_MODE_SHARED"
+          min_scaleout_per_vs = 2
+          buffer_se = 0
+          extra_shared_config_memory = 0
+          vcenter_folder = "Avi-SE-Autoscale"
+          vcpus_per_se = 1
+          memory_per_se = 1024
+          disk_per_se = 25
+          auto_rebalance = true
+          auto_rebalance_interval = 30
+          auto_rebalance_criteria = [
+            "SE_AUTO_REBALANCE_CPU"
+          ]
+          realtime_se_metrics = {
+            enabled = true
+            duration = 0
+          }
+        },
+        {
+          name = "seGroupGslb"
+          ha_mode = "HA_MODE_SHARED"
+          min_scaleout_per_vs = 1
+          buffer_se = 0
+          extra_shared_config_memory = 2000
+          vcenter_folder = "Avi-SE-GSLB"
+          vcpus_per_se = 2
+          memory_per_se = 8192
+          disk_per_se = 25
+          realtime_se_metrics = {
+            enabled = true
+            duration = 0
+          }
+        }
+      ]
     }
-    serviceEngineGroup = [
-      {
-        name = "Default-Group"
-        ha_mode = "HA_MODE_SHARED"
-        min_scaleout_per_vs = 2
-        buffer_se = 1
-        extra_shared_config_memory = 0
-        vcenter_folder = "Avi-SE"
-        vcpus_per_se = 1
-        memory_per_se = 2048
-        disk_per_se = 25
-        realtime_se_metrics = {
-          enabled = true
-          duration = 0
-        }
-      },
-      {
-        name = "seGroupCpuAutoScale"
-        ha_mode = "HA_MODE_SHARED"
-        min_scaleout_per_vs = 2
-        buffer_se = 0
-        extra_shared_config_memory = 0
-        vcenter_folder = "Avi-SE"
-        vcpus_per_se = 1
-        memory_per_se = 1024
-        disk_per_se = 25
-        auto_rebalance = true
-        auto_rebalance_interval = 30
-        auto_rebalance_criteria = [
-          "SE_AUTO_REBALANCE_CPU"
-        ]
-        realtime_se_metrics = {
-          enabled = true
-          duration = 0
-        }
-      },
-      {
-        name = "seGroupGslb"
-        ha_mode = "HA_MODE_SHARED"
-        min_scaleout_per_vs = 1
-        buffer_se = 0
-        extra_shared_config_memory = 2000
-        vcenter_folder = "Avi-SE"
-        vcpus_per_se = 2
-        memory_per_se = 8192
-        disk_per_se = 25
-        realtime_se_metrics = {
-          enabled = true
-          duration = 0
-        }
-      }
-    ]
     httppolicyset = [
       {
         name = "http-request-policy-app3-content-switching-nsxt"

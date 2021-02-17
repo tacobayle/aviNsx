@@ -23,7 +23,7 @@ write_files:
       echo "    ethernets:" | sudo tee -a ${netplanFile}
       echo "        $iface:" | sudo tee -a ${netplanFile}
       echo "            dhcp4: false" | sudo tee -a ${netplanFile}
-      echo "            addresses: [${ipCidr}]" | sudo tee -a ${netplanFile}
+      echo "            addresses: [${ip}${subnetMask}]" | sudo tee -a ${netplanFile}
       echo "            match:" | sudo tee -a ${netplanFile}
       echo "                macaddress: $mac" | sudo tee -a ${netplanFile}
       echo "            set-name: $iface" | sudo tee -a ${netplanFile}

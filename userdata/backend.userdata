@@ -32,6 +32,10 @@ write_files:
       echo "              addresses: [${dnsMain}]" | sudo tee -a ${netplanFile}
       echo "    version: 2" | sudo tee -a ${netplanFile}
       sudo netplan apply
+      sudo ip link set $iface down
+      sudo ip link set $iface up
+      sudo ip address add ${ip}${subnetMask} dev $iface
+      sudo ip route add default via ${defaultGw}
       #echo "${ip} $hostname" | sudo tee -a /etc/hosts
       #cp ${netplanFile} ${netplanFile}.old
       #echo "network:" | sudo tee ${netplanFile}

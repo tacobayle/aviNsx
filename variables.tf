@@ -87,7 +87,7 @@ variable "ansible" {
   type = map
   default = {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
-    aviPbAbsentTag = "v1.49"
+    aviPbAbsentTag = "v1.5"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
     aviConfigureTag = "v4.27"
     version = "2.9.12"

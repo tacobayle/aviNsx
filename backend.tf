@@ -36,7 +36,6 @@ resource "vsphere_virtual_machine" "backend" {
   wait_for_guest_net_routable = var.backend["wait_for_guest_net_routable"]
   guest_id = "guestid-backend-${count.index}"
 
-
   disk {
     size             = var.backend["disk"]
     label            = "backend-${count.index}.lab_vmdk"
@@ -54,7 +53,6 @@ resource "vsphere_virtual_machine" "backend" {
   tags = [
         vsphere_tag.ansible_group_backend.id,
   ]
-
 
   vapp {
     properties = {

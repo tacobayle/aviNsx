@@ -82,7 +82,7 @@ resource "nsxt_policy_segment" "networkMgmt" {
 
 resource "time_sleep" "wait_segment" {
   depends_on = [nsxt_policy_segment.networkVip, nsxt_policy_segment.networkBackend, nsxt_policy_segment.networkMgmt, nsxt_policy_segment.networkMgt]
-  create_duration = "5s"
+  create_duration = "20s"
 }
 
 resource "nsxt_policy_group" "backend" {

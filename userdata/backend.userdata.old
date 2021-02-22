@@ -1,6 +1,6 @@
 #cloud-config
 users:
-  - name: ubuntu
+  - name: ${username}
     lock_passwd: true
     shell: /bin/bash
     sudo:  ALL=(ALL) NOPASSWD:ALL
@@ -23,17 +23,38 @@ write_files:
       echo "    ethernets:" | sudo tee -a ${netplanFile}
       echo "        $iface:" | sudo tee -a ${netplanFile}
       echo "            dhcp4: false" | sudo tee -a ${netplanFile}
+      echo "            addresses: [${ip}${subnetMask}]" | sudo tee -a ${netplanFile}
       echo "            match:" | sudo tee -a ${netplanFile}
       echo "                macaddress: $mac" | sudo tee -a ${netplanFile}
       echo "            set-name: $iface" | sudo tee -a ${netplanFile}
-      echo "    version: 2" | sudo tee -a ${netplanFile}
+      #echo "            gateway4: ${defaultGw}" | sudo tee -a ${netplanFile}
+      #echo "            nameservers:" | sudo tee -a ${netplanFile}
+      #echo "              addresses: [${dnsMain}]" | sudo tee -a ${netplanFile}
+      #echo "    version: 2" | sudo tee -a ${netplanFile}
       sudo netplan apply
       sudo ip link set $iface down
       sudo ip link set $iface up
       sudo ip address add ${ip}${subnetMask} dev $iface
       sudo ip route add default via ${defaultGw}
       echo 'nameserver ${dnsMain}' | sudo tee /etc/resolv.conf
+      #echo "${ip} $hostname" | sudo tee -a /etc/hosts
+      #cp ${netplanFile} ${netplanFile}.old
+      #echo "network:" | sudo tee ${netplanFile}
+      #echo "    ethernets:" | sudo tee -a ${netplanFile}
+      #echo "        $iface:" | sudo tee -a ${netplanFile}
+      #echo "            dhcp4: false" | sudo tee -a ${netplanFile}
+      #echo "            match:" | sudo tee -a ${netplanFile}
+      #echo "                macaddress: $mac" | sudo tee -a ${netplanFile}
+      #echo "            set-name: $iface" | sudo tee -a ${netplanFile}
+      #echo "    version: 2" | sudo tee -a ${netplanFile}
+      #sudo netplan apply
+      #sudo ip link set $iface down
+      #sudo ip link set $iface up
+      #sudo ip address add ${ip}${subnetMask} dev $iface
+      #sudo ip route add default via ${defaultGw}
+      #echo 'nameserver ${dnsMain}' | sudo tee /etc/resolv.conf
       ping -c 3 www.google.com
+      # apt config
       sudo apt update
       sudo apt install -y apache2
       sudo apt install -y docker.io
@@ -47,12 +68,13 @@ write_files:
       ip=$(ip -f inet addr show $ifPrimary | awk '/inet / {print $2}' | awk -F/ '{print $1}')
       sudo docker run -d -p $ip:8080:80 demovip_server:latest
       echo "cloud init done" | tee /tmp/cloudInitDone.log
+      #while true ; do echo -e "HTTP/1.1 200 OK\n\nHello World - cloud is Vcenter/NSX-T - Node is $(hostname)" | sudo nc -N -l -p 80 ; done
     path: /opt/bootstrap.sh
     permissions: 0755
 
   - content: |
-      ubuntu ALL=(ALL) NOPASSWD:ALL
-    path: /etc/sudoers.d/ubuntu
+      ${username}ALL=(ALL) NOPASSWD:ALL
+    path: /etc/sudoers.d/${username}
 
 runcmd:
   - /opt/bootstrap.sh

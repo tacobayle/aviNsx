@@ -89,7 +89,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
     aviPbAbsentTag = "v1.49"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
-    aviConfigureTag = "v4.26"
+    aviConfigureTag = "v4.27"
     version = "2.9.12"
     directory = "ansible"
   }

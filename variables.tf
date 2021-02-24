@@ -87,7 +87,7 @@ variable "ansible" {
   type = map
   default = {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansiblePbAviAbsent"
-    aviPbAbsentTag = "v1.5"
+    aviPbAbsentTag = "v1.51"
     aviConfigureUrl = "https://github.com/tacobayle/aviConfigure"
     aviConfigureTag = "v4.27"
     version = "2.9.12"
@@ -221,7 +221,7 @@ variable "nsxt" {
         {
           name = "seGroupCpuAutoScale"
           ha_mode = "HA_MODE_SHARED"
-          min_scaleout_per_vs = 2
+          min_scaleout_per_vs = 1
           buffer_se = 0
           extra_shared_config_memory = 0
           vcenter_folder = "Avi-SE-Autoscale"
